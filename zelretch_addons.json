@@ -1,0 +1,1718 @@
+{
+  "schema_version": 2,
+  "project": "Zelretch Addons",
+  "source": "https://github.com/SiamTestingProject/Addons",
+  "developer": {
+    "name": "Siam Chowdhury",
+    "github": "https://github.com/ChowdhurySiam",
+    "telegram": "https://t.me/Ch0wdhury_Siam"
+  },
+  "modules": [
+    {
+      "filename": "account_insights.py",
+      "title": "Account Insights",
+      "icon": "🪪",
+      "category": "Telegram Tools",
+      "description": "Displays detailed public information and activity estimates for a Telegram account.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "aboutacc",
+          "arguments": "[username/reply]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "afk.py",
+      "title": "AFK Manager",
+      "icon": "🌙",
+      "category": "Productivity",
+      "description": "Sets an away status, records the reason, and responds to mentions until you return.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "afk",
+          "arguments": "[reason]",
+          "primary": true
+        },
+        {
+          "command": "unafk",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "ai.py",
+      "title": "AI Gateway",
+      "icon": "🤖",
+      "category": "AI & Automation",
+      "description": "Sends prompts to supported OpenRouter models from a single command.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "ai",
+          "arguments": "[Gemini/DeepSeek/Qwen] [message]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "anime_character.py",
+      "title": "Anime Character",
+      "icon": "🌸",
+      "category": "Media",
+      "description": "Fetches random anime character images by category.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "waf",
+          "arguments": "[category]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "aurora_bull.py",
+      "title": "Aurora Bull",
+      "icon": "🎲",
+      "category": "Fun",
+      "description": "Creates randomized playful text sequences and timed message loops.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "abull",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "abullspam",
+          "arguments": "[time] [text]",
+          "primary": true
+        },
+        {
+          "command": "abulloff",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "autoanswer.py",
+      "title": "Auto Answer",
+      "icon": "💬",
+      "category": "Automation",
+      "description": "Configures automatic replies using a selected message or post.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "aws",
+          "arguments": "[ID/Username] [Post ID]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "autoonline.py",
+      "title": "Presence Control",
+      "icon": "🟢",
+      "category": "Automation",
+      "description": "Keeps the account online or returns it to normal presence behavior.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "online",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "offline",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "autoread.py",
+      "title": "Auto Read",
+      "icon": "👁️",
+      "category": "Automation",
+      "description": "Automatically marks messages as read in configured chats.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "autoread",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "bull_text.py",
+      "title": "Bull Text",
+      "icon": "💬",
+      "category": "Fun",
+      "description": "Generates randomized dramatic text for entertainment.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "bull",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "bulli",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "chance.py",
+      "title": "Chance Meter",
+      "icon": "🎯",
+      "category": "Fun",
+      "description": "Generates a playful probability score for any question or phrase.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "chance",
+          "arguments": "[text]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "chatmodule.py",
+      "title": "Chat Administration",
+      "icon": "🛡️",
+      "category": "Administration",
+      "description": "Provides chat IDs, permissions, moderation, roles, links, and group-management tools.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "id",
+          "arguments": "[reply]",
+          "primary": true
+        },
+        {
+          "command": "rights",
+          "arguments": "[-u username/id]",
+          "primary": true
+        },
+        {
+          "command": "leave",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "pin",
+          "arguments": "[reply]",
+          "primary": true
+        },
+        {
+          "command": "unpin",
+          "arguments": "[reply]",
+          "primary": true
+        },
+        {
+          "command": "unpinall",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "admins",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "ban",
+          "arguments": "[reply] [duration]",
+          "primary": true
+        },
+        {
+          "command": "unban",
+          "arguments": "[reply]",
+          "primary": true
+        },
+        {
+          "command": "kick",
+          "arguments": "[reply]",
+          "primary": true
+        },
+        {
+          "command": "mute",
+          "arguments": "[reply] [duration]",
+          "primary": true
+        },
+        {
+          "command": "unmute",
+          "arguments": "[reply]",
+          "primary": true
+        },
+        {
+          "command": "rename",
+          "arguments": "[name]",
+          "primary": true
+        },
+        {
+          "command": "create",
+          "arguments": "[-g|--group name] [-c|--channel name]",
+          "primary": true
+        },
+        {
+          "command": "geturl",
+          "arguments": "[reply]",
+          "primary": true
+        },
+        {
+          "command": "addrole",
+          "arguments": "-n role_name -p число",
+          "primary": true
+        },
+        {
+          "command": "delrole",
+          "arguments": "-n role_name",
+          "primary": true
+        },
+        {
+          "command": "roles",
+          "arguments": "[-n role_name]",
+          "primary": true
+        },
+        {
+          "command": "chatinfo",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "currency.py",
+      "title": "Currency Converter",
+      "icon": "💱",
+      "category": "Information",
+      "description": "Converts amounts between configured currencies using current exchange data.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "cr",
+          "arguments": "[amount] [currency]",
+          "primary": true
+        },
+        {
+          "command": "currency_config",
+          "arguments": "[currencies]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "db0mb3r.py",
+      "title": "Legacy Stress Tools",
+      "icon": "⚠️",
+      "category": "Restricted Tools",
+      "description": "Provides legacy stress-test commands; use only with explicit authorization.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "bomber",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "sbomber",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "demotivator.py",
+      "title": "Demotivator",
+      "icon": "🖼️",
+      "category": "Files & Media",
+      "description": "Creates a demotivational-style image from replied media and custom text.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "dem",
+          "arguments": "[text]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "direct_sender.py",
+      "title": "Direct Sender",
+      "icon": "📨",
+      "category": "Telegram Tools",
+      "description": "Sends replied content to a Telegram ID or username.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "send",
+          "arguments": "[ID/Username]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "eye.py",
+      "title": "Public OSINT Lookup",
+      "icon": "🔎",
+      "category": "Information",
+      "description": "Queries supported public OSINT sources for a supplied phone number.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "eye",
+          "arguments": "[phone]",
+          "primary": true
+        },
+        {
+          "command": "osint",
+          "arguments": "[phone]",
+          "primary": false
+        }
+      ]
+    },
+    {
+      "filename": "find_id.py",
+      "title": "Chat ID Finder",
+      "icon": "🆔",
+      "category": "Telegram Tools",
+      "description": "Shows the current chat identifier and related Telegram IDs.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "id",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "find_music.py",
+      "title": "Music Finder",
+      "icon": "🎵",
+      "category": "Media",
+      "description": "Finds lyrics and music results across supported providers.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "genius_config",
+          "arguments": "[api_token]",
+          "primary": true
+        },
+        {
+          "command": "l",
+          "arguments": "[song_name]",
+          "primary": true
+        },
+        {
+          "command": "lyrics",
+          "arguments": "[song_name]",
+          "primary": false
+        },
+        {
+          "command": "dm",
+          "arguments": "[song_name]",
+          "primary": true
+        },
+        {
+          "command": "dmusic",
+          "arguments": "[song_name]",
+          "primary": false
+        },
+        {
+          "command": "lm",
+          "arguments": "[song_name]",
+          "primary": true
+        },
+        {
+          "command": "lmusic",
+          "arguments": "[song_name]",
+          "primary": false
+        }
+      ]
+    },
+    {
+      "filename": "fragment_checker.py",
+      "title": "Fragment Checker",
+      "icon": "💎",
+      "category": "Telegram Tools",
+      "description": "Checks supported Telegram Fragment username information.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "fcheck",
+          "arguments": "[username]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "gemini_ai.py",
+      "title": "Gemini AI",
+      "icon": "✨",
+      "category": "AI & Automation",
+      "description": "Uses the supported Google Gen AI SDK for prompts, conversations, model selection, and history control.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "gemini",
+          "arguments": "[text]",
+          "primary": true
+        },
+        {
+          "command": "gemini_api",
+          "arguments": "[api_key]",
+          "primary": true
+        },
+        {
+          "command": "gemini_model",
+          "arguments": "[model]",
+          "primary": true
+        },
+        {
+          "command": "gemini_chat",
+          "arguments": "[text]",
+          "primary": true
+        },
+        {
+          "command": "gemini_clear",
+          "arguments": "",
+          "primary": true
+        }
+      ],
+      "requirements": [
+        "google-genai>=1,<2"
+      ]
+    },
+    {
+      "filename": "gen_pass.py",
+      "title": "Password Generator",
+      "icon": "🔐",
+      "category": "Utilities",
+      "description": "Generates a random password with the requested length.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "gen_password",
+          "arguments": "[length]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "get_key.py",
+      "title": "Subscription Key Extractor",
+      "icon": "🗝️",
+      "category": "Utilities",
+      "description": "Parses supported subscription links and extracts available connection keys.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "get_keys",
+          "arguments": "[link to sub]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "hearts.py",
+      "title": "Heart Animation",
+      "icon": "💗",
+      "category": "Fun",
+      "description": "Displays an animated heart sequence in the current message.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "hearts",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "magic",
+          "arguments": "",
+          "primary": false
+        },
+        {
+          "command": "love",
+          "arguments": "",
+          "primary": false
+        }
+      ]
+    },
+    {
+      "filename": "history_facts.py",
+      "title": "History Facts",
+      "icon": "📚",
+      "category": "Information",
+      "description": "Returns random historical, science, music, and general-interest facts.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "rfact",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "hfact",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "mfact",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "sfact",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "ignore.py",
+      "title": "Ignore User",
+      "icon": "🙈",
+      "category": "Administration",
+      "description": "Suppresses selected incoming messages from a specified user or chat.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "ignore",
+          "arguments": "[user_id/@username]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "ipinfo.py",
+      "title": "IP Information",
+      "icon": "🌐",
+      "category": "Information",
+      "description": "Displays location, network, timezone, and provider data for an IP address.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "ipi",
+          "arguments": "[ip]",
+          "primary": true
+        },
+        {
+          "command": "ipinfo",
+          "arguments": "[ip]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "kickall.py",
+      "title": "Member Cleanup",
+      "icon": "🧹",
+      "category": "Administration",
+      "description": "Performs bulk member cleanup actions in chats where you have permission.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "kickall",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "kickall_hide",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "kickall_withbot",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "kickdeleted",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "ladder.py",
+      "title": "Text Ladder",
+      "icon": "🪜",
+      "category": "Fun",
+      "description": "Builds an animated ladder pattern from custom text.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "ladder",
+          "arguments": "[text]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "lastfm.py",
+      "title": "Last.fm Status",
+      "icon": "🎧",
+      "category": "Media",
+      "description": "Displays and optionally auto-updates your currently playing Last.fm track.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "lastfm_api",
+          "arguments": "[api_key]",
+          "primary": true
+        },
+        {
+          "command": "nowplayed",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "lastfm_config",
+          "arguments": "[LastFM Nickname] [Username/ID Channel] [ID Message] [Autostart: True/False]",
+          "primary": true
+        },
+        {
+          "command": "autoplayed",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "link.py",
+      "title": "Rich Link Builder",
+      "icon": "🔗",
+      "category": "Utilities",
+      "description": "Creates safe clickable text using a validated HTTP or HTTPS URL and label.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "link",
+          "arguments": "[url] [text]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "media2gif.py",
+      "title": "Media to GIF",
+      "icon": "🎞️",
+      "category": "Files & Media",
+      "description": "Converts replied photos or videos into an optimized GIF.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "media2gif",
+          "arguments": "[reply to photo or video]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "mediapics.py",
+      "title": "Media Gallery",
+      "icon": "🖼️",
+      "category": "Media",
+      "description": "Fetches images from several supported themed media sources.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "anime",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "cat",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "lolic",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "loli",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "lolih",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "fem",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "sfw",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "furry",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "nsfw",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "module_bridge.py",
+      "title": "Module Bridge",
+      "icon": "🧩",
+      "category": "Developer Tools",
+      "description": "Converts compatible legacy modules into the Zelretch addon format.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "module_bridge",
+          "arguments": "[Link/Reply]",
+          "primary": true
+        },
+        {
+          "command": "module_bridge_config",
+          "arguments": "[Model]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "multi_uploader.py",
+      "title": "Multi Uploader",
+      "icon": "☁️",
+      "category": "Files & Media",
+      "description": "Uploads replied files to multiple temporary file-hosting services.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "catbox",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "envs",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "kappa",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "0x0",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "x0",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "tmpfiles",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "pomf",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "bash",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "neko.py",
+      "title": "Neko Media",
+      "icon": "🐾",
+      "category": "Media",
+      "description": "Fetches a random neko-themed image.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "neko",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "nekomod.py",
+      "title": "Neko Text Mode",
+      "icon": "🐱",
+      "category": "Fun",
+      "description": "Adds a configurable neko-style transformation to outgoing text.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "nekoed",
+          "arguments": "[on/off]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "pasta.py",
+      "title": "Fictional Profile Generator",
+      "icon": "🧾",
+      "category": "Fun",
+      "description": "Creates a fictional profile card for entertainment and testing.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "doxx",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "patriot_text.py",
+      "title": "Patriot Text",
+      "icon": "🎭",
+      "category": "Creative",
+      "description": "Transforms text with a stylized character-substitution effect.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "patriot",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "pat",
+          "arguments": "[reply]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "pinterest.py",
+      "title": "Pinterest Downloader",
+      "icon": "📌",
+      "category": "Files & Media",
+      "description": "Extracts and downloads supported Pinterest images or videos.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "pinterest",
+          "arguments": "[link]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "premium_text.py",
+      "title": "Premium Text",
+      "icon": "💠",
+      "category": "Fun",
+      "description": "Transforms supported characters into premium-emoji styled text.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "prem_text",
+          "arguments": "[text]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "progressbar.py",
+      "title": "Progress Animation",
+      "icon": "📊",
+      "category": "Fun",
+      "description": "Displays an animated progress bar with optional custom text.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "progressbar",
+          "arguments": "[text]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "promo_claimer.py",
+      "title": "Promo Claimer",
+      "icon": "🎟️",
+      "category": "Automation",
+      "description": "Monitors supported promo messages and attempts eligible token redemptions.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "checktokens",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "purge.py",
+      "title": "Message Cleanup",
+      "icon": "🗑️",
+      "category": "Administration",
+      "description": "Deletes a replied message or a selected message range.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "del",
+          "arguments": "[reply]",
+          "primary": true
+        },
+        {
+          "command": "purge",
+          "arguments": "[reply/group_id] [start_id] [stop_id]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "qr.py",
+      "title": "QR Generator",
+      "icon": "🔳",
+      "category": "Utilities",
+      "description": "Generates a QR code from supplied text or a link.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "qr",
+          "arguments": "[text]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "quotes.py",
+      "title": "Quote Maker",
+      "icon": "💬",
+      "category": "Files & Media",
+      "description": "Creates a quote image from a replied Telegram message.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "q",
+          "arguments": "[reply]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "randomizer.py",
+      "title": "Random Number",
+      "icon": "🎲",
+      "category": "Utilities",
+      "description": "Generates a random number using configurable minimum and maximum values.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "rnd",
+          "arguments": "[min] [max]",
+          "primary": true
+        },
+        {
+          "command": "randomizer_config",
+          "arguments": "[min] [max]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "reputation.py",
+      "title": "Reputation",
+      "icon": "⭐",
+      "category": "Community",
+      "description": "Tracks simple positive and negative reputation reactions in a chat.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "rep",
+          "arguments": "[number]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "rule34.py",
+      "title": "Adult Media Search",
+      "icon": "🔞",
+      "category": "Restricted Tools",
+      "description": "Searches an adult-content provider by tags; use only where lawful and appropriate.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "rule34",
+          "arguments": "[tags]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "sherlock.py",
+      "title": "Username Search",
+      "icon": "🕵️",
+      "category": "Information",
+      "description": "Checks a username or identifier across supported public services.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "sher",
+          "arguments": "[query]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "short.py",
+      "title": "URL Shortener",
+      "icon": "✂️",
+      "category": "Utilities",
+      "description": "Creates a shortened link from supplied or replied text.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "short",
+          "arguments": "[Reply/Link]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "social_downloader.py",
+      "title": "Social Downloader",
+      "icon": "📥",
+      "category": "Files & Media",
+      "description": "Downloads supported social-media videos from a supplied URL.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "tt",
+          "arguments": "[url]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "spam.py",
+      "title": "Bulk Messaging",
+      "icon": "📣",
+      "category": "Restricted Tools",
+      "description": "Sends repeated text or sticker messages with configurable count and delay.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "stspam",
+          "arguments": "[count] [delay] [sticker_id]",
+          "primary": true
+        },
+        {
+          "command": "spam",
+          "arguments": "[count] [delay] [text]",
+          "primary": true
+        },
+        {
+          "command": "help_spam",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "spamban.py",
+      "title": "Spam Protection Check",
+      "icon": "🛡️",
+      "category": "Telegram Tools",
+      "description": "Checks the current account against supported Telegram spam restrictions.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "spamban",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "speech.py",
+      "title": "Text to Speech",
+      "icon": "🔊",
+      "category": "Files & Media",
+      "description": "Converts supplied text into an audio message in supported languages.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "voice",
+          "arguments": "[text]",
+          "primary": true
+        },
+        {
+          "command": "voice_ru",
+          "arguments": "[text]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "speedtest.py",
+      "title": "Speed Test",
+      "icon": "🚀",
+      "category": "System",
+      "description": "Measures network download, upload, and latency information.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": []
+    },
+    {
+      "filename": "stats.py",
+      "title": "Account Statistics",
+      "icon": "📈",
+      "category": "Telegram Tools",
+      "description": "Shows Telegram dialog, contact, group, and channel statistics.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "stat",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "stats",
+          "arguments": "",
+          "primary": false
+        }
+      ]
+    },
+    {
+      "filename": "stats_xdesai.py",
+      "title": "Detailed Statistics",
+      "icon": "📊",
+      "category": "Telegram Tools",
+      "description": "Provides an expanded summary of account and dialog statistics.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "stats_xdesai",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "stream.py",
+      "title": "Stream Utilities",
+      "icon": "📡",
+      "category": "Files & Media",
+      "description": "Provides supported streaming and media-link utilities.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "stream",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "switch.py",
+      "title": "Text Switch",
+      "icon": "🔄",
+      "category": "Fun",
+      "description": "Applies a reversible visual transformation to replied or supplied text.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "sw",
+          "arguments": "[reply|text]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "sysinfo.py",
+      "title": "System Information",
+      "icon": "🖥️",
+      "category": "System",
+      "description": "Displays CPU, memory, disk, platform, and runtime information.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "sysinfo",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "systemd_manager.py",
+      "title": "Systemd Manager",
+      "icon": "⚙️",
+      "category": "System",
+      "description": "Lists and manages systemd units on compatible Linux hosts.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "units",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "addunit",
+          "arguments": "[unit] [name]",
+          "primary": true
+        },
+        {
+          "command": "delunit",
+          "arguments": "[unit]",
+          "primary": true
+        },
+        {
+          "command": "unit",
+          "arguments": "[unit] [action]",
+          "primary": true
+        },
+        {
+          "command": "nameunit",
+          "arguments": "[unit] [new_name]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "tagall.py",
+      "title": "Mention All",
+      "icon": "📢",
+      "category": "Administration",
+      "description": "Mentions chat members sequentially or in grouped batches.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "tagallone",
+          "arguments": "[delay] [text]",
+          "primary": true
+        },
+        {
+          "command": "tagall",
+          "arguments": "[delay] [text]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "task_manager.py",
+      "title": "Task Manager",
+      "icon": "✅",
+      "category": "Productivity",
+      "description": "Creates, lists, prioritizes, and removes personal tasks.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "td",
+          "arguments": "[importance:int] [task]",
+          "primary": true
+        },
+        {
+          "command": "tdl",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "utd",
+          "arguments": "[task_id]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "telega_detector.py",
+      "title": "Client Detector",
+      "icon": "📱",
+      "category": "Telegram Tools",
+      "description": "Estimates which Telegram client a user is using from public message data.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "telega",
+          "arguments": "[reply/@username/id]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "time_now.py",
+      "title": "Current Time",
+      "icon": "🕒",
+      "category": "Utilities",
+      "description": "Shows the current date and time.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "time",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "troll.py",
+      "title": "Fun Animations",
+      "icon": "🎬",
+      "category": "Fun",
+      "description": "Runs a collection of harmless animated text sequences.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "hack",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "drugs",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "police",
+          "arguments": "[duration]",
+          "primary": true
+        },
+        {
+          "command": "ghoul",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "stupid",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "bombs",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "call",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "kill",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "ZV",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "type.py",
+      "title": "Typing Animation",
+      "icon": "⌨️",
+      "category": "Fun",
+      "description": "Animates supplied text as though it is being typed.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "type",
+          "arguments": "[text]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "url.py",
+      "title": "URL Inspector",
+      "icon": "🧭",
+      "category": "Utilities",
+      "description": "Expands shortened URLs and displays resolved host or IP information.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "expandurl",
+          "arguments": "[URL]",
+          "primary": true
+        },
+        {
+          "command": "ipurl",
+          "arguments": "[URL]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "user_info.py",
+      "title": "User Information",
+      "icon": "👤",
+      "category": "Telegram Tools",
+      "description": "Displays concise or detailed public information about a Telegram user.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "user_info",
+          "arguments": "[user_id/@username]",
+          "primary": true
+        },
+        {
+          "command": "user_info_full",
+          "arguments": "[user_id/@username]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "wait_animation.py",
+      "title": "Wait Animation",
+      "icon": "⏳",
+      "category": "Fun",
+      "description": "Displays a short animated waiting sequence.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "wait",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "weather.py",
+      "title": "Weather",
+      "icon": "🌦️",
+      "category": "Information",
+      "description": "Shows a text forecast and weather image for a city.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "weather",
+          "arguments": "[city]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "weather_xdesai.py",
+      "title": "Advanced Weather",
+      "icon": "⛅",
+      "category": "Information",
+      "description": "Provides detailed weather data with optional API configuration.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "weather",
+          "arguments": "[city]",
+          "primary": true
+        },
+        {
+          "command": "weather_config",
+          "arguments": "[api_key]",
+          "primary": true
+        },
+        {
+          "command": "weather_help",
+          "arguments": "",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "webshot.py",
+      "title": "Website Screenshot",
+      "icon": "📸",
+      "category": "Files & Media",
+      "description": "Captures a screenshot of a supplied web page.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "webshot",
+          "arguments": "[url]",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "filename": "wikipedia.py",
+      "title": "Wikipedia Search",
+      "icon": "📖",
+      "category": "Information",
+      "description": "Searches Wikipedia in the selected language and returns a summary.",
+      "developer": "Siam Chowdhury",
+      "github": "https://github.com/ChowdhurySiam",
+      "telegram": "https://t.me/Ch0wdhury_Siam",
+      "commands": [
+        {
+          "command": "wiki",
+          "arguments": "[RU/EN] [WORD]",
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "requirements_file": "requirements.txt"
+}
