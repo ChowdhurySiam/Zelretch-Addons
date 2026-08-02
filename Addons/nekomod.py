@@ -12,24 +12,27 @@ ZELRETCH_MODULE_INFO = {'title': 'Neko Text Mode', 'icon': '🐱', 'category': '
 
 import asyncio
 import random
-import os
+from pathlib import Path
 from pyrogram import Client, filters
 from command import zel_command, zel_sudo, who_message, my_prefix
-from modules.core.restarter import restart 
+from modules.core.restarter import restart
+
+MODULE_FILENAME = Path(__file__).name
+STATE_PATH = Path("userdata/nekoeditor_enabled")
 
 def load_config():
     try:
-        with open("userdata/nekoeditor_enabled", "r", encoding="utf-8") as f:
+        with STATE_PATH.open("r", encoding="utf-8") as f:
             enabled = f.read().strip().lower() == "true"
     except FileNotFoundError:
         enabled = False
     return {"enabled": enabled}
 
 def save_config(enabled):
-    with open("userdata/nekoeditor_enabled", "w", encoding="utf-8") as f:
-        f.write(str(enabled))
+    STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    STATE_PATH.write_text(str(enabled), encoding="utf-8")
 
-@Client.on_message(zel_command("nekoed", "NekoEditor", os.path.basename(__file__), "[on/off]") & zel_sudo())
+@Client.on_message(zel_command("nekoed", "NekoEditor", MODULE_FILENAME, "[on/off]") & zel_sudo())
 async def nekoedcmd(client, message):
     message = await who_message(client, message)
     args = message.text.split(maxsplit=1)

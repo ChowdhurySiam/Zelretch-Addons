@@ -1,7 +1,7 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "project": "Zelretch Addons",
-  "source": "https://github.com/ChowdhurySiam/Zelretch-Addons",
+  "source": "https://github.com/ChowdhurySiam/Zelretch-Addons/tree/main/Addons",
   "developer": {
     "name": "Siam Chowdhury",
     "github": "https://github.com/ChowdhurySiam",
@@ -23,7 +23,8 @@
           "arguments": "[username/reply]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/account_insights.py"
     },
     {
       "filename": "afk.py",
@@ -45,7 +46,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/afk.py"
     },
     {
       "filename": "ai.py",
@@ -62,7 +64,8 @@
           "arguments": "[Gemini/DeepSeek/Qwen] [message]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/ai.py"
     },
     {
       "filename": "anime_character.py",
@@ -79,7 +82,8 @@
           "arguments": "[category]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/anime_character.py"
     },
     {
       "filename": "aurora_bull.py",
@@ -106,7 +110,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/aurora_bull.py"
     },
     {
       "filename": "autoanswer.py",
@@ -123,7 +128,8 @@
           "arguments": "[ID/Username] [Post ID]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/autoanswer.py"
     },
     {
       "filename": "autoonline.py",
@@ -145,7 +151,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/autoonline.py"
     },
     {
       "filename": "autoread.py",
@@ -162,7 +169,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/autoread.py"
     },
     {
       "filename": "bull_text.py",
@@ -184,7 +192,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/bull_text.py"
     },
     {
       "filename": "chance.py",
@@ -201,7 +210,8 @@
           "arguments": "[text]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/chance.py"
     },
     {
       "filename": "chatmodule.py",
@@ -308,7 +318,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/chatmodule.py"
     },
     {
       "filename": "currency.py",
@@ -330,7 +341,8 @@
           "arguments": "[currencies]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/currency.py"
     },
     {
       "filename": "db0mb3r.py",
@@ -352,7 +364,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/db0mb3r.py"
     },
     {
       "filename": "demotivator.py",
@@ -369,7 +382,8 @@
           "arguments": "[text]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/demotivator.py"
     },
     {
       "filename": "direct_sender.py",
@@ -386,7 +400,8 @@
           "arguments": "[ID/Username]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/direct_sender.py"
     },
     {
       "filename": "eye.py",
@@ -408,7 +423,8 @@
           "arguments": "[phone]",
           "primary": false
         }
-      ]
+      ],
+      "path": "Addons/eye.py"
     },
     {
       "filename": "find_id.py",
@@ -425,7 +441,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/find_id.py"
     },
     {
       "filename": "find_music.py",
@@ -472,7 +489,8 @@
           "arguments": "[song_name]",
           "primary": false
         }
-      ]
+      ],
+      "path": "Addons/find_music.py"
     },
     {
       "filename": "fragment_checker.py",
@@ -489,7 +507,8 @@
           "arguments": "[username]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/fragment_checker.py"
     },
     {
       "filename": "gemini_ai.py",
@@ -529,7 +548,8 @@
       ],
       "requirements": [
         "google-genai>=1,<2"
-      ]
+      ],
+      "path": "Addons/gemini_ai.py"
     },
     {
       "filename": "gen_pass.py",
@@ -546,7 +566,8 @@
           "arguments": "[length]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/gen_pass.py"
     },
     {
       "filename": "get_key.py",
@@ -563,7 +584,8 @@
           "arguments": "[link to sub]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/get_key.py"
     },
     {
       "filename": "hearts.py",
@@ -590,7 +612,8 @@
           "arguments": "",
           "primary": false
         }
-      ]
+      ],
+      "path": "Addons/hearts.py"
     },
     {
       "filename": "history_facts.py",
@@ -622,7 +645,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/history_facts.py"
     },
     {
       "filename": "ignore.py",
@@ -639,7 +663,8 @@
           "arguments": "[user_id/@username]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/ignore.py"
     },
     {
       "filename": "ipinfo.py",
@@ -661,7 +686,8 @@
           "arguments": "[ip]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/ipinfo.py"
     },
     {
       "filename": "kickall.py",
@@ -693,7 +719,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/kickall.py"
     },
     {
       "filename": "ladder.py",
@@ -710,7 +737,8 @@
           "arguments": "[text]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/ladder.py"
     },
     {
       "filename": "lastfm.py",
@@ -742,7 +770,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/lastfm.py"
     },
     {
       "filename": "link.py",
@@ -759,7 +788,8 @@
           "arguments": "[url] [text]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/link.py"
     },
     {
       "filename": "media2gif.py",
@@ -776,7 +806,8 @@
           "arguments": "[reply to photo or video]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/media2gif.py"
     },
     {
       "filename": "mediapics.py",
@@ -833,7 +864,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/mediapics.py"
     },
     {
       "filename": "module_bridge.py",
@@ -855,7 +887,8 @@
           "arguments": "[Model]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/module_bridge.py"
     },
     {
       "filename": "multi_uploader.py",
@@ -907,7 +940,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/multi_uploader.py"
     },
     {
       "filename": "neko.py",
@@ -924,7 +958,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/neko.py"
     },
     {
       "filename": "nekomod.py",
@@ -941,7 +976,8 @@
           "arguments": "[on/off]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/nekomod.py"
     },
     {
       "filename": "pasta.py",
@@ -958,7 +994,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/pasta.py"
     },
     {
       "filename": "patriot_text.py",
@@ -980,7 +1017,8 @@
           "arguments": "[reply]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/patriot_text.py"
     },
     {
       "filename": "pinterest.py",
@@ -997,7 +1035,8 @@
           "arguments": "[link]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/pinterest.py"
     },
     {
       "filename": "premium_text.py",
@@ -1014,7 +1053,8 @@
           "arguments": "[text]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/premium_text.py"
     },
     {
       "filename": "progressbar.py",
@@ -1031,7 +1071,8 @@
           "arguments": "[text]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/progressbar.py"
     },
     {
       "filename": "promo_claimer.py",
@@ -1048,7 +1089,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/promo_claimer.py"
     },
     {
       "filename": "purge.py",
@@ -1070,7 +1112,8 @@
           "arguments": "[reply/group_id] [start_id] [stop_id]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/purge.py"
     },
     {
       "filename": "qr.py",
@@ -1087,7 +1130,8 @@
           "arguments": "[text]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/qr.py"
     },
     {
       "filename": "quotes.py",
@@ -1104,7 +1148,8 @@
           "arguments": "[reply]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/quotes.py"
     },
     {
       "filename": "randomizer.py",
@@ -1126,7 +1171,8 @@
           "arguments": "[min] [max]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/randomizer.py"
     },
     {
       "filename": "reputation.py",
@@ -1143,7 +1189,8 @@
           "arguments": "[number]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/reputation.py"
     },
     {
       "filename": "rule34.py",
@@ -1160,7 +1207,8 @@
           "arguments": "[tags]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/rule34.py"
     },
     {
       "filename": "sherlock.py",
@@ -1177,7 +1225,8 @@
           "arguments": "[query]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/sherlock.py"
     },
     {
       "filename": "short.py",
@@ -1194,7 +1243,8 @@
           "arguments": "[Reply/Link]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/short.py"
     },
     {
       "filename": "social_downloader.py",
@@ -1211,7 +1261,8 @@
           "arguments": "[url]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/social_downloader.py"
     },
     {
       "filename": "spam.py",
@@ -1238,7 +1289,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/spam.py"
     },
     {
       "filename": "spamban.py",
@@ -1255,7 +1307,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/spamban.py"
     },
     {
       "filename": "speech.py",
@@ -1272,7 +1325,8 @@
           "arguments": "[English text]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/speech.py"
     },
     {
       "filename": "speedtest.py",
@@ -1283,7 +1337,8 @@
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": []
+      "commands": [],
+      "path": "Addons/speedtest.py"
     },
     {
       "filename": "stats.py",
@@ -1305,7 +1360,8 @@
           "arguments": "",
           "primary": false
         }
-      ]
+      ],
+      "path": "Addons/stats.py"
     },
     {
       "filename": "stats_xdesai.py",
@@ -1322,7 +1378,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/stats_xdesai.py"
     },
     {
       "filename": "stream.py",
@@ -1339,7 +1396,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/stream.py"
     },
     {
       "filename": "switch.py",
@@ -1356,7 +1414,8 @@
           "arguments": "[reply|text]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/switch.py"
     },
     {
       "filename": "sysinfo.py",
@@ -1373,7 +1432,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/sysinfo.py"
     },
     {
       "filename": "systemd_manager.py",
@@ -1410,7 +1470,8 @@
           "arguments": "[unit] [new_name]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/systemd_manager.py"
     },
     {
       "filename": "tagall.py",
@@ -1432,7 +1493,8 @@
           "arguments": "[delay] [text]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/tagall.py"
     },
     {
       "filename": "task_manager.py",
@@ -1459,7 +1521,8 @@
           "arguments": "[task_id]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/task_manager.py"
     },
     {
       "filename": "telega_detector.py",
@@ -1476,7 +1539,8 @@
           "arguments": "[reply/@username/id]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/telega_detector.py"
     },
     {
       "filename": "time_now.py",
@@ -1493,7 +1557,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/time_now.py"
     },
     {
       "filename": "troll.py",
@@ -1550,7 +1615,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/troll.py"
     },
     {
       "filename": "type.py",
@@ -1567,7 +1633,8 @@
           "arguments": "[text]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/type.py"
     },
     {
       "filename": "url.py",
@@ -1589,7 +1656,8 @@
           "arguments": "[URL]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/url.py"
     },
     {
       "filename": "user_info.py",
@@ -1611,7 +1679,8 @@
           "arguments": "[user_id/@username]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/user_info.py"
     },
     {
       "filename": "wait_animation.py",
@@ -1628,7 +1697,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/wait_animation.py"
     },
     {
       "filename": "weather.py",
@@ -1645,7 +1715,8 @@
           "arguments": "[city]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/weather.py"
     },
     {
       "filename": "weather_xdesai.py",
@@ -1672,7 +1743,8 @@
           "arguments": "",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/weather_xdesai.py"
     },
     {
       "filename": "webshot.py",
@@ -1689,7 +1761,8 @@
           "arguments": "[url]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/webshot.py"
     },
     {
       "filename": "wikipedia.py",
@@ -1706,11 +1779,13 @@
           "arguments": "[query]",
           "primary": true
         }
-      ]
+      ],
+      "path": "Addons/wikipedia.py"
     }
   ],
   "requirements_file": "requirements.txt",
   "main_project": "https://github.com/ChowdhurySiam/Zelretch",
   "language": "English only",
-  "version": "3.1.0"
+  "version": "3.1.2",
+  "addons_directory": "Addons"
 }

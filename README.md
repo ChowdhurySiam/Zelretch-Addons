@@ -8,9 +8,26 @@ The official English-only Addon collection for Zelretch.
 - **Telegram:** [@Ch0wdhury_Siam](https://t.me/Ch0wdhury_Siam)
 - **Interface language:** English only
 
+## Repository structure
+
+All executable Addons and their machine-readable catalog live inside the dedicated `Addons/` directory:
+
+```text
+Zelretch-Addons/
+├── Addons/
+│   ├── *.py
+│   ├── requirements.txt
+│   └── zelretch_addons.json
+├── README.md
+├── LICENSE
+└── .gitattributes
+```
+
+The repository root contains project documentation and licensing only. Zelretch synchronizes modules exclusively from `Addons/`.
+
 ## Automatic installation
 
-The main Zelretch project synchronizes this repository automatically at startup. The default source is:
+The main Zelretch project synchronizes the `Addons/` folder automatically at startup. The default repository is:
 
 ```text
 https://github.com/ChowdhurySiam/Zelretch-Addons
@@ -105,3 +122,16 @@ https://github.com/ChowdhurySiam/Zelretch-Addons
 ## License
 
 See `LICENSE`.
+
+
+## v3.1.2 Addons directory layout
+
+- Moved every executable Addon into the repository's `Addons/` directory.
+- Moved `requirements.txt` and `zelretch_addons.json` into `Addons/`.
+- Updated the main Zelretch synchronizer to ignore Python files outside this folder.
+
+## v3.1.1 runtime fixes
+
+- Corrected the Neko Text Mode Addon so its module filename does not depend on an undeclared `os` symbol.
+- The Addons package contains English/ASCII filenames only.
+- Use this repository together with Zelretch v3.1.2 or later so old non-English cached Addons are removed from MongoDB automatically.
