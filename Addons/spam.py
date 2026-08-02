@@ -8,8 +8,7 @@ GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'Bulk Messaging', 'icon': '📣', 'category': 'Restricted Tools', 'description': 'Sends repeated text or sticker messages with configurable count and delay.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
+ZELRETCH_MODULE_INFO = {'title': 'Bulk Messaging', 'icon': '📣', 'category': 'Restricted Tools', 'description': 'Sends repeated text or sticker messages with configurable count and delay.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.undo removes one selected output; already sent messages are not restored'}
 import asyncio
 from pyrogram import Client, filters
 from command import zel_command, zel_sudo, who_message

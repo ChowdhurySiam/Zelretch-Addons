@@ -29,6 +29,7 @@ ZELRETCH_MODULE_INFO = {
     "icon": "📌",
     "category": "Files & Media",
     "description": "Downloads a supported Pinterest image or video from a public pin URL.",
+    "undo": '.undo (reply to the Addon output)',
     "developer": "Siam Chowdhury",
     "github": "https://github.com/ChowdhurySiam",
     "telegram": "https://t.me/Ch0wdhury_Siam",

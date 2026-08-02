@@ -8,8 +8,7 @@ GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'Multi Uploader', 'icon': '☁️', 'category': 'Files & Media', 'description': 'Uploads replied files to multiple temporary file-hosting services.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
+ZELRETCH_MODULE_INFO = {'title': 'Multi Uploader', 'icon': '☁️', 'category': 'Files & Media', 'description': 'Uploads replied files to multiple temporary file-hosting services.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.undo (reply to the Addon output)'}
 import io
 import json
 from pyrogram import Client, filters

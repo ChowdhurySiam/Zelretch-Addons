@@ -1,132 +1,326 @@
-"""Zelretch Addon: Social Downloader
+"""Zelretch Addon: Social Downloader.
 
-Downloads supported social-media videos from a supplied URL.
-
-Category: Files & Media
-Maintainer: Siam Chowdhury
-GitHub: https://github.com/ChowdhurySiam
-Telegram: @Ch0wdhury_Siam
+Downloads public media supported by yt-dlp. The Addon keeps dependency checks
+lazy so normal Zelretch startup is not delayed when the command is unused.
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'Social Downloader', 'icon': '📥', 'category': 'Files & Media', 'description': 'Downloads supported social-media videos from a supplied URL.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
-try:
-    from PIL import Image, ImageFilter
-    import aiohttp
-    import subprocess
-    FFMPEG_AVAILABLE = True
-except ImportError:
-    from requirements_installer import install_library
-    install_library("Pillow aiohttp")
-    
-    from PIL import Image, ImageFilter
-    FFMPEG_AVAILABLE = True if subprocess else False
+from __future__ import annotations
 
 import asyncio
-import re
-import os
+import importlib.util
 import json
-import warnings
-import functools
-import logging
-import tempfile
+import os
+import re
 import shutil
-from io import BytesIO
-from urllib.parse import urljoin, urlparse
-from typing import Union, Optional, List, Dict, Any
-from dataclasses import dataclass
-from pyrogram import Client, filters
-from command import zel_command, zel_sudo, who_message
+import sys
+import tempfile
+import time
+from pathlib import Path
+from typing import Optional
+from urllib.parse import urlparse
 
-@dataclass
-class TTData:
-    dir_name: str
-    media: Union[str, List[str]]
-    type: str
+from pyrogram import Client
+from pyrogram.enums import ParseMode
+from pyrogram.types import LinkPreviewOptions, ReplyParameters
 
-class TikTokAPI:
-    def __init__(self, host: Optional[str] = None):
-        self.headers = {
-            "User-Agent": "Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B334b Safari/531.21.10"
-        }
-        self.host = host or "https://www.tikwm.com/"
-        self.session = aiohttp.ClientSession()
-        self.progress_message = None
+from command import who_message, zel_command, zel_sudo
+from requirements_installer import install_library
 
-    async def close_session(self):
-        await self.session.close()
+ZELRETCH_MODULE_INFO = {
+    "title": "Social Downloader",
+    "icon": "📥",
+    "category": "Files & Media",
+    "description": "Downloads public videos and audio from websites supported by yt-dlp.",
+    "developer": "Siam Chowdhury",
+    "github": "https://github.com/ChowdhurySiam",
+    "telegram": "https://t.me/Ch0wdhury_Siam",
+    "undo": ".undo (reply to the Addon output)",
+}
 
-    async def _update_progress(self, text: str):
-        if self.progress_message:
-            try:
-                await self.progress_message.edit(text)
-            except:
-                pass
+MODULE_NAME = "SocialMediaDL"
+FILENAME = os.path.basename(__file__)
+URL_PATTERN = re.compile(r"https?://[^\s<>]+", re.IGNORECASE)
+VIDEO_EXTENSIONS = {".mp4", ".mkv", ".webm", ".mov", ".m4v"}
+AUDIO_EXTENSIONS = {".mp3", ".m4a", ".aac", ".ogg", ".opus", ".wav", ".flac"}
 
-    async def _download_file(self, url: str, path: str):
-        async with self.session.get(url) as response:
-            response.raise_for_status()
-            with open(path, "wb") as file:
-                async for chunk in response.content.iter_chunked(1024):
-                    file.write(chunk)
 
-    async def download(self, link: str, video_filename: Optional[str] = None, hd: bool = True) -> TTData:
-        async with self.session.get(f"{self.host}api", params={"url": link, "hd": int(hd)}) as response:
-            data = await response.json()
-            if not data.get("data"):
-                raise Exception("No data found")
+def _plain_edit_kwargs() -> dict:
+    return {
+        "parse_mode": ParseMode.DISABLED,
+        "link_preview_options": LinkPreviewOptions(is_disabled=True),
+    }
 
-            result = data["data"]
-            if "images" in result:
-                os.makedirs("tt_download", exist_ok=True)
-                image_paths = []
-                for i, url in enumerate(result["images"]):
-                    path = f"tt_download/image_{i}.jpg"
-                    await self._download_file(url, path)
-                    image_paths.append(path)
-                return TTData("tt_download", image_paths, "images")
-            elif "play" in result:
-                url = result["hdplay"] if hd else result["play"]
-                filename = video_filename or f"{result['id']}.mp4"
-                await self._download_file(url, filename)
-                return TTData(os.path.dirname(filename), filename, "video")
-            else:
-                raise Exception("Unsupported content type")
 
-@Client.on_message(zel_command("tt", "SocialMediaDL", os.path.basename(__file__), "[url]") & zel_sudo())
-async def tt_download(client, message):
-    message = await who_message(client, message)
+def _extract_url(message) -> Optional[str]:
+    candidates = [
+        getattr(message, "text", None),
+        getattr(message, "caption", None),
+    ]
+    replied = getattr(message, "reply_to_message", None)
+    if replied is not None:
+        candidates.extend(
+            [getattr(replied, "text", None), getattr(replied, "caption", None)]
+        )
+
+    for candidate in candidates:
+        if not candidate:
+            continue
+        match = URL_PATTERN.search(str(candidate))
+        if not match:
+            continue
+        url = match.group(0).rstrip(".,;:!?)]}\"'")
+        parsed = urlparse(url)
+        if parsed.scheme in {"http", "https"} and parsed.netloc:
+            return url
+    return None
+
+
+def _max_download_bytes() -> int:
     try:
-        url = None
-        if message.reply_to_message:
-            text = message.reply_to_message.text or message.reply_to_message.caption or ""
-            matches = re.findall(r"https?://(?:www\.)?(?:vm|vt|tiktok)\.com/[^\s]+", text)
-            if matches:
-                url = matches[0]
-        elif len(message.command) > 1:
-            url = message.command[1]
+        megabytes = int(os.environ.get("SOCIAL_DL_MAX_MB", "500"))
+    except ValueError:
+        megabytes = 500
+    megabytes = max(25, min(1900, megabytes))
+    return megabytes * 1024 * 1024
 
-        if not url:
-            await message.edit("<b>No TikTok URL found</b>")
-            return
 
-        api = TikTokAPI()
-        progress = await message.edit("<b>Downloading...</b>")
-        api.progress_message = progress
+def _download_timeout() -> int:
+    try:
+        seconds = int(os.environ.get("SOCIAL_DL_TIMEOUT", "900"))
+    except ValueError:
+        seconds = 900
+    return max(60, min(3600, seconds))
 
+
+def _find_downloaded_media(directory: Path) -> Optional[Path]:
+    ignored_suffixes = {".json", ".part", ".ytdl", ".temp"}
+    candidates = [
+        path
+        for path in directory.rglob("*")
+        if path.is_file()
+        and path.suffix.lower() not in ignored_suffixes
+        and not path.name.endswith((".info.json", ".description"))
+    ]
+    if not candidates:
+        return None
+    return max(candidates, key=lambda path: path.stat().st_size)
+
+
+def _read_metadata(directory: Path) -> dict:
+    for path in directory.rglob("*.info.json"):
         try:
-            result = await api.download(url)
-            if result.type == "video":
-                await client.send_video(message.chat.id, result.media)
-            else:
-                await client.send_media_group(message.chat.id, [InputMediaPhoto(media=file) for file in result.media])
-            await progress.delete()
-        finally:
-            await api.close_session()
-            if os.path.exists("tt_download"):
-                shutil.rmtree("tt_download")
-            if "result" in locals() and os.path.exists(result.media):
-                os.remove(result.media)
+            value = json.loads(path.read_text(encoding="utf-8"))
+            if isinstance(value, dict):
+                return value
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+            continue
+    return {}
 
-    except Exception as e:
-        await message.edit(f"<b>Error:</b> {str(e)}")
+
+async def _ensure_yt_dlp() -> None:
+    if importlib.util.find_spec("yt_dlp") is not None:
+        return
+    installed = await asyncio.to_thread(install_library, "yt-dlp")
+    if not installed or importlib.util.find_spec("yt_dlp") is None:
+        raise RuntimeError("yt-dlp could not be installed. Rebuild Zelretch with the latest main package.")
+
+
+async def _edit_status(message, text: str) -> None:
+    try:
+        await message.edit(text, **_plain_edit_kwargs())
+    except Exception:
+        pass
+
+
+async def _run_yt_dlp(url: str, output_directory: Path, status_message) -> tuple[Path, dict]:
+    max_bytes = _max_download_bytes()
+    max_megabytes = max_bytes // (1024 * 1024)
+    output_template = str(output_directory / "%(title).100s-%(id)s.%(ext)s")
+
+    command = [
+        sys.executable,
+        "-m",
+        "yt_dlp",
+        "--no-playlist",
+        "--newline",
+        "--progress",
+        "--progress-template",
+        "download:%(progress._percent_str)s|%(progress._speed_str)s|%(progress._eta_str)s",
+        "--restrict-filenames",
+        "--no-mtime",
+        "--write-info-json",
+        "--no-write-comments",
+        "--max-filesize",
+        f"{max_megabytes}M",
+        "-o",
+        output_template,
+    ]
+
+    if shutil.which("ffmpeg"):
+        command.extend(
+            [
+                "-f",
+                "bv*[height<=1080]+ba/b[height<=1080]/b",
+                "--merge-output-format",
+                "mp4",
+            ]
+        )
+    else:
+        command.extend(["-f", "b[height<=1080]/b"])
+
+    cookie_file = (os.environ.get("YTDLP_COOKIE_FILE") or "").strip()
+    if cookie_file and Path(cookie_file).is_file():
+        command.extend(["--cookies", cookie_file])
+
+    command.append(url)
+    process = await asyncio.create_subprocess_exec(
+        *command,
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.STDOUT,
+    )
+
+    recent_lines: list[str] = []
+    last_update = 0.0
+
+    async def consume_output() -> int:
+        nonlocal last_update
+        assert process.stdout is not None
+        while True:
+            raw = await process.stdout.readline()
+            if not raw:
+                break
+            line = raw.decode("utf-8", errors="replace").strip()
+            if not line:
+                continue
+            recent_lines.append(line)
+            del recent_lines[:-12]
+            if line.startswith("download:"):
+                now = time.monotonic()
+                if now - last_update >= 3:
+                    last_update = now
+                    parts = line[len("download:") :].split("|", 2)
+                    percent = parts[0].strip() if parts else "—"
+                    speed = parts[1].strip() if len(parts) > 1 else "—"
+                    eta = parts[2].strip() if len(parts) > 2 else "—"
+                    await _edit_status(
+                        status_message,
+                        f"Downloading media…\nProgress: {percent}\nSpeed: {speed}\nETA: {eta}",
+                    )
+        return await process.wait()
+
+    try:
+        return_code = await asyncio.wait_for(consume_output(), timeout=_download_timeout())
+    except asyncio.TimeoutError as exc:
+        process.kill()
+        await process.wait()
+        raise RuntimeError("The download timed out before completion.") from exc
+
+    if return_code != 0:
+        diagnostic = "\n".join(recent_lines[-5:]) or "yt-dlp exited without details."
+        if "Sign in" in diagnostic or "cookies" in diagnostic.lower():
+            diagnostic += "\nThis source may require a YTDLP_COOKIE_FILE secret."
+        raise RuntimeError(diagnostic[-900:])
+
+    media_path = _find_downloaded_media(output_directory)
+    if media_path is None:
+        raise RuntimeError("The source returned no downloadable media file.")
+    if media_path.stat().st_size > max_bytes:
+        raise RuntimeError(
+            f"The downloaded file exceeds the configured {max_megabytes} MB limit."
+        )
+    return media_path, _read_metadata(output_directory)
+
+
+async def _send_media(client, source_message, status_message, media_path: Path, metadata: dict) -> None:
+    title = str(metadata.get("title") or media_path.stem).strip()
+    uploader = str(metadata.get("uploader") or "").strip()
+    caption_lines = [title[:800]]
+    if uploader:
+        caption_lines.append(f"Source: {uploader[:120]}")
+    caption = "\n".join(caption_lines)
+
+    reply_id = None
+    replied = getattr(source_message, "reply_to_message", None)
+    if replied is not None:
+        reply_id = getattr(replied, "id", None)
+    reply_parameters = ReplyParameters(message_id=reply_id) if reply_id else None
+
+    await _edit_status(status_message, "Download complete. Uploading to Telegram…")
+    extension = media_path.suffix.lower()
+
+    try:
+        if extension in VIDEO_EXTENSIONS:
+            await client.send_video(
+                source_message.chat.id,
+                video=str(media_path),
+                caption=caption,
+                supports_streaming=True,
+                reply_parameters=reply_parameters,
+                parse_mode=ParseMode.DISABLED,
+            )
+        elif extension in AUDIO_EXTENSIONS:
+            await client.send_audio(
+                source_message.chat.id,
+                audio=str(media_path),
+                caption=caption,
+                reply_parameters=reply_parameters,
+                parse_mode=ParseMode.DISABLED,
+            )
+        else:
+            await client.send_document(
+                source_message.chat.id,
+                document=str(media_path),
+                caption=caption,
+                reply_parameters=reply_parameters,
+                parse_mode=ParseMode.DISABLED,
+            )
+    except Exception:
+        # Telegram may reject an otherwise valid video container. Sending the
+        # same file as a document preserves the download instead of failing.
+        await client.send_document(
+            source_message.chat.id,
+            document=str(media_path),
+            caption=caption,
+            reply_parameters=reply_parameters,
+            parse_mode=ParseMode.DISABLED,
+        )
+
+
+@Client.on_message(
+    zel_command(["socialdl", "sdl", "tt"], MODULE_NAME, FILENAME, "[url/reply]")
+    & zel_sudo()
+)
+async def social_download(client, message):
+    source_message = message
+    url = _extract_url(source_message)
+    status_message = await who_message(client, message)
+
+    if not url:
+        await _edit_status(
+            status_message,
+            "Send .socialdl <URL>, or reply to a message containing a public media URL.",
+        )
+        return
+
+    await _edit_status(status_message, "Preparing the social-media downloader…")
+
+    try:
+        await _ensure_yt_dlp()
+        Path("temp").mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix="socialdl_", dir="temp") as directory:
+            media_path, metadata = await _run_yt_dlp(
+                url, Path(directory), status_message
+            )
+            await _send_media(
+                client, source_message, status_message, media_path, metadata
+            )
+        try:
+            await status_message.delete()
+        except Exception:
+            pass
+    except Exception as exc:
+        detail = re.sub(r"\s+", " ", str(exc)).strip()
+        await _edit_status(
+            status_message,
+            f"Social download failed.\n{detail[:900] or 'Unknown downloader error.'}",
+        )

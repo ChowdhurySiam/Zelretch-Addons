@@ -7,7 +7,7 @@ Maintainer: Siam Chowdhury
 GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
-ZELRETCH_MODULE_INFO = {'title': 'Stream Utilities', 'icon': '📡', 'category': 'Files & Media', 'description': 'Provides supported streaming and media-link utilities.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
+ZELRETCH_MODULE_INFO = {'title': 'Stream Utilities', 'icon': '📡', 'category': 'Files & Media', 'description': 'Provides supported streaming and media-link utilities.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.undo (reply to the Addon output)'}
 from random import randint, choice
 from time import sleep
 from pyrogram import Client, filters

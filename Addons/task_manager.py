@@ -8,8 +8,7 @@ GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'Task Manager', 'icon': '✅', 'category': 'Productivity', 'description': 'Creates, lists, prioritizes, and removes personal tasks.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
+ZELRETCH_MODULE_INFO = {'title': 'Task Manager', 'icon': '✅', 'category': 'Productivity', 'description': 'Creates, lists, prioritizes, and removes personal tasks.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.utd <task_id>'}
 import os
 import json
 import asyncio

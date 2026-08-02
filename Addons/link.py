@@ -24,6 +24,7 @@ ZELRETCH_MODULE_INFO = {
     "icon": "🔗",
     "category": "Utilities",
     "description": "Creates clickable text using a supplied HTTP or HTTPS URL and label.",
+    "undo": '.undo (reply to the Addon output)',
     "developer": "Siam Chowdhury",
     "github": "https://github.com/ChowdhurySiam",
     "telegram": "https://t.me/Ch0wdhury_Siam",

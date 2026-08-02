@@ -7,7 +7,7 @@ Maintainer: Siam Chowdhury
 GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
-ZELRETCH_MODULE_INFO = {'title': 'AI Gateway', 'icon': '🤖', 'category': 'AI & Automation', 'description': 'Sends prompts to supported OpenRouter models from a single command.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
+ZELRETCH_MODULE_INFO = {'title': 'AI Gateway', 'icon': '🤖', 'category': 'AI & Automation', 'description': 'Sends prompts to supported OpenRouter models from a single command.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.undo (reply to the Addon output)'}
 import base64
 import asyncio
 from pyrogram import Client

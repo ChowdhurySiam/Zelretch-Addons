@@ -1,5 +1,5 @@
 {
-  "schema_version": 3,
+  "schema_version": 6,
   "project": "Zelretch Addons",
   "source": "https://github.com/ChowdhurySiam/Zelretch-Addons/tree/main/Addons",
   "developer": {
@@ -24,7 +24,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/account_insights.py"
+      "path": "Addons/account_insights.py",
+      "sha256": "da1acb3d2fdfd786aa741e6c75ad1ab0470218651b0ecb5d506b3b38bcc0ae13",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "afk.py",
@@ -47,7 +49,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/afk.py"
+      "path": "Addons/afk.py",
+      "sha256": "3289891818e4bef3258878ac64f29a8dfa19435e0a5b8e95f618a2db15ddbbd3",
+      "undo": ".unafk"
     },
     {
       "filename": "ai.py",
@@ -65,7 +69,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/ai.py"
+      "path": "Addons/ai.py",
+      "sha256": "76b659c20a8a69b234998305e5727c803e3bb62b2b913c7a5a53a990d8d4d78b",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "anime_character.py",
@@ -83,35 +89,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/anime_character.py"
-    },
-    {
-      "filename": "aurora_bull.py",
-      "title": "Aurora Bull",
-      "icon": "🎲",
-      "category": "Fun",
-      "description": "Creates randomized playful text sequences and timed message loops.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
-        {
-          "command": "abull",
-          "arguments": "",
-          "primary": true
-        },
-        {
-          "command": "abullspam",
-          "arguments": "[time] [text]",
-          "primary": true
-        },
-        {
-          "command": "abulloff",
-          "arguments": "",
-          "primary": true
-        }
-      ],
-      "path": "Addons/aurora_bull.py"
+      "path": "Addons/anime_character.py",
+      "sha256": "8c3ed3e9df729269e64f0cb9c9b4bc549ae7100903296add5cc37376db58e39e",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "autoanswer.py",
@@ -127,50 +107,21 @@
           "command": "aws",
           "arguments": "[ID/Username] [Post ID]",
           "primary": true
-        }
-      ],
-      "path": "Addons/autoanswer.py"
-    },
-    {
-      "filename": "autoonline.py",
-      "title": "Presence Control",
-      "icon": "🟢",
-      "category": "Automation",
-      "description": "Keeps the account online or returns it to normal presence behavior.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
+        },
         {
-          "command": "online",
+          "command": "unaws",
           "arguments": "",
           "primary": true
         },
         {
-          "command": "offline",
+          "command": "aws_off",
           "arguments": "",
           "primary": true
         }
       ],
-      "path": "Addons/autoonline.py"
-    },
-    {
-      "filename": "autoread.py",
-      "title": "Auto Read",
-      "icon": "👁️",
-      "category": "Automation",
-      "description": "Automatically marks messages as read in configured chats.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
-        {
-          "command": "autoread",
-          "arguments": "",
-          "primary": true
-        }
-      ],
-      "path": "Addons/autoread.py"
+      "path": "Addons/autoanswer.py",
+      "sha256": "d260aa0dcc37e73e1d58f8e0071b55d73b6335db7ea572541d98a1150a7b62aa",
+      "undo": ".unaws"
     },
     {
       "filename": "bull_text.py",
@@ -193,7 +144,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/bull_text.py"
+      "path": "Addons/bull_text.py",
+      "sha256": "c4e712739e95b71f104932859d82a056bb36f3253c71211f2f1058ca7d8d2e19",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "chance.py",
@@ -211,7 +164,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/chance.py"
+      "path": "Addons/chance.py",
+      "sha256": "7cbfe25aceecabd33895f0444f14a84232668872f462742c1f36271f2807467c",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "chatmodule.py",
@@ -319,71 +274,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/chatmodule.py"
-    },
-    {
-      "filename": "currency.py",
-      "title": "Currency Converter",
-      "icon": "💱",
-      "category": "Information",
-      "description": "Converts amounts between configured currencies using current exchange data.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
-        {
-          "command": "cr",
-          "arguments": "[amount] [currency]",
-          "primary": true
-        },
-        {
-          "command": "currency_config",
-          "arguments": "[currencies]",
-          "primary": true
-        }
-      ],
-      "path": "Addons/currency.py"
-    },
-    {
-      "filename": "db0mb3r.py",
-      "title": "Legacy Stress Tools",
-      "icon": "⚠️",
-      "category": "Restricted Tools",
-      "description": "Provides legacy stress-test commands; use only with explicit authorization.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
-        {
-          "command": "bomber",
-          "arguments": "",
-          "primary": true
-        },
-        {
-          "command": "sbomber",
-          "arguments": "",
-          "primary": true
-        }
-      ],
-      "path": "Addons/db0mb3r.py"
-    },
-    {
-      "filename": "demotivator.py",
-      "title": "Demotivator",
-      "icon": "🖼️",
-      "category": "Files & Media",
-      "description": "Creates a demotivational-style image from replied media and custom text.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
-        {
-          "command": "dem",
-          "arguments": "[text]",
-          "primary": true
-        }
-      ],
-      "path": "Addons/demotivator.py"
+      "path": "Addons/chatmodule.py",
+      "sha256": "9a2445786487fe8bf2f58cac491957cac728e628f5575e06c05b977bd20871ed",
+      "undo": ".unpin / .unban / .unmute / .delrole"
     },
     {
       "filename": "direct_sender.py",
@@ -401,7 +294,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/direct_sender.py"
+      "path": "Addons/direct_sender.py",
+      "sha256": "a3fb6b5c660c7e450b5503a3cf70effb8f38f0482fd84d534d3c6a6c8cc12db8",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "eye.py",
@@ -424,7 +319,9 @@
           "primary": false
         }
       ],
-      "path": "Addons/eye.py"
+      "path": "Addons/eye.py",
+      "sha256": "967ae5bb1e8bd4386f2fd889e4f0960e1a179526f9d3810845a86a5f5f7d0103",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "find_id.py",
@@ -442,7 +339,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/find_id.py"
+      "path": "Addons/find_id.py",
+      "sha256": "e0303e1f7d663cc8ef2450e795360e761930ff50b4cb52c69bc73390026979d0",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "find_music.py",
@@ -488,9 +387,16 @@
           "command": "lmusic",
           "arguments": "[song_name]",
           "primary": false
+        },
+        {
+          "command": "genius_reset",
+          "arguments": "",
+          "primary": true
         }
       ],
-      "path": "Addons/find_music.py"
+      "path": "Addons/find_music.py",
+      "sha256": "1d34abb6ec08443ebcb61a17a0c4dadebcabd25054793e39045625ae0479b09e",
+      "undo": ".genius_reset"
     },
     {
       "filename": "fragment_checker.py",
@@ -508,7 +414,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/fragment_checker.py"
+      "path": "Addons/fragment_checker.py",
+      "sha256": "cd865396e00e8e15e360c4b23f29b89f675af8d7b0bf9a84892f3653a7c7ae07",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "gemini_ai.py",
@@ -544,12 +452,19 @@
           "command": "gemini_clear",
           "arguments": "",
           "primary": true
+        },
+        {
+          "command": "gemini_reset",
+          "arguments": "",
+          "primary": true
         }
       ],
       "requirements": [
         "google-genai>=1,<2"
       ],
-      "path": "Addons/gemini_ai.py"
+      "path": "Addons/gemini_ai.py",
+      "sha256": "87c38bccabf41c0eb05819c76ae1c724bc238eb48bd1363e6eebdeb0165a32e5",
+      "undo": ".gemini_clear / .gemini_reset"
     },
     {
       "filename": "gen_pass.py",
@@ -567,25 +482,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/gen_pass.py"
-    },
-    {
-      "filename": "get_key.py",
-      "title": "Subscription Key Extractor",
-      "icon": "🗝️",
-      "category": "Utilities",
-      "description": "Parses supported subscription links and extracts available connection keys.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
-        {
-          "command": "get_keys",
-          "arguments": "[link to sub]",
-          "primary": true
-        }
-      ],
-      "path": "Addons/get_key.py"
+      "path": "Addons/gen_pass.py",
+      "sha256": "5b6abe0ce1fecd3b143cb16b14ed17524b527389d19778a237f2dc43ef1147e1",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "hearts.py",
@@ -613,40 +512,9 @@
           "primary": false
         }
       ],
-      "path": "Addons/hearts.py"
-    },
-    {
-      "filename": "history_facts.py",
-      "title": "History Facts",
-      "icon": "📚",
-      "category": "Information",
-      "description": "Returns concise English-language facts from built-in history collections.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
-        {
-          "command": "rfact",
-          "arguments": "",
-          "primary": true
-        },
-        {
-          "command": "hfact",
-          "arguments": "",
-          "primary": true
-        },
-        {
-          "command": "mfact",
-          "arguments": "",
-          "primary": true
-        },
-        {
-          "command": "sfact",
-          "arguments": "",
-          "primary": true
-        }
-      ],
-      "path": "Addons/history_facts.py"
+      "path": "Addons/hearts.py",
+      "sha256": "80c37fe13e4372c39e2ae156519dc59adaf88d936c4ea93efc72003aadf594c2",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "ignore.py",
@@ -662,9 +530,16 @@
           "command": "ignore",
           "arguments": "[user_id/@username]",
           "primary": true
+        },
+        {
+          "command": "unignore",
+          "arguments": "[user_id/@username/reply]",
+          "primary": true
         }
       ],
-      "path": "Addons/ignore.py"
+      "path": "Addons/ignore.py",
+      "sha256": "3a64a6b87c0550ee5de61fbe9ca63af57c75041648dfd46ac622c3f195452e30",
+      "undo": ".unignore"
     },
     {
       "filename": "ipinfo.py",
@@ -687,14 +562,16 @@
           "primary": true
         }
       ],
-      "path": "Addons/ipinfo.py"
+      "path": "Addons/ipinfo.py",
+      "sha256": "8fb63f0dcdb4d04d286de68178df2b5951ebca966e11404ae56a1b0f9179ecf8",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "kickall.py",
       "title": "Member Cleanup",
       "icon": "🧹",
       "category": "Administration",
-      "description": "Performs bulk member cleanup actions in chats where you have permission.",
+      "description": "Performs bulk member cleanup actions only after the requester types the exact text CONFIRM in the same chat.",
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
@@ -720,7 +597,10 @@
           "primary": true
         }
       ],
-      "path": "Addons/kickall.py"
+      "path": "Addons/kickall.py",
+      "sha256": "21bc5b58ae696a81fada5732ab8168faae39097ba107752f3eba9ca128801adc",
+      "undo": ".undo removes only the status output; removed members cannot be restored",
+      "confirmation": "Type CONFIRM in the same chat within 60 seconds"
     },
     {
       "filename": "ladder.py",
@@ -738,40 +618,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/ladder.py"
-    },
-    {
-      "filename": "lastfm.py",
-      "title": "Last.fm Status",
-      "icon": "🎧",
-      "category": "Media",
-      "description": "Displays and optionally auto-updates your currently playing Last.fm track.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
-        {
-          "command": "lastfm_api",
-          "arguments": "[api_key]",
-          "primary": true
-        },
-        {
-          "command": "nowplayed",
-          "arguments": "",
-          "primary": true
-        },
-        {
-          "command": "lastfm_config",
-          "arguments": "[LastFM Nickname] [Username/ID Channel] [ID Message] [Autostart: True/False]",
-          "primary": true
-        },
-        {
-          "command": "autoplayed",
-          "arguments": "",
-          "primary": true
-        }
-      ],
-      "path": "Addons/lastfm.py"
+      "path": "Addons/ladder.py",
+      "sha256": "5a7f79356edbaaa0582cd49d17c0f6dfdb1066a761eea05d49bc94591b0ee926",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "link.py",
@@ -789,7 +638,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/link.py"
+      "path": "Addons/link.py",
+      "sha256": "ff3769a4687921ccb3c9f4d991e917acb9ac09e3b310c0c042c5dfdff8ac6d7e",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "media2gif.py",
@@ -807,7 +658,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/media2gif.py"
+      "path": "Addons/media2gif.py",
+      "sha256": "e2de3465988fab9fd032e8f4aa4a1bd8caf2bf8155e5dc716a85e99baa613124",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "mediapics.py",
@@ -865,7 +718,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/mediapics.py"
+      "path": "Addons/mediapics.py",
+      "sha256": "b493dc9b033402fafdc95d29eba8df1c6ce88f6c0cb6ced7e73b11b8d7f0eacd",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "module_bridge.py",
@@ -886,9 +741,16 @@
           "command": "module_bridge_config",
           "arguments": "[Model]",
           "primary": true
+        },
+        {
+          "command": "module_bridge_reset",
+          "arguments": "",
+          "primary": true
         }
       ],
-      "path": "Addons/module_bridge.py"
+      "path": "Addons/module_bridge.py",
+      "sha256": "bd6bcdb90a2d99cf4e185cf3a53be759d93e1c90db96610f1e479bc4dc05a6e5",
+      "undo": ".module_bridge_reset"
     },
     {
       "filename": "multi_uploader.py",
@@ -941,7 +803,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/multi_uploader.py"
+      "path": "Addons/multi_uploader.py",
+      "sha256": "9f456cf30d4700a7a08852547a4fb3e4aef7fe5e857b4ccd5db76acd85e2bec5",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "neko.py",
@@ -959,14 +823,16 @@
           "primary": true
         }
       ],
-      "path": "Addons/neko.py"
+      "path": "Addons/neko.py",
+      "sha256": "04e82036a1736f0e7e2ad9708caa4fdc891fb5a25b45ff81a6d953b0aba670e0",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "nekomod.py",
-      "title": "Cat Text Mode",
+      "title": "Neko Text Mode",
       "icon": "🐱",
       "category": "Fun",
-      "description": "Adds a configurable English cat-style transformation to outgoing text.",
+      "description": "Adds a configurable neko-style transformation to outgoing text.",
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
@@ -977,14 +843,16 @@
           "primary": true
         }
       ],
-      "path": "Addons/nekomod.py"
+      "path": "Addons/nekomod.py",
+      "sha256": "404e5405d1e338bfb80a6bec9e548b5f91ae5315a104fc2292ced49269348ecf",
+      "undo": ".nekoed off"
     },
     {
       "filename": "pasta.py",
       "title": "Fictional Profile Generator",
       "icon": "🧾",
       "category": "Fun",
-      "description": "Creates an English fictional profile card for entertainment and testing.",
+      "description": "Creates a fictional profile card for entertainment and testing.",
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
@@ -995,30 +863,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/pasta.py"
-    },
-    {
-      "filename": "patriot_text.py",
-      "title": "Patriot Text",
-      "icon": "🎭",
-      "category": "Creative",
-      "description": "Applies an English leetspeak style to replied or outgoing text.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
-        {
-          "command": "patriot",
-          "arguments": "",
-          "primary": true
-        },
-        {
-          "command": "pat",
-          "arguments": "[reply]",
-          "primary": true
-        }
-      ],
-      "path": "Addons/patriot_text.py"
+      "path": "Addons/pasta.py",
+      "sha256": "a98fb3ee14e637e17d56ad24a73abfc65b77d0af97698145e4c18788647cfa3d",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "pinterest.py",
@@ -1036,7 +883,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/pinterest.py"
+      "path": "Addons/pinterest.py",
+      "sha256": "74aeaacdfc8ba7c55f5e2f1900e503442ed4f23c9e290e99553f9769e848106a",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "premium_text.py",
@@ -1054,7 +903,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/premium_text.py"
+      "path": "Addons/premium_text.py",
+      "sha256": "3684e884bbdeb1493a426e6e84887474170bc1733251659ad852d3505ac014dd",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "progressbar.py",
@@ -1072,25 +923,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/progressbar.py"
-    },
-    {
-      "filename": "promo_claimer.py",
-      "title": "Promo Claimer",
-      "icon": "🎟️",
-      "category": "Automation",
-      "description": "Monitors supported promo messages and attempts eligible token redemptions.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
-        {
-          "command": "checktokens",
-          "arguments": "",
-          "primary": true
-        }
-      ],
-      "path": "Addons/promo_claimer.py"
+      "path": "Addons/progressbar.py",
+      "sha256": "140aa3c0f5c492a5b8e6234c057ae07d9e853812cfc7b555564844300e2c8051",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "purge.py",
@@ -1113,25 +948,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/purge.py"
-    },
-    {
-      "filename": "qr.py",
-      "title": "QR Generator",
-      "icon": "🔳",
-      "category": "Utilities",
-      "description": "Generates a QR code from supplied text or a link.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
-        {
-          "command": "qr",
-          "arguments": "[text]",
-          "primary": true
-        }
-      ],
-      "path": "Addons/qr.py"
+      "path": "Addons/purge.py",
+      "sha256": "e4d93b883689cc8d44283005eca462ed55527d548ca480a6f5e20dbb42ac2458",
+      "undo": ".undo removes only the status output; deleted messages cannot be restored"
     },
     {
       "filename": "quotes.py",
@@ -1149,48 +968,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/quotes.py"
-    },
-    {
-      "filename": "randomizer.py",
-      "title": "Random Number",
-      "icon": "🎲",
-      "category": "Utilities",
-      "description": "Generates a random number using configurable minimum and maximum values.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
-        {
-          "command": "rnd",
-          "arguments": "[min] [max]",
-          "primary": true
-        },
-        {
-          "command": "randomizer_config",
-          "arguments": "[min] [max]",
-          "primary": true
-        }
-      ],
-      "path": "Addons/randomizer.py"
-    },
-    {
-      "filename": "reputation.py",
-      "title": "Reputation",
-      "icon": "⭐",
-      "category": "Community",
-      "description": "Tracks simple positive and negative reputation reactions in a chat.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
-        {
-          "command": "rep",
-          "arguments": "[number]",
-          "primary": true
-        }
-      ],
-      "path": "Addons/reputation.py"
+      "path": "Addons/quotes.py",
+      "sha256": "7b9e7c7056a56cce34b43736a6f317f9dce0a20a8673da1dcc8eb71b9adac3eb",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "rule34.py",
@@ -1208,7 +988,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/rule34.py"
+      "path": "Addons/rule34.py",
+      "sha256": "cddfebdd55cfc738452dd760526e73ab8fe644465d9a7a9dbbeac2efc44f7ca1",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "sherlock.py",
@@ -1226,43 +1008,39 @@
           "primary": true
         }
       ],
-      "path": "Addons/sherlock.py"
-    },
-    {
-      "filename": "short.py",
-      "title": "URL Shortener",
-      "icon": "✂️",
-      "category": "Utilities",
-      "description": "Creates a shortened link from supplied or replied text.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
-        {
-          "command": "short",
-          "arguments": "[Reply/Link]",
-          "primary": true
-        }
-      ],
-      "path": "Addons/short.py"
+      "path": "Addons/sherlock.py",
+      "sha256": "9ef9df60f12ee2e77eee718fb65efd4aa7f0a7993f2f1483d7cce471366bb782",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "social_downloader.py",
       "title": "Social Downloader",
       "icon": "📥",
       "category": "Files & Media",
-      "description": "Downloads supported social-media videos from a supplied URL.",
+      "description": "Downloads public videos and audio from websites supported by yt-dlp.",
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
       "commands": [
         {
-          "command": "tt",
-          "arguments": "[url]",
+          "command": "socialdl",
+          "arguments": "[url/reply]",
           "primary": true
+        },
+        {
+          "command": "sdl",
+          "arguments": "[url/reply]",
+          "primary": false
+        },
+        {
+          "command": "tt",
+          "arguments": "[url/reply]",
+          "primary": false
         }
       ],
-      "path": "Addons/social_downloader.py"
+      "path": "Addons/social_downloader.py",
+      "sha256": "72921e31d3a4f5d6f2c285d6f9e2e5ae103ec7ac7c3ec5899452c32e494544be",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "spam.py",
@@ -1290,7 +1068,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/spam.py"
+      "path": "Addons/spam.py",
+      "sha256": "4ef94ebc92900dd9f60c42fdef45f3db26c58fd718f1ef2ebd5bc52b4dae8449",
+      "undo": ".undo removes one selected output; already sent messages are not restored"
     },
     {
       "filename": "spamban.py",
@@ -1308,37 +1088,59 @@
           "primary": true
         }
       ],
-      "path": "Addons/spamban.py"
+      "path": "Addons/spamban.py",
+      "sha256": "ab0c6ccb33734192129022cd3635509993204c0018c69748c2cca6c3bf91632c",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "speech.py",
       "title": "Text to Speech",
       "icon": "🔊",
       "category": "Files & Media",
-      "description": "Converts supplied English text into an audio message.",
+      "description": "Converts supplied or replied English text into a Telegram voice note.",
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
       "commands": [
         {
           "command": "voice",
-          "arguments": "[English text]",
+          "arguments": "[English text/reply]",
           "primary": true
+        },
+        {
+          "command": "tts",
+          "arguments": "[English text/reply]",
+          "primary": false
         }
       ],
-      "path": "Addons/speech.py"
+      "path": "Addons/speech.py",
+      "sha256": "b66551659fbf5eeeef6deaa404efd95970e300caea538b45c8af7db57a6266b9",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "speedtest.py",
       "title": "Speed Test",
       "icon": "🚀",
       "category": "System",
-      "description": "Measures network upload speed, latency, server location, and provider information.",
+      "description": "Measures latency, download speed, upload speed, network provider, and test duration using container-friendly HTTP endpoints.",
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [],
-      "path": "Addons/speedtest.py"
+      "commands": [
+        {
+          "command": "speedtest",
+          "arguments": "",
+          "primary": true
+        },
+        {
+          "command": "speedconfig",
+          "arguments": "",
+          "primary": false
+        }
+      ],
+      "path": "Addons/speedtest.py",
+      "sha256": "9c0b17fe54da784db0a62ba18f8d8dbe360d215298a6a7501e8b957c6d381c8a",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "stats.py",
@@ -1361,7 +1163,9 @@
           "primary": false
         }
       ],
-      "path": "Addons/stats.py"
+      "path": "Addons/stats.py",
+      "sha256": "7717309e3c14b4c463ae440ef0bdcdff06e36e40c193c76cca2a1df8fd4535b1",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "stats_xdesai.py",
@@ -1379,7 +1183,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/stats_xdesai.py"
+      "path": "Addons/stats_xdesai.py",
+      "sha256": "0cdba28388003756dc569d1eddb1abc51283fea156a1b08b2d253ee596e2e988",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "stream.py",
@@ -1397,7 +1203,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/stream.py"
+      "path": "Addons/stream.py",
+      "sha256": "21d25623d563abd96852eb0a73b6fde68f9b5906df3ac3625d0b6348df1d8bef",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "switch.py",
@@ -1415,14 +1223,16 @@
           "primary": true
         }
       ],
-      "path": "Addons/switch.py"
+      "path": "Addons/switch.py",
+      "sha256": "4468f07e9c5489882264ef1e8b907c1cad922e8d660bdbfd1f8358358cb6913a",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "sysinfo.py",
       "title": "System Information",
       "icon": "🖥️",
       "category": "System",
-      "description": "Displays CPU, memory, disk, platform, and runtime information.",
+      "description": "Displays container-aware CPU, memory, disk, platform, process, and runtime information.",
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
@@ -1433,18 +1243,25 @@
           "primary": true
         }
       ],
-      "path": "Addons/sysinfo.py"
+      "path": "Addons/sysinfo.py",
+      "sha256": "60abdf40224d0558283da95603a9bc227c47ca6bc9c0b9c5eb6118be8e099a62",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "systemd_manager.py",
       "title": "Systemd Manager",
       "icon": "⚙️",
       "category": "System",
-      "description": "Lists and manages systemd units on compatible Linux hosts.",
+      "description": "Lists and manages systemd units on compatible Linux hosts, with clear Docker and Hugging Face compatibility diagnostics.",
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
       "commands": [
+        {
+          "command": "systemdcheck",
+          "arguments": "",
+          "primary": true
+        },
         {
           "command": "units",
           "arguments": "",
@@ -1452,7 +1269,7 @@
         },
         {
           "command": "addunit",
-          "arguments": "[unit] [name]",
+          "arguments": "[unit] [display name]",
           "primary": true
         },
         {
@@ -1462,16 +1279,18 @@
         },
         {
           "command": "unit",
-          "arguments": "[unit] [action]",
+          "arguments": "[unit] [status|start|stop|restart|enable|disable|logs|tail]",
           "primary": true
         },
         {
           "command": "nameunit",
-          "arguments": "[unit] [new_name]",
+          "arguments": "[unit] [new name]",
           "primary": true
         }
       ],
-      "path": "Addons/systemd_manager.py"
+      "path": "Addons/systemd_manager.py",
+      "sha256": "55ec52005fbae2a302a2b72cf9798bb4926342a9ac4d4f4e1571ff298358a154",
+      "undo": ".delunit or .unit <unit> stop"
     },
     {
       "filename": "tagall.py",
@@ -1494,7 +1313,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/tagall.py"
+      "path": "Addons/tagall.py",
+      "sha256": "e828e51a181e245a09c80f7350a3df5bc46b158b22974ca0bd8e759d7cd437e0",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "task_manager.py",
@@ -1522,7 +1343,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/task_manager.py"
+      "path": "Addons/task_manager.py",
+      "sha256": "08353de8eadae6d5eee824335e714a82b2ea170e2ac422717bac270d21b1fa08",
+      "undo": ".utd <task_id>"
     },
     {
       "filename": "telega_detector.py",
@@ -1540,25 +1363,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/telega_detector.py"
-    },
-    {
-      "filename": "time_now.py",
-      "title": "Current Time",
-      "icon": "🕒",
-      "category": "Utilities",
-      "description": "Shows the current date and time.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
-        {
-          "command": "time",
-          "arguments": "",
-          "primary": true
-        }
-      ],
-      "path": "Addons/time_now.py"
+      "path": "Addons/telega_detector.py",
+      "sha256": "43f32f3c32fd3e8261637787d19ca91b63c46a0118668c144d5505321aa7e688",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "troll.py",
@@ -1616,7 +1423,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/troll.py"
+      "path": "Addons/troll.py",
+      "sha256": "37f22f49286bfe51590fad87f983033d942902b6b504449b8a57de5e4b139abb",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "type.py",
@@ -1634,30 +1443,34 @@
           "primary": true
         }
       ],
-      "path": "Addons/type.py"
+      "path": "Addons/type.py",
+      "sha256": "bc4f3007ee5ad9c379cec56be347de34ca585eb1ba7c76e029d38d6cb4bb1525",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
-      "filename": "url.py",
-      "title": "URL Inspector",
-      "icon": "🧭",
+      "filename": "undo_center.py",
+      "title": "Undo Center",
+      "icon": "↩️",
       "category": "Utilities",
-      "description": "Expands shortened URLs and displays resolved host or IP information.",
+      "description": "Removes a replied-to Addon output or a selected outgoing message.",
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
       "commands": [
         {
-          "command": "expandurl",
-          "arguments": "[URL]",
+          "command": "undo",
+          "arguments": "[reply/message_id/last]",
           "primary": true
         },
         {
-          "command": "ipurl",
-          "arguments": "[URL]",
-          "primary": true
+          "command": "revert",
+          "arguments": "[reply/message_id/last]",
+          "primary": false
         }
       ],
-      "path": "Addons/url.py"
+      "undo": ".undo (reply to the message)",
+      "path": "Addons/undo_center.py",
+      "sha256": "e9f3918bb865168f34d8c76970e2dffcd22b5b5323b01487d7b6a8317960cb99"
     },
     {
       "filename": "user_info.py",
@@ -1680,7 +1493,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/user_info.py"
+      "path": "Addons/user_info.py",
+      "sha256": "252c73fbbab0dd6aba8b9c7cb90a4b5d40eb1844768a0bebd67aca54a7450cd0",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "wait_animation.py",
@@ -1698,7 +1513,9 @@
           "primary": true
         }
       ],
-      "path": "Addons/wait_animation.py"
+      "path": "Addons/wait_animation.py",
+      "sha256": "ca8c9b64324d9819fdc46f062e962958b4a818f954fb0038b71e9cbf4a2e99a5",
+      "undo": ".undo (reply to the Addon output)"
     },
     {
       "filename": "weather.py",
@@ -1716,76 +1533,68 @@
           "primary": true
         }
       ],
-      "path": "Addons/weather.py"
-    },
-    {
-      "filename": "weather_xdesai.py",
-      "title": "Advanced Weather",
-      "icon": "⛅",
-      "category": "Information",
-      "description": "Provides detailed weather data with optional API configuration.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
-        {
-          "command": "weather",
-          "arguments": "[city]",
-          "primary": true
-        },
-        {
-          "command": "weather_config",
-          "arguments": "[api_key]",
-          "primary": true
-        },
-        {
-          "command": "weather_help",
-          "arguments": "",
-          "primary": true
-        }
-      ],
-      "path": "Addons/weather_xdesai.py"
-    },
-    {
-      "filename": "webshot.py",
-      "title": "Website Screenshot",
-      "icon": "📸",
-      "category": "Files & Media",
-      "description": "Captures a screenshot of a supplied web page.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
-        {
-          "command": "webshot",
-          "arguments": "[url]",
-          "primary": true
-        }
-      ],
-      "path": "Addons/webshot.py"
-    },
-    {
-      "filename": "wikipedia.py",
-      "title": "Wikipedia Search",
-      "icon": "📖",
-      "category": "Information",
-      "description": "Searches English Wikipedia and returns a concise summary.",
-      "developer": "Siam Chowdhury",
-      "github": "https://github.com/ChowdhurySiam",
-      "telegram": "https://t.me/Ch0wdhury_Siam",
-      "commands": [
-        {
-          "command": "wiki",
-          "arguments": "[query]",
-          "primary": true
-        }
-      ],
-      "path": "Addons/wikipedia.py"
+      "path": "Addons/weather.py",
+      "sha256": "5f47a53e475c404f3ace3e5567483240014b31510c62f542b48175d50c2a1115",
+      "undo": ".undo (reply to the Addon output)"
     }
   ],
   "requirements_file": "requirements.txt",
   "main_project": "https://github.com/ChowdhurySiam/Zelretch",
   "language": "English only",
-  "version": "3.1.4",
-  "addons_directory": "Addons"
+  "version": "3.3.6",
+  "addons_directory": "Addons",
+  "release_id": "v3.3.6-social-tts-fixed",
+  "requirements_sha256": "0acd8acbebf94cf962f865fd342350aabca3f8c1cc9028c7da7742eb3777787b",
+  "undo_support": {
+    "universal_command": "undo",
+    "aliases": [
+      "revert"
+    ],
+    "usage": ".undo (reply), .undo <message_id>, or .undo last",
+    "note": "Irreversible Telegram-side actions cannot be restored."
+  },
+  "retired_addons": [
+    "aurora_bull.py",
+    "aurorabull.py",
+    "autoonline.py",
+    "autoread.py",
+    "currency.py",
+    "db0mb3r.py",
+    "demotivator.py",
+    "get_key.py",
+    "history_facts.py",
+    "historyfacts.py",
+    "lastfm.py",
+    "patriot_text.py",
+    "promo_claimer.py",
+    "promoclaimer.py",
+    "qr.py",
+    "randomizer.py",
+    "reputation.py",
+    "short.py",
+    "time_now.py",
+    "url.py",
+    "weather_xdesai.py",
+    "webshot.py",
+    "wikipedia.py"
+  ],
+  "member_cleanup_confirmation": {
+    "required_text": "CONFIRM",
+    "timeout_seconds": 60,
+    "commands": [
+      "kickall",
+      "kickall_hide",
+      "kickall_withbot",
+      "kickdeleted"
+    ]
+  },
+  "system_addons_fix": {
+    "speed_test": "container-friendly latency, download, and upload tests with partial-result fallback",
+    "system_information": "cgroup-aware resource reporting and nonblocking CPU sampling",
+    "systemd_manager": "safe systemctl execution with explicit Docker/Hugging Face compatibility diagnostics"
+  },
+  "media_addons_fix": {
+    "social_downloader": "yt-dlp based public-media downloader with timeouts, size limits, progress, and Telegram upload fallback",
+    "text_to_speech": "nonblocking gTTS generation with OGG/Opus conversion and MP3 fallback"
+  }
 }

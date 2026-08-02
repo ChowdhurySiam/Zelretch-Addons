@@ -8,8 +8,7 @@ GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'AFK Manager', 'icon': '🌙', 'category': 'Productivity', 'description': 'Sets an away status, records the reason, and responds to mentions until you return.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
+ZELRETCH_MODULE_INFO = {'title': 'AFK Manager', 'icon': '🌙', 'category': 'Productivity', 'description': 'Sets an away status, records the reason, and responds to mentions until you return.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.unafk'}
 import asyncio
 import datetime
 from pyrogram import Client, filters, types

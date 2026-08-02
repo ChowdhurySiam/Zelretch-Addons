@@ -8,8 +8,7 @@ GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'Heart Animation', 'icon': '💗', 'category': 'Fun', 'description': 'Displays an animated heart sequence in the current message.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
+ZELRETCH_MODULE_INFO = {'title': 'Heart Animation', 'icon': '💗', 'category': 'Fun', 'description': 'Displays an animated heart sequence in the current message.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.undo (reply to the Addon output)'}
 # By AmokDev
 # Refactor and optimising A9FM
 

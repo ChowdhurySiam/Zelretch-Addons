@@ -8,8 +8,7 @@ GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'Text Ladder', 'icon': '🪜', 'category': 'Fun', 'description': 'Builds an animated ladder pattern from custom text.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
+ZELRETCH_MODULE_INFO = {'title': 'Text Ladder', 'icon': '🪜', 'category': 'Fun', 'description': 'Builds an animated ladder pattern from custom text.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.undo (reply to the Addon output)'}
 from pyrogram import Client, filters
 from command import zel_command, zel_sudo, who_message
 import os

@@ -8,8 +8,7 @@ GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'Account Statistics', 'icon': '📈', 'category': 'Telegram Tools', 'description': 'Shows Telegram dialog, contact, group, and channel statistics.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
+ZELRETCH_MODULE_INFO = {'title': 'Account Statistics', 'icon': '📈', 'category': 'Telegram Tools', 'description': 'Shows Telegram dialog, contact, group, and channel statistics.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.undo (reply to the Addon output)'}
 from datetime import datetime
 import asyncio
 from pyrogram import Client, filters

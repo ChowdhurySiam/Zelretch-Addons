@@ -2,8 +2,7 @@
 
 Applies a reversible English letter-case transformation.
 """
-ZELRETCH_MODULE_INFO = {"title": "Text Switch", "icon": "🔄", "category": "Fun", "description": "Swaps uppercase and lowercase English letters in supplied or replied text.", "developer": "Siam Chowdhury", "github": "https://github.com/ChowdhurySiam", "telegram": "https://t.me/Ch0wdhury_Siam"}
-
+ZELRETCH_MODULE_INFO = {'title': 'Text Switch', 'icon': '🔄', 'category': 'Fun', 'description': 'Swaps uppercase and lowercase English letters in supplied or replied text.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.undo (reply to the Addon output)'}
 import os
 from pyrogram import Client
 from command import zel_command, zel_sudo, who_message

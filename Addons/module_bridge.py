@@ -8,8 +8,7 @@ GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'Module Bridge', 'icon': '🧩', 'category': 'Developer Tools', 'description': 'Converts compatible legacy modules into the Zelretch addon format.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
+ZELRETCH_MODULE_INFO = {'title': 'Module Bridge', 'icon': '🧩', 'category': 'Developer Tools', 'description': 'Converts compatible legacy modules into the Zelretch addon format.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.module_bridge_reset'}
 from pyrogram import Client
 from command import zel_command, zel_sudo, who_message, my_prefix, get_text
 import os
@@ -240,3 +239,12 @@ async def module_bridge_config(client, message):
     except Exception as e:
         error_text = get_text("module_bridge", "error_save", LANGUAGES=LANGUAGES, error=str(e))
         await message.edit(error_text)
+
+@Client.on_message(zel_command("module_bridge_reset", Module_Name, filename) & zel_sudo())
+async def module_bridge_reset(client, message):
+    message = await who_message(client, message)
+    path = "userdata/module_bridge_model"
+    if os.path.exists(path):
+        os.remove(path)
+        return await message.edit("✅ Module Bridge model configuration reset.")
+    await message.edit("Module Bridge was already using its default model.")

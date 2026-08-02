@@ -8,8 +8,7 @@ GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'Auto Answer', 'icon': '💬', 'category': 'Automation', 'description': 'Configures automatic replies using a selected message or post.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
+ZELRETCH_MODULE_INFO = {'title': 'Auto Answer', 'icon': '💬', 'category': 'Automation', 'description': 'Configures automatic replies using a selected message or post.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.unaws'}
 import os
 from pathlib import Path
 from pyrogram import Client, filters
@@ -55,3 +54,19 @@ async def aws_start(client, message):
             f.close()
     except Exception as f:
         await message.edit(f"error {f}")
+
+@Client.on_message(zel_command(["unaws", "aws_off"], "AutoAnswer", os.path.basename(__file__)) & zel_sudo())
+async def aws_stop(client, message):
+    message = await who_message(client, message)
+    config_path = Path("userdata/autoanswer")
+    database_path = Path("userdata/autoanswer_DB")
+    changed = False
+    if config_path.exists():
+        config_path.unlink()
+        changed = True
+    if database_path.exists():
+        for entry in database_path.iterdir():
+            if entry.is_file():
+                entry.unlink()
+                changed = True
+    await message.edit("✅ Auto Answer disabled and its handled-user cache cleared." if changed else "Auto Answer was already disabled.")

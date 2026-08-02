@@ -8,8 +8,7 @@ GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'Typing Animation', 'icon': '⌨️', 'category': 'Fun', 'description': 'Animates supplied text as though it is being typed.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
+ZELRETCH_MODULE_INFO = {'title': 'Typing Animation', 'icon': '⌨️', 'category': 'Fun', 'description': 'Animates supplied text as though it is being typed.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.undo (reply to the Addon output)'}
 import asyncio
 from pyrogram import Client, filters
 from command import zel_command, zel_sudo, who_message

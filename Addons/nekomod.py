@@ -8,8 +8,7 @@ GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'Neko Text Mode', 'icon': '🐱', 'category': 'Fun', 'description': 'Adds a configurable neko-style transformation to outgoing text.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
+ZELRETCH_MODULE_INFO = {'title': 'Neko Text Mode', 'icon': '🐱', 'category': 'Fun', 'description': 'Adds a configurable neko-style transformation to outgoing text.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.nekoed off'}
 import asyncio
 import random
 from pathlib import Path

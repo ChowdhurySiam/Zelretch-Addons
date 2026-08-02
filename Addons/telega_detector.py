@@ -7,7 +7,7 @@ Maintainer: Siam Chowdhury
 GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
-ZELRETCH_MODULE_INFO = {'title': 'Client Detector', 'icon': '📱', 'category': 'Telegram Tools', 'description': 'Estimates which Telegram client a user is using from public message data.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
+ZELRETCH_MODULE_INFO = {'title': 'Client Detector', 'icon': '📱', 'category': 'Telegram Tools', 'description': 'Estimates which Telegram client a user is using from public message data.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.undo (reply to the Addon output)'}
 import asyncio
 import os
 from pyrogram import Client

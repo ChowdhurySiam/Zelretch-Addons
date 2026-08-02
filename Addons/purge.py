@@ -8,8 +8,7 @@ GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'Message Cleanup', 'icon': '🗑️', 'category': 'Administration', 'description': 'Deletes a replied message or a selected message range.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
+ZELRETCH_MODULE_INFO = {'title': 'Message Cleanup', 'icon': '🗑️', 'category': 'Administration', 'description': 'Deletes a replied message or a selected message range.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.undo removes only the status output; deleted messages cannot be restored'}
 from pyrogram import Client, filters
 from command import zel_command, zel_sudo, who_message
 import os

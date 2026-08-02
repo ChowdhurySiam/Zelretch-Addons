@@ -7,7 +7,7 @@ Maintainer: Siam Chowdhury
 GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
-ZELRETCH_MODULE_INFO = {'title': 'Media Gallery', 'icon': '🖼️', 'category': 'Media', 'description': 'Fetches images from several supported themed media sources.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
+ZELRETCH_MODULE_INFO = {'title': 'Media Gallery', 'icon': '🖼️', 'category': 'Media', 'description': 'Fetches images from several supported themed media sources.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.undo (reply to the Addon output)'}
 import asyncio
 import os
 import logging

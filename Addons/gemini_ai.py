@@ -28,6 +28,7 @@ ZELRETCH_MODULE_INFO = {
     "icon": "✨",
     "category": "AI & Automation",
     "description": "Uses the supported Google Gen AI SDK for prompts, conversations, model selection, and history control.",
+    "undo": '.gemini_clear / .gemini_reset',
     "developer": "Siam Chowdhury",
     "github": "https://github.com/ChowdhurySiam",
     "telegram": "https://t.me/Ch0wdhury_Siam",
@@ -236,3 +237,16 @@ async def gemini_clear_handler(client, message):
         await message.edit("Gemini conversation history is already empty.", parse_mode=ParseMode.DISABLED)
     except Exception as exc:
         await _error(message, exc)
+
+@Client.on_message(zel_command("gemini_reset", "Gemini", os.path.basename(__file__)) & zel_sudo())
+async def gemini_reset(client, message):
+    message = await who_message(client, message)
+    removed = []
+    for path in (API_KEY_FILE, MODEL_FILE, HISTORY_FILE):
+        if path.exists():
+            path.unlink()
+            removed.append(path.name)
+    if removed:
+        await message.edit("✅ Gemini saved configuration and chat history reset.")
+    else:
+        await message.edit("Gemini had no saved local configuration to reset.")

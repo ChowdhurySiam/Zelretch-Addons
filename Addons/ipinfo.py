@@ -7,7 +7,7 @@ Maintainer: Siam Chowdhury
 GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
-ZELRETCH_MODULE_INFO = {'title': 'IP Information', 'icon': '🌐', 'category': 'Information', 'description': 'Displays location, network, timezone, and provider data for an IP address.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
+ZELRETCH_MODULE_INFO = {'title': 'IP Information', 'icon': '🌐', 'category': 'Information', 'description': 'Displays location, network, timezone, and provider data for an IP address.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.undo (reply to the Addon output)'}
 import os
 import re
 from requirements_installer import install_library

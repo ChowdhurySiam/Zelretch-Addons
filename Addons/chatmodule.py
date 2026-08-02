@@ -7,7 +7,7 @@ Maintainer: Siam Chowdhury
 GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
-ZELRETCH_MODULE_INFO = {'title': 'Chat Administration', 'icon': '🛡️', 'category': 'Administration', 'description': 'Provides chat IDs, permissions, moderation, roles, links, and group-management tools.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
+ZELRETCH_MODULE_INFO = {'title': 'Chat Administration', 'icon': '🛡️', 'category': 'Administration', 'description': 'Provides chat IDs, permissions, moderation, roles, links, and group-management tools.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.unpin / .unban / .unmute / .delrole'}
 import asyncio
 import os
 import json

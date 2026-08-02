@@ -1,8 +1,8 @@
 requests>=2.31,<3
 aiohttp>=3.10,<4
+yt-dlp
 aiodns>=3.2,<5
 Faker>=33,<41
-db0mb3r>=3.1,<4
 beautifulsoup4>=4.12,<5
 openai>=2,<3
 Pillow>=11,<13
@@ -12,4 +12,3 @@ psutil>=6,<8
 google-genai>=1,<2
 python-dateutil>=2.9,<3
 numpy>=2,<3
-wikipedia>=1.4,<2

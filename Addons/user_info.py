@@ -8,8 +8,7 @@ GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'User Information', 'icon': '👤', 'category': 'Telegram Tools', 'description': 'Displays concise or detailed public information about a Telegram user.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
+ZELRETCH_MODULE_INFO = {'title': 'User Information', 'icon': '👤', 'category': 'Telegram Tools', 'description': 'Displays concise or detailed public information about a Telegram user.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.undo (reply to the Addon output)'}
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from command import zel_command, zel_sudo, who_message

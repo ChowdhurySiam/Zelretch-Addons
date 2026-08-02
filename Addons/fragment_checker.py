@@ -8,8 +8,7 @@ GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'Fragment Checker', 'icon': '💎', 'category': 'Telegram Tools', 'description': 'Checks supported Telegram Fragment username information.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
+ZELRETCH_MODULE_INFO = {'title': 'Fragment Checker', 'icon': '💎', 'category': 'Telegram Tools', 'description': 'Checks supported Telegram Fragment username information.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.undo (reply to the Addon output)'}
 from pyrogram import Client, filters
 from command import zel_command, zel_sudo, who_message
 from requirements_installer import install_library

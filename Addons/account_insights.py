@@ -7,7 +7,7 @@ Maintainer: Siam Chowdhury
 GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
-ZELRETCH_MODULE_INFO = {'title': 'Account Insights', 'icon': '🪪', 'category': 'Telegram Tools', 'description': 'Displays detailed public information and activity estimates for a Telegram account.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
+ZELRETCH_MODULE_INFO = {'title': 'Account Insights', 'icon': '🪪', 'category': 'Telegram Tools', 'description': 'Displays detailed public information and activity estimates for a Telegram account.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.undo (reply to the Addon output)'}
 from requirements_installer import install_library
 install_library('python-dateutil numpy -U')
 import asyncio

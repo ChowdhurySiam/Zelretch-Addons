@@ -8,8 +8,7 @@ GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'Fictional Profile Generator', 'icon': '🧾', 'category': 'Fun', 'description': 'Creates a fictional profile card for entertainment and testing.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
+ZELRETCH_MODULE_INFO = {'title': 'Fictional Profile Generator', 'icon': '🧾', 'category': 'Fun', 'description': 'Creates a fictional profile card for entertainment and testing.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.undo (reply to the Addon output)'}
 from random import randint
 from time import sleep
 from pyrogram import Client, filters

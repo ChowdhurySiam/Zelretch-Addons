@@ -8,8 +8,7 @@ GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'Music Finder', 'icon': '🎵', 'category': 'Media', 'description': 'Finds lyrics and music results across supported providers.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
+ZELRETCH_MODULE_INFO = {'title': 'Music Finder', 'icon': '🎵', 'category': 'Media', 'description': 'Finds lyrics and music results across supported providers.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam', 'undo': '.genius_reset'}
 import asyncio
 import json
 import os
@@ -152,3 +151,11 @@ async def l_send_music(client, message):
         await message.edit("I can't find music!")
     await asyncio.sleep(2)
     await message.delete()
+
+@Client.on_message(zel_command("genius_reset", "FindMusic", os.path.basename(__file__)) & zel_sudo())
+async def genius_reset(client, message):
+    message = await who_message(client, message)
+    if os.path.exists(GENIUS_TOKEN_PATH):
+        os.remove(GENIUS_TOKEN_PATH)
+        return await message.edit("✅ Saved Genius API token removed.")
+    await message.edit("No saved Genius API token was found.")
