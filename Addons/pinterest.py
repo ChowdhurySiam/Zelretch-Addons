@@ -1,6 +1,6 @@
 """Zelretch Addon: Pinterest Downloader
 
-Extracts and downloads supported Pinterest images or videos.
+Downloads a Pinterest image or video from a public pin URL.
 
 Category: Files & Media
 Maintainer: Siam Chowdhury
@@ -8,132 +8,203 @@ GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'Pinterest Downloader', 'icon': '📌', 'category': 'Files & Media', 'description': 'Extracts and downloads supported Pinterest images or videos.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
+from __future__ import annotations
 
-from pyrogram import Client, filters
-from command import zel_command, zel_sudo, who_message , get_text
-from requirements_installer import install_library
-import os
+import asyncio
 import json
+import os
+from typing import Any
 
-install_library("requests bs4 -U") 
-
-LANGUAGES = {'en': {'searching': "<emoji id='5397755618750653196'>🌟</emoji> Searching..",
-        'error': "<emoji id='5397755618750653196'>🌟</emoji> **Error:** {error}",
-        'video': "<emoji id='5397755618750653196'>🌟</emoji> <b>Your Video:</b>\n{video_url}",
-        'image': "<emoji id='5397755618750653196'>🌟</emoji> <b>Your Link:</b>\n{link}"}}
-
-
-
-import requests
 from bs4 import BeautifulSoup
+from pyrogram import Client
 
-@Client.on_message(zel_command("pinterest", "Pinterest", os.path.basename(__file__), "[link]") & zel_sudo())
+from command import get_text, who_message, zel_command, zel_sudo
+from requirements_installer import install_library
+
+install_library("requests bs4")
+import requests
+
+ZELRETCH_MODULE_INFO = {
+    "title": "Pinterest Downloader",
+    "icon": "📌",
+    "category": "Files & Media",
+    "description": "Downloads a supported Pinterest image or video from a public pin URL.",
+    "developer": "Siam Chowdhury",
+    "github": "https://github.com/ChowdhurySiam",
+    "telegram": "https://t.me/Ch0wdhury_Siam",
+}
+
+LANGUAGES = {
+    "en": {
+        "searching": "<emoji id='5397755618750653196'>🌟</emoji> Searching Pinterest...",
+        "usage": "Usage: <code>{prefix}pinterest &lt;pin URL&gt;</code>",
+        "error": "<emoji id='5397755618750653196'>🌟</emoji> <b>Error:</b> {error}",
+        "video": "<emoji id='5397755618750653196'>🌟</emoji> <b>Pinterest video</b>",
+        "image": "<emoji id='5397755618750653196'>🌟</emoji> <b>Pinterest image</b>",
+    }
+}
+
+
+def _download_page(url: str) -> str:
+    response = requests.get(
+        url,
+        timeout=20,
+        allow_redirects=True,
+        headers={
+            "User-Agent": (
+                "Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 "
+                "Chrome/126.0 Mobile Safari/537.36"
+            )
+        },
+    )
+    response.raise_for_status()
+    return response.text
+
+
+def _video_from_pin_data(pin_data: dict[str, Any]) -> str | None:
+    videos = pin_data.get("videos")
+    if not isinstance(videos, dict):
+        return None
+
+    video_urls = videos.get("videoUrls")
+    if isinstance(video_urls, list):
+        urls = [str(url) for url in video_urls if str(url).startswith(("http://", "https://"))]
+        for url in urls:
+            if url.lower().endswith(".mp4") and "720" in url.lower():
+                return url
+        for url in urls:
+            if url.lower().endswith(".mp4"):
+                return url
+        if urls:
+            return urls[0]
+
+    video_list = videos.get("videoList")
+    if isinstance(video_list, dict):
+        for key in ("v720P", "vHLSV4"):
+            item = video_list.get(key)
+            if isinstance(item, dict) and item.get("url"):
+                return str(item["url"])
+    return None
+
+
+def _extract_media(html_text: str) -> tuple[str | None, str | None]:
+    soup = BeautifulSoup(html_text, "html.parser")
+    pin_data: dict[str, Any] = {}
+
+    for script in soup.find_all("script", type="application/json"):
+        try:
+            data = json.loads(script.string or "")
+        except (json.JSONDecodeError, TypeError):
+            continue
+        candidate = (
+            data.get("response", {})
+            .get("data", {})
+            .get("v3GetPinQuery", {})
+            .get("data", {})
+        )
+        if isinstance(candidate, dict):
+            pin_data = candidate
+            video_url = _video_from_pin_data(pin_data)
+            if video_url:
+                return video_url, None
+
+    for script in soup.find_all("script", type="application/ld+json"):
+        try:
+            data = json.loads(script.string or "")
+        except (json.JSONDecodeError, TypeError):
+            continue
+        candidates = data if isinstance(data, list) else [data]
+        for item in candidates:
+            if not isinstance(item, dict):
+                continue
+            content_url = item.get("contentUrl")
+            if item.get("@type") == "VideoObject" and content_url:
+                return str(content_url), None
+
+    video_tag = soup.find("video", src=True)
+    if video_tag and video_tag.get("src"):
+        return str(video_tag["src"]), None
+
+    for image in soup.find_all("img"):
+        image_url = image.get("src") or image.get("data-src")
+        if image_url and str(image_url).startswith(("http://", "https://")):
+            return None, str(image_url)
+
+    return None, None
+
+
+@Client.on_message(
+    zel_command("pinterest", "Pinterest", os.path.basename(__file__), "<pin URL>")
+    & zel_sudo()
+)
 async def pinterest(client, message):
     message = await who_message(client, message)
+    parts = (message.text or "").split(maxsplit=1)
+    if len(parts) < 2 or not parts[1].strip():
+        from command import my_prefix
+
+        await message.edit(
+            get_text(
+                "Pinterest",
+                "usage",
+                LANGUAGES=LANGUAGES,
+                prefix=my_prefix(),
+            )
+        )
+        return
+
+    pin_url = parts[1].strip()
+    if not pin_url.startswith(("http://", "https://")):
+        await message.edit(
+            get_text(
+                "Pinterest",
+                "error",
+                LANGUAGES=LANGUAGES,
+                error="Provide a valid public Pinterest URL.",
+            )
+        )
+        return
+
     await message.edit(get_text("Pinterest", "searching", LANGUAGES=LANGUAGES))
-    link = message.text.split()[1]
-    
+
     try:
-        resp = requests.get(link)
-        soup = BeautifulSoup(resp.text, "html.parser")
+        html_text = await asyncio.to_thread(_download_page, pin_url)
+        video_url, image_url = await asyncio.to_thread(_extract_media, html_text)
 
-        video_url = None
-        pin_data = None 
-
-        scripts = soup.find_all("script", type="application/json")
-        for i, script in enumerate(scripts):
-            try:
-                data = json.loads(script.string)
-                if "response" in data and "data" in data["response"]:
-                    pin_data = data["response"]["data"].get("v3GetPinQuery", {}).get("data", {})
-                    
-                    if "videos" in pin_data:
-                        videos = pin_data["videos"]
-                        
-                        if "videoUrls" in videos and videos["videoUrls"]:
-                            for url in videos["videoUrls"]:
-                                if url.endswith('.mp4'):
-                                    video_url = url
-                                    break
-                            if not video_url:
-                                video_url = videos["videoUrls"][0]
-                            break
-                        elif "videoList" in videos:
-                            video_list = videos["videoList"]
-                            
-                            if "v720P" in video_list:
-                                video_url = video_list["v720P"]["url"]
-                                break
-                            elif "vHLSV4" in video_list:
-                                video_url = video_list["vHLSV4"]["url"]
-                                break
-            except (json.JSONDecodeError, KeyError, TypeError) as e:
-                continue
-        
-        if not video_url:
-            json_ld_scripts = soup.find_all("script", type="application/ld+json")
-            for i, script in enumerate(json_ld_scripts):
-                try:
-                    data = json.loads(script.string)
-                    
-                    if data.get("@type") == "VideoObject" and "contentUrl" in data:
-                        content_url = data["contentUrl"]
-                        if content_url.endswith('.mp4'):
-                            video_url = content_url
-                            break
-                except (json.JSONDecodeError, KeyError, TypeError) as e:
-                    continue
-        
-        if not video_url:
-            video_tags = soup.find_all("video")
-            
-            for i, video in enumerate(video_tags):
-                if video.get("src"):
-                    video_url = video["src"]
-                    break
-        
         if video_url:
-            if video_url.endswith('.m3u8') or 'hls' in video_url.lower():
-                if "videos" in pin_data:
-                    videos = pin_data["videos"]
-                    if "videoUrls" in videos:
-                        for url in videos["videoUrls"]:
-                            if url.endswith('.mp4') and '720p' in url.lower():
-                                video_url = url
-                                break
-                        else:
-                            video_url = None
-            
-            if video_url:
-                try:
-                    await client.send_video(
-                        message.chat.id, 
-                        video=video_url,
-                        caption=f"{get_text("Pinterest", "video", LANGUAGES=LANGUAGES, video_url=video_url)}",
-                        message_thread_id=message.message_thread_id
-                    )
-                    await message.delete()
-                    return
-                except Exception as video_error:
-                    await message.edit(f"{get_text("Pinterest", "error", LANGUAGES=LANGUAGES, error=video_error)}")
-                    video_url = None
+            await client.send_video(
+                message.chat.id,
+                video=video_url,
+                caption=get_text("Pinterest", "video", LANGUAGES=LANGUAGES),
+                message_thread_id=message.message_thread_id,
+            )
+            await message.delete()
+            return
 
-        pic = soup.find_all("img")
-        if pic:
-            link = pic[0].get('src')
-            try:
-                await client.send_photo(
-                    message.chat.id, 
-                    photo=link,
-                    caption=f"{get_text("Pinterest", "image", LANGUAGES=LANGUAGES, link=link)}",
-                    message_thread_id=message.message_thread_id
-                )
-                await message.delete()
-            except Exception as image_error:
-                await message.edit(f"{get_text("Pinterest", "error", LANGUAGES=LANGUAGES, error=image_error)}")
-        else:
-            await message.edit(f"{get_text("Pinterest", "error", LANGUAGES=LANGUAGES, error="No image or video found")}")
-            
-    except Exception as f:
-        await message.edit(f"{get_text("Pinterest", "error", LANGUAGES=LANGUAGES, error=f)}")
+        if image_url:
+            await client.send_photo(
+                message.chat.id,
+                photo=image_url,
+                caption=get_text("Pinterest", "image", LANGUAGES=LANGUAGES),
+                message_thread_id=message.message_thread_id,
+            )
+            await message.delete()
+            return
+
+        await message.edit(
+            get_text(
+                "Pinterest",
+                "error",
+                LANGUAGES=LANGUAGES,
+                error="No downloadable image or video was found.",
+            )
+        )
+    except Exception as exc:
+        await message.edit(
+            get_text(
+                "Pinterest",
+                "error",
+                LANGUAGES=LANGUAGES,
+                error=str(exc),
+            )
+        )

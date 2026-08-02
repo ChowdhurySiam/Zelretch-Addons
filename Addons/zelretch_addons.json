@@ -1025,14 +1025,14 @@
       "title": "Pinterest Downloader",
       "icon": "📌",
       "category": "Files & Media",
-      "description": "Extracts and downloads supported Pinterest images or videos.",
+      "description": "Downloads a supported Pinterest image or video from a public pin URL.",
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
       "commands": [
         {
           "command": "pinterest",
-          "arguments": "[link]",
+          "arguments": "<pin URL>",
           "primary": true
         }
       ],
@@ -1786,6 +1786,6 @@
   "requirements_file": "requirements.txt",
   "main_project": "https://github.com/ChowdhurySiam/Zelretch",
   "language": "English only",
-  "version": "3.1.3",
+  "version": "3.1.4",
   "addons_directory": "Addons"
 }
