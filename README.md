@@ -124,7 +124,7 @@ https://github.com/ChowdhurySiam/Zelretch-Addons
 See `LICENSE`.
 
 
-## v3.1.2 Addons directory layout
+## v3.1.3 Addons directory layout
 
 - Moved every executable Addon into the repository's `Addons/` directory.
 - Moved `requirements.txt` and `zelretch_addons.json` into `Addons/`.
@@ -134,4 +134,10 @@ See `LICENSE`.
 
 - Corrected the Neko Text Mode Addon so its module filename does not depend on an undeclared `os` symbol.
 - The Addons package contains English/ASCII filenames only.
-- Use this repository together with Zelretch v3.1.2 or later so old non-English cached Addons are removed from MongoDB automatically.
+- Use this repository together with Zelretch v3.1.3 or later so old non-English cached Addons are removed from MongoDB automatically.
+
+## v3.1.3 runtime reliability
+
+- `Addons/nekomod.py` uses `pathlib.Path` for its module filename and creates its state directory before writing.
+- The module no longer depends on an implicit `os` import, eliminating the startup `NameError`.
+- The package remains English-only and keeps every Addon under the `Addons/` folder.

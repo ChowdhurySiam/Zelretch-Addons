@@ -17,7 +17,7 @@ from pyrogram import Client, filters
 from command import zel_command, zel_sudo, who_message, my_prefix
 from modules.core.restarter import restart
 
-MODULE_FILENAME = Path(__file__).name
+MODULE_FILENAME = Path(__file__).resolve().name
 STATE_PATH = Path("userdata/nekoeditor_enabled")
 
 def load_config():
