@@ -1,6 +1,6 @@
 """Zelretch Addon: History Facts
 
-Returns random historical, science, music, and general-interest facts.
+Returns concise English-language facts from built-in, offline-safe collections.
 
 Category: Information
 Maintainer: Siam Chowdhury
@@ -8,117 +8,81 @@ GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'History Facts', 'icon': '📚', 'category': 'Information', 'description': 'Returns random historical, science, music, and general-interest facts.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
-import asyncio
-import json
-import random
-from random import choice
-from pyrogram import Client, filters
-from command import zel_command, zel_sudo, who_message
-from requirements_installer import install_library
+import html
 import os
+import random
 
-install_library("aiohttp -U")
+from pyrogram import Client
 
-import aiohttp
+from command import zel_command, zel_sudo, who_message
 
-@Client.on_message(zel_command("rfact", "HistoryFacts", os.path.basename(__file__)) & zel_sudo())
-async def rfact(client, message):
+ZELRETCH_MODULE_INFO = {
+    "title": "History Facts",
+    "icon": "📚",
+    "category": "Information",
+    "description": "Returns concise English-language facts from built-in history collections.",
+    "developer": "Siam Chowdhury",
+    "github": "https://github.com/ChowdhurySiam",
+    "telegram": "https://t.me/Ch0wdhury_Siam",
+}
+
+MODULE_NAME = "HistoryFacts"
+FILENAME = os.path.basename(__file__)
+
+GENERAL_HISTORY_FACTS = [
+    "The earliest known writing systems developed in Mesopotamia more than five thousand years ago.",
+    "The Library of Alexandria was part of a larger research institution called the Mouseion.",
+    "The printing press greatly accelerated the spread of books and ideas across Europe in the fifteenth century.",
+    "The first modern Olympic Games were held in Athens in 1896.",
+    "The Magna Carta was sealed in 1215 and became an important symbol of limits on political power.",
+    "The ancient city of Petra was carved into sandstone cliffs in present-day Jordan.",
+    "The Silk Road was a network of trade routes rather than a single road.",
+    "The Rosetta Stone helped scholars decipher ancient Egyptian hieroglyphs.",
+]
+
+HITLER_FACTS = [
+    "Adolf Hitler became chancellor of Germany in January 1933.",
+    "Nazi Germany invaded Poland on 1 September 1939, beginning the Second World War in Europe.",
+    "Hitler's regime established a totalitarian dictatorship and carried out the Holocaust.",
+    "Hitler died in Berlin in April 1945 as Nazi Germany was collapsing.",
+]
+
+MUSSOLINI_FACTS = [
+    "Benito Mussolini became prime minister of Italy in 1922.",
+    "Mussolini's Fascist government dismantled democratic institutions and created a dictatorship.",
+    "Fascist Italy invaded Ethiopia in 1935.",
+    "Mussolini was removed from power in 1943 after Allied forces landed in Italy.",
+]
+
+STALIN_FACTS = [
+    "Joseph Stalin became the dominant leader of the Soviet Union after Vladimir Lenin's death.",
+    "Stalin's industrialization and collectivization campaigns caused severe disruption and widespread suffering.",
+    "The Great Purge of the 1930s involved mass arrests, executions, and forced-labor sentences.",
+    "The Soviet Union played a decisive role in defeating Nazi Germany during the Second World War.",
+]
+
+
+async def _send_fact(client, message, heading, facts):
     message = await who_message(client, message)
-    url = "https://raw.githubusercontent.com/KorenbZla/HikkaModules/main/HistoryFacts.json"
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as response:
-            if response.status == 200:
-                response_text = await response.text()
-                try:
-                    data = json.loads(response_text)
-                    if "RandomFact" in data and isinstance(data["RandomFact"], list) and data["RandomFact"]:
-                        text = choice(data["RandomFact"])
-                        await message.edit(
-                            "<b><emoji id=5386596911463541476>📚</emoji> Random interesting fact about the Great Patriotic War:\n{}</b>".format(
-                                text))
-                    else:
-                        await message.edit(
-                            "<b><i>Error: Key not found.</i></b>")
-                except json.JSONDecodeError:
-                    await message.edit(
-                        "<b><i>Error: The JSON could not be decoded.</i></b>")
-            else:
-                await message.edit(
-                    "<b><i>Error loading data</i></b>: {}".format(response.status))
+    fact = html.escape(random.choice(facts))
+    await message.edit(f"<b>📚 {html.escape(heading)}</b>\n\n{fact}")
 
-@Client.on_message(zel_command("hfact", "HistoryFacts", os.path.basename(__file__)) & zel_sudo())
-async def hfact(client, message):
-    message = await who_message(client, message)
-    url = "https://raw.githubusercontent.com/KorenbZla/HikkaModules/main/HistoryFacts.json"
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as response:
-            if response.status == 200:
-                response_text = await response.text()
-                try:
-                    data = json.loads(response_text)
-                    if "AdolfFact" in data and isinstance(data["AdolfFact"], list) and data["AdolfFact"]:
-                        text = choice(data["AdolfFact"])
-                        await message.edit(
-                            "<b><emoji id=5386596911463541476>📚</emoji> Random fact about Adolf Hitler:\n{}</b>".format(
-                                text))
-                    else:
-                        await message.edit(
-                            "<b><i>Error: Key not found.</i></b>")
-                except json.JSONDecodeError:
-                    await message.edit(
-                        "<b><i>Error: The JSON could not be decoded.</i></b>")
-            else:
-                await message.edit(
-                    "<b><i>Error loading data</i></b>: {}".format(response.status))
 
-@Client.on_message(zel_command("mfact", "HistoryFacts", os.path.basename(__file__)) & zel_sudo())
-async def mfact(client, message):
-    message = await who_message(client, message)
-    url = "https://raw.githubusercontent.com/KorenbZla/HikkaModules/main/HistoryFacts.json"
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as response:
-            if response.status == 200:
-                response_text = await response.text()
-                try:
-                    data = json.loads(response_text)
-                    if "MussoliniFact" in data and isinstance(data["MussoliniFact"], list) and data["MussoliniFact"]:
-                        text = choice(data["MussoliniFact"])
-                        await message.edit(
-                            "<b><emoji id=5386596911463541476>📚</emoji> Random fact about Benito Mussolini:\n{}</b>".format(
-                                text))
-                    else:
-                        await message.edit(
-                            "<b><i>Error: Key not found.</i></b>")
-                except json.JSONDecodeError:
-                    await message.edit(
-                        "<b><i>Error: The JSON could not be decoded.</i></b>")
-            else:
-                await message.edit(
-                    "<b><i>Error loading data</i></b>: {}".format(response.status))
+@Client.on_message(zel_command("rfact", MODULE_NAME, FILENAME) & zel_sudo())
+async def random_history_fact(client, message):
+    await _send_fact(client, message, "Random history fact", GENERAL_HISTORY_FACTS)
 
-@Client.on_message(zel_command("sfact", "HistoryFacts", os.path.basename(__file__)) & zel_sudo())
-async def sfact(client, message):
-    message = await who_message(client, message)
-    url = "https://raw.githubusercontent.com/KorenbZla/HikkaModules/main/HistoryFacts.json"
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as response:
-            if response.status == 200:
-                response_text = await response.text()
-                try:
-                    data = json.loads(response_text)
-                    if "StalinFact" in data and isinstance(data["StalinFact"], list) and data["StalinFact"]:
-                        text = choice(data["StalinFact"])
-                        await message.edit(
-                            "<b><emoji id=5386596911463541476>📚</emoji> Random fact about Iosif Stalin:\n{}</b>".format(
-                                text))
-                    else:
-                        await message.edit(
-                            "<b><i>Error: Key not found.</i></b>")
-                except json.JSONDecodeError:
-                    await message.edit(
-                        "<b><i>Error: The JSON could not be decoded.</i></b>")
-            else:
-                await message.edit(
-                    "<b><i>Error loading data</i></b>: {}".format(response.status))
+
+@Client.on_message(zel_command("hfact", MODULE_NAME, FILENAME) & zel_sudo())
+async def hitler_fact(client, message):
+    await _send_fact(client, message, "Historical fact about Adolf Hitler", HITLER_FACTS)
+
+
+@Client.on_message(zel_command("mfact", MODULE_NAME, FILENAME) & zel_sudo())
+async def mussolini_fact(client, message):
+    await _send_fact(client, message, "Historical fact about Benito Mussolini", MUSSOLINI_FACTS)
+
+
+@Client.on_message(zel_command("sfact", MODULE_NAME, FILENAME) & zel_sudo())
+async def stalin_fact(client, message):
+    await _send_fact(client, message, "Historical fact about Joseph Stalin", STALIN_FACTS)

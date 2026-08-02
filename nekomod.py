@@ -40,23 +40,23 @@ async def nekoedcmd(client, message):
     status = config["enabled"]
 
     if not arg:
-        current_status = "включён" if status else "выключен"
+        current_status = "enabled" if status else "disabled"
         return await message.edit(f"🐱 NekoEditor: {current_status}")
 
-    if arg in ["on", "вкл", "1"]:
+    if arg in ["on", "1"]:
         save_config(True)
         if is_premium:
-            await message.edit('<emoji id=5335044582218412321>☺️</emoji> Режим включён! Nya~')
+            await message.edit('<emoji id=5335044582218412321>☺️</emoji> Cat mode enabled. Meow!')
         else:
-            await message.edit("🐾 Режим включён! Nya~")
-    elif arg in ["off", "выкл", "0"]:
+            await message.edit("🐾 Cat mode enabled. Meow!")
+    elif arg in ["off", "0"]:
         save_config(False)
         if is_premium:
-            await message.edit('<emoji id=5377309873614627829>👌</emoji> Режим выключен... >_<')
+            await message.edit('<emoji id=5377309873614627829>👌</emoji> Cat mode disabled.')
         else:
-            await message.edit("🌀 Режим выключен... >_<")
+            await message.edit("🌀 Cat mode disabled.")
     else:
-        return await message.edit("🚫 Неверный аргумент. Используйте: <code>nekoed [on/off]</code>")
+        return await message.edit("🚫 Invalid option. Usage: <code>nekoed [on/off]</code>")
     await restart(message, restart_type="restart")
 
 @Client.on_message(
@@ -65,7 +65,7 @@ async def nekoedcmd(client, message):
     & filters.text 
     & ~filters.media 
     & zel_sudo()
-    & ~filters.command("", prefixes=my_prefix())  # Игнорировать команды с префиксом
+    & ~filters.command("", prefixes=my_prefix())  # Ignore commands that use the configured prefix
 )
 async def watcher(client, message):
     config = load_config()
@@ -74,15 +74,14 @@ async def watcher(client, message):
 
     modified_text = message.text
     replacements = {
-        "р": "w",
-        "л": "w",
-        "но": "ня",
-        "на": "ня"
+        "r": "w",
+        "l": "w",
+        "no": "meow"
     }
     for old, new in replacements.items():
         modified_text = modified_text.replace(old, new)
 
-    neko_words = ["Nya~", "UwU", "OwO", ".>_<.", "^^", "(≧▽≦)"]
+    neko_words = ["Meow!", "UwU", "OwO", ".>_<.", "^^", "(≧▽≦)"]
     neko_word = random.choice(neko_words)
     if random.random() < 0.5:
         modified_text = f"{neko_word} {modified_text}"

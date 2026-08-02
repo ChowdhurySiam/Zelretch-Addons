@@ -22,26 +22,11 @@ import aiohttp
 filename = os.path.basename(__file__)
 Module_Name = "Currency"
 
-LANGUAGES = {
-    "en": {
-        "rate": "<b>Rates for {amount} {currency}:\n<blockquote expandable>{rates}</blockquote></b>",
-        "err": "Error: <code>{error}</code>",
-        "currency": "{cur}: {converted}",
-        "invalid_args": "<emoji id=5017058788604117831>❌</emoji> <b>Invalid args</b>",
-    },
-    "ru": {
-        "rate": "<b>Курсы для {amount} {currency}:\n<blockquote expandable>{rates}</blockquote></b>",
-        "err": "Ошибка: <code>{error}</code>",
-        "currency": "{cur}: {converted}",
-        "invalid_args": "<emoji id=5017058788604117831>❌</emoji> <b>Неверные аргументы</b>",
-    },
-    "ua": {
-        "rate": "<b>Курси для {amount} {currency}:\n<blockquote expandable>{rates}</blockquote></b>",
-        "err": "Помилка: <code>{error}</code>",
-        "currency": "{cur}: {converted}",
-        "invalid_args": "<emoji id=5017058788604117831>❌</emoji> <b>Невірні аргументи</b>",
-    }
-}
+LANGUAGES = {'en': {'rate': '<b>Rates for {amount} {currency}:\n'
+                '<blockquote expandable>{rates}</blockquote></b>',
+        'err': 'Error: <code>{error}</code>',
+        'currency': '{cur}: {converted}',
+        'invalid_args': '<emoji id=5017058788604117831>❌</emoji> <b>Invalid args</b>'}}
 
 api_endpoints = [
     "https://open.er-api.com/v6/latest/{}",

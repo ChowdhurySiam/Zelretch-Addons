@@ -24,26 +24,14 @@ import aiodns
 filename = os.path.basename(__file__)
 Module_Name = "URLModule"
 
-LANGUAGES = {
-    "en": {
-        "no_url": "<emoji id=5416076321442777828>❌</emoji> <b>Please provide a shortened URL to expand.</b>",
-        "err": '<emoji id=5416076321442777828>❌</emoji> <b>An error occurred:</b> <pre><code class="language-Error">{err}</code></pre>',
-        "expanded_url": "<emoji id=5816580359642421388>➡️</emoji> <b>Expanded URL:</b> <a href='{expanded_url}'>{expanded_url}</a>",
-        "ip_addr": "<emoji id=5447410659077661506>🌐</emoji> <b>The IP address of {url}:</b> <code>{ip_address}</code>",
-    },
-    "ru": {
-        "no_url": "<emoji id=5416076321442777828>❌</emoji> <b>Пожалуйста, предоставьте сокращённую URL для расширения.</b>",
-        "err": '<emoji id=5416076321442777828>❌</emoji> <b>Произошла ошибка:</b> <pre><code class="language-Error">{err}</code></pre>',
-        "expanded_url": "<emoji id=5816580359642421388>➡️</emoji> <b>Расширенный URL:</b> <a href='{expanded_url}'>{expanded_url}</a>",
-        "ip_addr": "<emoji id=5447410659077661506>🌐</emoji> <b>IP-адрес для {url}:</b> <code>{ip_address}</code>",
-    },
-    "ua": {
-        "no_url": "<emoji id=5416076321442777828>❌</emoji> <b>Будь ласка, надайте скорочену URL для розширення.</b>",
-        "err": '<emoji id=5416076321442777828>❌</emoji> <b>Сталася помилка:</b> <pre><code class="language-Error">{err}</code></pre>',
-        "expanded_url": "<emoji id=5816580359642421388>➡️</emoji> <b>Розширений URL:</b> <a href='{expanded_url}'>{expanded_url}</a>",
-        "ip_addr": "<emoji id=5447410659077661506>🌐</emoji> <b>IP-адрес для {url}:</b> <code>{ip_address}</code>",
-    }
-}
+LANGUAGES = {'en': {'no_url': '<emoji id=5416076321442777828>❌</emoji> <b>Please provide a shortened URL to '
+                  'expand.</b>',
+        'err': '<emoji id=5416076321442777828>❌</emoji> <b>An error occurred:</b> <pre><code '
+               'class="language-Error">{err}</code></pre>',
+        'expanded_url': '<emoji id=5816580359642421388>➡️</emoji> <b>Expanded URL:</b> <a '
+                        "href='{expanded_url}'>{expanded_url}</a>",
+        'ip_addr': '<emoji id=5447410659077661506>🌐</emoji> <b>The IP address of {url}:</b> '
+                   '<code>{ip_address}</code>'}}
 
 @Client.on_message(zel_command("expandurl", Module_Name, filename, "[URL]") & zel_sudo())
 async def expandurl_handler(client, message):

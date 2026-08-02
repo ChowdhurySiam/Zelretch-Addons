@@ -25,68 +25,44 @@ import time
 filename = os.path.basename(__file__)
 Module_Name = 'ModuleBridge'
 
-LANGUAGES = {
-    "en": {
-        "loading_reply": "✨ | Loading module from reply...",
-        "loading_url": "✨ | Loading module from URL: {url}",
-        "error_status": "✨ | Error loading module from URL: {status}",
-        "error_request": "✨ | Error loading module from URL: {error}",
-        "no_input": "✨ | Reply to a module file or provide a link!",
-        "no_content": "✨ | Failed to get module content.",
-        "generating": "✨ | Generating module...",
-        "generated": "✨ | Generated module: <code>{module_name}</code>",
-        "error_generate": "✨ | Error generating module :(",
-        "rate_limit": "✨ | Rate limit exceeded. Please try again later or add your own API key.",
-        "api_error": "✨ | API error: {error}",
-        "connection_error": "✨ | Connection error. Please check your internet connection.",
-        "timeout_error": "✨ | Request timeout. Please try again.",
-        "current_model": "✨ | **Current model:** `{model}`\n\n**Usage:**\n`{prefix}module_bridge_config [model_name]`\n\n**Example models:**\n• `qwen/qwen2.5-72b-instruct`\n• `anthropic/claude-3.5-sonnet`\n• `meta-llama/llama-3.1-8b-instruct`\n• `google/gemini-pro-1.5`\n\n <a href='https://openrouter.ai/models?max_price=0'><b>You can get models here</b></a>",
-        "no_model": "✨ | <b>Please specify a model name! \n You can get models <a href='https://openrouter.ai/models?max_price=0'>here</a></b>",
-        "not_free": "✨ | <b>Please specify a free model! \n You can get models <a href='https://openrouter.ai/models?max_price=0'>here</a></b>",
-        "success": "✨ | **Model successfully changed!**\n\n**New model:** `{model}`\n\nNow all requests will use this model.",
-        "error_save": "✨ | **Error saving model:**\n`{error}`"
-    },
-    "ru": {
-        "loading_reply": "✨ | Загрузка модуля из ответа...",
-        "loading_url": "✨ | Загрузка модуля с URL: {url}",
-        "error_status": "✨ | Ошибка загрузки модуля с URL: {status}",
-        "error_request": "✨ | Ошибка загрузки модуля с URL: {error}",
-        "no_input": "✨ | Ответьте на файл модуля или предоставьте ссылку!",
-        "no_content": "✨ | Не удалось получить содержимое модуля.",
-        "generating": "✨ | Генерирование модуля...",
-        "generated": "✨ | Сгенерированный модуль: <code>{module_name}</code>",
-        "error_generate": "✨ | Ошибка при генерировании модуля :(",
-        "rate_limit": "✨ | Превышен лимит запросов. Попробуйте позже или добавьте свой API ключ.",
-        "api_error": "✨ | Ошибка API: {error}",
-        "connection_error": "✨ | Ошибка подключения. Проверьте интернет-соединение.",
-        "timeout_error": "✨ | Таймаут запроса. Попробуйте снова.",
-        "current_model": "✨ | **Текущая модель:** `{model}`\n\n**Использование:**\n`{prefix}module_bridge_config [имя_модели]`\n\n**Примеры моделей:**\n• `qwen/qwen2.5-72b-instruct`\n• `anthropic/claude-3.5-sonnet`\n• `meta-llama/llama-3.1-8b-instruct`\n• `google/gemini-pro-1.5`\n\n <a href='https://openrouter.ai/models?max_price=0'><b>Вы можете получить модели здесь</b></a>",
-        "no_model": "✨ | <b>Укажите имя модели! \n Вы можете получить модели <a href='https://openrouter.ai/models?max_price=0'>здесь</a></b>",
-        "not_free": "✨ | <b>Укажите бесплатную модель! \n Вы можете получить модели <a href='https://openrouter.ai/models?max_price=0'>здесь</a></b>",
-        "success": "✨ | **Модель успешно изменена!**\n\n**Новая модель:** `{model}`\n\nТеперь все запросы будут использовать эту модель.",
-        "error_save": "✨ | **Ошибка сохранения модели:**\n`{error}`"
-    },
-    "ua": {
-        "loading_reply": "✨ | Завантаження модуля з відповіді...",
-        "loading_url": "✨ | Завантаження модуля з URL: {url}",
-        "error_status": "✨ | Помилка завантаження модуля з URL: {status}",
-        "error_request": "✨ | Помилка завантаження модуля з URL: {error}",
-        "no_input": "✨ | Відповідьте на файл модуля або надайте посилання!",
-        "no_content": "✨ | Не вдалося отримати вміст модуля.",
-        "generating": "✨ | Генерування модуля...",
-        "generated": "✨ | Згенерований модуль: <code>{module_name}</code>",
-        "error_generate": "✨ | Помилка при генеруванні модуля :(",
-        "rate_limit": "✨ | Перевищено ліміт запитів. Спробуйте пізніше або додайте свій API ключ.",
-        "api_error": "✨ | Помилка API: {error}",
-        "connection_error": "✨ | Помилка підключення. Перевірте інтернет-з'єднання.",
-        "timeout_error": "✨ | Таймаут запиту. Спробуйте знову.",
-        "current_model": "✨ | **Поточна модель:** `{model}`\n\n**Використання:**\n`{prefix}module_bridge_config [назва_моделі]`\n\n**Приклади моделей:**\n• `qwen/qwen2.5-72b-instruct`\n• `anthropic/claude-3.5-sonnet`\n• `meta-llama/llama-3.1-8b-instruct`\n• `google/gemini-pro-1.5`\n\n <a href='https://openrouter.ai/models?max_price=0'><b>Ви можете отримати моделі тут</b></a>",
-        "no_model": "✨ | <b>Вкажіть назву моделі! \n Ви можете отримати моделі <a href='https://openrouter.ai/models?max_price=0'>тут</a></b>",
-        "not_free": "✨ | <b>Вкажіть безплатну модель! \n Ви можете отримати моделі <a href='https://openrouter.ai/models?max_price=0'>тут</a></b>",
-        "success": "✨ | **Модель успішно змінена!**\n\n**Нова модель:** `{model}`\n\nТепер усі запити будуть використовувати цю модель.",
-        "error_save": "✨ | **Помилка збереження моделі:**\n`{error}`"
-    }
-}
+LANGUAGES = {'en': {'loading_reply': '✨ | Loading module from reply...',
+        'loading_url': '✨ | Loading module from URL: {url}',
+        'error_status': '✨ | Error loading module from URL: {status}',
+        'error_request': '✨ | Error loading module from URL: {error}',
+        'no_input': '✨ | Reply to a module file or provide a link!',
+        'no_content': '✨ | Failed to get module content.',
+        'generating': '✨ | Generating module...',
+        'generated': '✨ | Generated module: <code>{module_name}</code>',
+        'error_generate': '✨ | Error generating module :(',
+        'rate_limit': '✨ | Rate limit exceeded. Please try again later or add your own API key.',
+        'api_error': '✨ | API error: {error}',
+        'connection_error': '✨ | Connection error. Please check your internet connection.',
+        'timeout_error': '✨ | Request timeout. Please try again.',
+        'current_model': '✨ | **Current model:** `{model}`\n'
+                         '\n'
+                         '**Usage:**\n'
+                         '`{prefix}module_bridge_config [model_name]`\n'
+                         '\n'
+                         '**Example models:**\n'
+                         '• `qwen/qwen2.5-72b-instruct`\n'
+                         '• `anthropic/claude-3.5-sonnet`\n'
+                         '• `meta-llama/llama-3.1-8b-instruct`\n'
+                         '• `google/gemini-pro-1.5`\n'
+                         '\n'
+                         " <a href='https://openrouter.ai/models?max_price=0'><b>You can get "
+                         'models here</b></a>',
+        'no_model': '✨ | <b>Please specify a model name! \n'
+                    ' You can get models <a '
+                    "href='https://openrouter.ai/models?max_price=0'>here</a></b>",
+        'not_free': '✨ | <b>Please specify a free model! \n'
+                    ' You can get models <a '
+                    "href='https://openrouter.ai/models?max_price=0'>here</a></b>",
+        'success': '✨ | **Model successfully changed!**\n'
+                   '\n'
+                   '**New model:** `{model}`\n'
+                   '\n'
+                   'Now all requests will use this model.',
+        'error_save': '✨ | **Error saving model:**\n`{error}`'}}
 
 def get_bridge_model():
     try:

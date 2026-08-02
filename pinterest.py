@@ -18,26 +18,10 @@ import json
 
 install_library("requests bs4 -U") 
 
-LANGUAGES = { 
-    "en": {
-        "searching": "<emoji id='5397755618750653196'>🌟</emoji> Searching..",
-        "error": "<emoji id='5397755618750653196'>🌟</emoji> **Error:** {error}",
-        "video": "<emoji id='5397755618750653196'>🌟</emoji> <b>Your Video:</b>\n{video_url}",
-        "image": "<emoji id='5397755618750653196'>🌟</emoji> <b>Your Link:</b>\n{link}",
-    },
-    "ru": {
-        "searching":"<emoji id='5397755618750653196'>🌟</emoji> Поиск..",
-        "error": "<emoji id='5397755618750653196'>🌟</emoji> **Ошибка:** {error}",
-        "video": "<emoji id='5397755618750653196'>🌟</emoji> <b>Ваше видео:</b>\n{video_url}",
-        "image": "<emoji id='5397755618750653196'>🌟</emoji> <b>Ваша ссылка:</b>\n{link}",
-    },
-    "ua": {
-        "searching":"<emoji id='5397755618750653196'>🌟</emoji> Пошук..",
-        "error": "<emoji id='5397755618750653196'>🌟</emoji> **Помилка:** {error}",
-        "video": "<emoji id='5397755618750653196'>🌟</emoji> <b>Ваше видео:</b>\n{video_url}",
-        "image": "<emoji id='5397755618750653196'>🌟</emoji> <b>Ваша посилання:</b>\n{link}",
-    }
-}
+LANGUAGES = {'en': {'searching': "<emoji id='5397755618750653196'>🌟</emoji> Searching..",
+        'error': "<emoji id='5397755618750653196'>🌟</emoji> **Error:** {error}",
+        'video': "<emoji id='5397755618750653196'>🌟</emoji> <b>Your Video:</b>\n{video_url}",
+        'image': "<emoji id='5397755618750653196'>🌟</emoji> <b>Your Link:</b>\n{link}"}}
 
 
 

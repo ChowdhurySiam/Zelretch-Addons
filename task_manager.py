@@ -19,41 +19,17 @@ from command import zel_command, zel_sudo, who_message, get_text, my_prefix
 
 Module_Name = "ToDo"
 
-LANGUAGES = {
-    "en": {
-        "task_removed": "<blockquote><b>✅ Task removed</b></blockquote>",
-        "task_not_found": "<blockquote><b>🚫 Task not found</b></blockquote>",
-        "new_task": "<b>Task </b><code>#{task_id}</code>:\n<blockquote>{task}</blockquote>\n{level}",
-        "todo_list": "<blockquote><b>#ToDo</b></blockquote>",
-        "importance_level": " -{{ {level} }}-",
-        "task_item": "{task_id}: {task_text}",
-        "no_tasks": "<blockquote><b>📭 No tasks</b></blockquote>",
-        "usage": "📝 <b>Usage:</b> <code>{prefix}td [importance:0-4] [task]</code>",
-        "utd_usage": "🗑️ <b>Usage:</b> <code>{prefix}utd [task_id]</code>",
-    },
-    "ru": {
-        "task_removed": "<blockquote><b>✅ Задача удалена</b></blockquote>",
-        "task_not_found": "<blockquote><b>🚫 Задача не найдена</b></blockquote>",
-        "new_task": "<b>Задача </b><code>#{task_id}</code>:\n<blockquote>{task}</blockquote>\n{level}",
-        "todo_list": "<blockquote><b>#ToDo</b></blockquote>",
-        "importance_level": " -{{ {level} }}-",
-        "task_item": "{task_id}: {task_text}",
-        "no_tasks": "<blockquote><b>📭 Нет задач</b></blockquote>",
-        "usage": "📝 <b>Использование:</b> <code>{prefix}td [priority:0-4] [task]</code>",
-        "utd_usage": "🗑️ <b>Использование:</b> <code>{prefix}utd [id_задачи]</code>",
-    },
-    "ua": {
-        "task_removed": "<blockquote><b>✅ Завдання видалено</b></blockquote>",
-        "task_not_found": "<blockquote><b>🚫 Завдання не знайдено</b></blockquote>",
-        "new_task": "<b>Завдання </b><code>#{task_id}</code>:\n<blockquote>{task}</blockquote>\n{level}",
-        "todo_list": "<blockquote><b>#ToDo</b></blockquote>",
-        "importance_level": " -{{ {level} }}-",
-        "task_item": "{task_id}: {task_text}",
-        "no_tasks": "<blockquote><b>📭 Немає завдань</b></blockquote>",
-        "usage": "📝 <b>Використання:</b> <code>{prefix}td [важливість:0-4] [завдання]</code>",
-        "utd_usage": "🗑️ <b>Використання:</b> <code>{prefix}utd [id_завдання]</code>",
-    }
-}
+LANGUAGES = {'en': {'task_removed': '<blockquote><b>✅ Task removed</b></blockquote>',
+        'task_not_found': '<blockquote><b>🚫 Task not found</b></blockquote>',
+        'new_task': '<b>Task </b><code>#{task_id}</code>:\n'
+                    '<blockquote>{task}</blockquote>\n'
+                    '{level}',
+        'todo_list': '<blockquote><b>#ToDo</b></blockquote>',
+        'importance_level': ' -{{ {level} }}-',
+        'task_item': '{task_id}: {task_text}',
+        'no_tasks': '<blockquote><b>📭 No tasks</b></blockquote>',
+        'usage': '📝 <b>Usage:</b> <code>{prefix}td [importance:0-4] [task]</code>',
+        'utd_usage': '🗑️ <b>Usage:</b> <code>{prefix}utd [task_id]</code>'}}
 
 
 def load_todos():

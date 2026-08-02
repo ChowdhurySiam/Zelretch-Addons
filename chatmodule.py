@@ -7,9 +7,7 @@ Maintainer: Siam Chowdhury
 GitHub: https://github.com/ChowdhurySiam
 Telegram: @Ch0wdhury_Siam
 """
-
 ZELRETCH_MODULE_INFO = {'title': 'Chat Administration', 'icon': '🛡️', 'category': 'Administration', 'description': 'Provides chat IDs, permissions, moderation, roles, links, and group-management tools.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
-
 import asyncio
 import os
 import json
@@ -19,389 +17,298 @@ from pyrogram import Client, filters
 from pyrogram.types import Chat, User, Message, ChatPermissions
 from pyrogram.enums import ChatType, ChatMemberStatus, ChatMembersFilter
 from command import zel_command, zel_sudo, who_message, my_prefix
-
 logger = logging.getLogger(__name__)
 
 def load_config():
     try:
-        with open("userdata/chatmodule_roles", "r", encoding="utf-8") as f:
+        with open('userdata/chatmodule_roles', 'r', encoding='utf-8') as f:
             return json.loads(f.read().strip())
     except FileNotFoundError:
         return {}
 
 def save_config(roles):
-    with open("userdata/chatmodule_roles", "w", encoding="utf-8") as f:
+    with open('userdata/chatmodule_roles', 'w', encoding='utf-8') as f:
         json.dump(roles, f, ensure_ascii=False, indent=2)
 
-@Client.on_message(zel_command("id", "ChatModule", os.path.basename(__file__), "[reply]") & zel_sudo())
+@Client.on_message(zel_command('id', 'ChatModule', os.path.basename(__file__), '[reply]') & zel_sudo())
 async def id_handler(client, message):
     message = await who_message(client, message)
     ids = []
-    
-    # ID владельца
     me = await client.get_me()
-    ids.append(f"<b>Ваш ID:</b> <code>{me.id}</code>")
-    
-    # Если личные сообщения
+    ids.append(f'<b>Your ID:</b> <code>{me.id}</code>')
     if message.chat.type == ChatType.PRIVATE:
-        ids.append(f"<b>Чат ID:</b> <code>{message.chat.id}</code>")
-        return await message.edit("\n".join(ids))
-    
-    # ID чата
-    ids.append(f"<b>Чат ID:</b> <code>{message.chat.id}</code>")
-    
-    # ID пользователя из ответа
+        ids.append(f'<b>Chat ID:</b> <code>{message.chat.id}</code>')
+        return await message.edit('\n'.join(ids))
+    ids.append(f'<b>Chat ID:</b> <code>{message.chat.id}</code>')
     if message.reply_to_message and message.reply_to_message.from_user.id != me.id:
         user_id = message.reply_to_message.from_user.id
-        ids.append(f"<b>ID пользователя:</b> <code>{user_id}</code>")
-    
-    await message.edit("\n".join(ids))
+        ids.append(f'<b>User ID:</b> <code>{user_id}</code>')
+    await message.edit('\n'.join(ids))
 
-@Client.on_message(zel_command("rights", "ChatModule", os.path.basename(__file__), "[-u username/id]") & zel_sudo())
+@Client.on_message(zel_command('rights', 'ChatModule', os.path.basename(__file__), '[-u username/id]') & zel_sudo())
 async def rights_handler(client, message):
     message = await who_message(client, message)
     if message.chat.type == ChatType.PRIVATE:
-        return await message.edit("<b>❌ Эта команда работает только в группах и каналах!</b>")
-    
+        return await message.edit('<b>❌ This command works only in groups and channels.</b>')
     args = message.text.split()[1:] if len(message.command) > 1 else []
     user = None
-    
-    # Поиск пользователя по аргументам или ответу
     for arg in args:
-        if arg.startswith("-u") or arg.startswith("username"):
-            user = arg.split(" ", 1)[1] if " " in arg else None
+        if arg.startswith('-u') or arg.startswith('username'):
+            user = arg.split(' ', 1)[1] if ' ' in arg else None
             break
-    
     if not user and message.reply_to_message:
         user = message.reply_to_message.from_user.id
-    
     if not user:
-        return await message.edit("<b>❌ Укажите пользователя!</b>")
-    
+        return await message.edit('<b>❌ Specify a user.</b>')
     try:
-        # Получаем информацию о пользователе
         user_obj = await client.get_users(user)
         chat_member = await client.get_chat_member(message.chat.id, user_obj.id)
-        
         if chat_member.status not in [ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.OWNER]:
-            return await message.edit(f"<b>❌ {user_obj.first_name} не является администратором!</b>")
-        
-        # Собираем права
+            return await message.edit(f'<b>❌ {user_obj.first_name} is not an administrator.</b>')
         rights = []
         if hasattr(chat_member, 'privileges'):
             privileges = chat_member.privileges
             if privileges.can_manage_chat:
-                rights.append("Управление чатом")
+                rights.append('Manage chat')
             if privileges.can_delete_messages:
-                rights.append("Удаление сообщений")
+                rights.append('Delete messages')
             if privileges.can_manage_video_chats:
-                rights.append("Управление видеочатами")
+                rights.append('Manage video chats')
             if privileges.can_restrict_members:
-                rights.append("Ограничение участников")
+                rights.append('Restrict members')
             if privileges.can_promote_members:
-                rights.append("Назначение администраторов")
+                rights.append('Promote administrators')
             if privileges.can_change_info:
-                rights.append("Изменение информации")
+                rights.append('Change chat information')
             if privileges.can_invite_users:
-                rights.append("Приглашение пользователей")
+                rights.append('Invite users')
             if privileges.can_post_messages:
-                rights.append("Создание сообщений")
+                rights.append('Post messages')
             if privileges.can_edit_messages:
-                rights.append("Редактирование сообщений")
+                rights.append('Edit messages')
             if privileges.can_pin_messages:
-                rights.append("Закрепление сообщений")
-        
+                rights.append('Pin messages')
         if not rights:
-            rights_text = "Нет специальных прав"
+            rights_text = 'No special permissions'
         else:
-            rights_text = "\n".join([f"✅ {right}" for right in rights])
-        
-        rank = chat_member.title if hasattr(chat_member, 'title') and chat_member.title else "Администратор"
-        
-        await message.edit(f"<b>Права администратора {user_obj.first_name}:</b>\n\n{rights_text}\n\n<b>Должность:</b> {rank}")
-        
+            rights_text = '\n'.join([f'✅ {right}' for right in rights])
+        rank = chat_member.title if hasattr(chat_member, 'title') and chat_member.title else 'Administrator'
+        await message.edit(f'<b>Administrator permissions for {user_obj.first_name}:</b>\n\n{rights_text}\n\n<b>Title:</b> {rank}')
     except Exception as e:
-        logger.error(f"Ошибка при проверке прав: {e}")
-        await message.edit("<b>❌ Ошибка при получении информации о пользователе!</b>")
+        logger.error(f'Permission lookup error: {e}')
+        await message.edit('<b>❌ Could not retrieve user information.</b>')
 
-@Client.on_message(zel_command("leave", "ChatModule", os.path.basename(__file__)) & zel_sudo())
+@Client.on_message(zel_command('leave', 'ChatModule', os.path.basename(__file__)) & zel_sudo())
 async def leave_handler(client, message):
     message = await who_message(client, message)
     if message.chat.type == ChatType.PRIVATE:
-        return await message.edit("<b>❌ Эта команда работает только в группах и каналах!</b>")
-    
+        return await message.edit('<b>❌ This command works only in groups and channels.</b>')
     await message.delete()
     await client.leave_chat(message.chat.id)
 
-@Client.on_message(zel_command("pin", "ChatModule", os.path.basename(__file__), "[reply]") & zel_sudo())
+@Client.on_message(zel_command('pin', 'ChatModule', os.path.basename(__file__), '[reply]') & zel_sudo())
 async def pin_handler(client, message):
     message = await who_message(client, message)
     if not message.reply_to_message:
-        return await message.edit("<b>❌ Ответьте на сообщение для закрепления!</b>")
-    
+        return await message.edit('<b>❌ Reply to a message to pin it.</b>')
     try:
-        await client.pin_chat_message(
-            message.chat.id,
-            message.reply_to_message.id,
-            disable_notification=False
-        )
-        await message.edit("<b>✅ Сообщение закреплено!</b>")
+        await client.pin_chat_message(message.chat.id, message.reply_to_message.id, disable_notification=False)
+        await message.edit('<b>✅ Message pinned.</b>')
     except Exception as e:
-        logger.error(f"Ошибка при закреплении: {e}")
-        await message.edit("<b>❌ Не удалось закрепить сообщение!</b>")
+        logger.error(f'Pin error: {e}')
+        await message.edit('<b>❌ Could not pin the message.</b>')
 
-@Client.on_message(zel_command("unpin", "ChatModule", os.path.basename(__file__), "[reply]") & zel_sudo())
+@Client.on_message(zel_command('unpin', 'ChatModule', os.path.basename(__file__), '[reply]') & zel_sudo())
 async def unpin_handler(client, message):
     message = await who_message(client, message)
     if not message.reply_to_message:
-        return await message.edit("<b>❌ Ответьте на сообщение для открепления!</b>")
-    
+        return await message.edit('<b>❌ Reply to a message to unpin it.</b>')
     try:
         await client.unpin_chat_message(message.chat.id, message.reply_to_message.id)
-        await message.edit("<b>✅ Сообщение откреплено!</b>")
+        await message.edit('<b>✅ Message unpinned.</b>')
     except Exception as e:
-        logger.error(f"Ошибка при откреплении: {e}")
-        await message.edit("<b>❌ Не удалось открепить сообщение!</b>")
+        logger.error(f'Unpin error: {e}')
+        await message.edit('<b>❌ Could not unpin the message.</b>')
 
-@Client.on_message(zel_command("unpinall", "ChatModule", os.path.basename(__file__)) & zel_sudo())
+@Client.on_message(zel_command('unpinall', 'ChatModule', os.path.basename(__file__)) & zel_sudo())
 async def unpinall_handler(client, message):
     message = await who_message(client, message)
     if message.chat.type == ChatType.PRIVATE:
-        return await message.edit("<b>❌ Эта команда работает только в группах и каналах!</b>")
-    
+        return await message.edit('<b>❌ This command works only in groups and channels.</b>')
     try:
         await client.unpin_all_chat_messages(message.chat.id)
-        await message.edit("<b>✅ Все сообщения откреплены!</b>")
+        await message.edit('<b>✅ All messages were unpinned.</b>')
     except Exception as e:
-        logger.error(f"Ошибка при откреплении всех сообщений: {e}")
-        await message.edit("<b>❌ Не удалось открепить сообщения!</b>")
+        logger.error(f'Unpin-all error: {e}')
+        await message.edit('<b>❌ Could not unpin the messages.</b>')
 
-@Client.on_message(zel_command("admins", "ChatModule", os.path.basename(__file__)) & zel_sudo())
+@Client.on_message(zel_command('admins', 'ChatModule', os.path.basename(__file__)) & zel_sudo())
 async def admins_handler(client, message):
     message = await who_message(client, message)
     if message.chat.type == ChatType.PRIVATE:
-        return await message.edit("<b>❌ Эта команда работает только в группах и каналах!</b>")
-    
+        return await message.edit('<b>❌ This command works only in groups and channels.</b>')
     try:
         admins = []
         async for member in client.get_chat_members(message.chat.id, filter=ChatMembersFilter.ADMINISTRATORS):
             if member.status == ChatMemberStatus.OWNER:
-                admins.insert(0, f"👑 <a href='tg://user?id={member.user.id}'>{member.user.first_name}</a> | <code>{member.user.id}</code> - Создатель")
+                admins.insert(0, f"👑 <a href='tg://user?id={member.user.id}'>{member.user.first_name}</a> | <code>{member.user.id}</code> - Owner")
             elif member.status == ChatMemberStatus.ADMINISTRATOR:
-                rank = member.custom_title if member.custom_title else "Администратор"
+                rank = member.custom_title if member.custom_title else 'Administrator'
                 admins.append(f"✅ <a href='tg://user?id={member.user.id}'>{member.user.first_name}</a> | <code>{member.user.id}</code> - {rank}")
-        
         if not admins:
-            await message.edit("<b>❌ Администраторы не найдены!</b>")
+            await message.edit('<b>❌ No administrators were found.</b>')
         else:
-            await message.edit(f"<b>Список администраторов:</b>\n\n" + "\n".join(admins))
-            
+            await message.edit(f'<b>Administrators:</b>\n\n' + '\n'.join(admins))
     except Exception as e:
-        logger.error(f"Ошибка при получении администраторов: {e}")
-        await message.edit("<b>❌ Ошибка при получении списка администраторов!</b>")
+        logger.error(f'Administrator-list error: {e}')
+        await message.edit('<b>❌ Could not retrieve the administrator list.</b>')
 
-@Client.on_message(zel_command("ban", "ChatModule", os.path.basename(__file__), "[reply] [duration]") & zel_sudo())
+@Client.on_message(zel_command('ban', 'ChatModule', os.path.basename(__file__), '[reply] [duration]') & zel_sudo())
 async def ban_handler(client, message):
     message = await who_message(client, message)
     if message.chat.type == ChatType.PRIVATE:
-        return await message.edit("<b>❌ Эта команда работает только в группах и каналах!</b>")
-    
+        return await message.edit('<b>❌ This command works only in groups and channels.</b>')
     if not message.reply_to_message:
-        return await message.edit("<b>❌ Ответьте на сообщение пользователя для бана!</b>")
-    
+        return await message.edit('<b>❌ Reply to a user message to ban that user.</b>')
     user_id = message.reply_to_message.from_user.id
     args = message.text.split()[1:] if len(message.command) > 1 else []
-    
-    # Определяем время бана
     ban_time = None
-    time_text = ""
-    
+    time_text = ''
     for arg in args:
         if arg.isdigit():
             ban_time = int(arg)
             if ban_time < 60:
-                time_text = f"{ban_time} секунд"
+                time_text = f'{ban_time} seconds'
             elif ban_time < 3600:
-                time_text = f"{ban_time // 60} минут"
+                time_text = f'{ban_time // 60} minutes'
             elif ban_time < 86400:
-                time_text = f"{ban_time // 3600} часов"
+                time_text = f'{ban_time // 3600} hours'
             else:
-                time_text = f"{ban_time // 86400} дней"
+                time_text = f'{ban_time // 86400} days'
             break
-    
     try:
         user = await client.get_users(user_id)
-        
         if ban_time:
             until_date = datetime.now() + timedelta(seconds=ban_time)
-            await client.ban_chat_member(
-                message.chat.id,
-                user_id,
-                until_date=until_date
-            )
+            await client.ban_chat_member(message.chat.id, user_id, until_date=until_date)
         else:
             await client.ban_chat_member(message.chat.id, user_id)
-        
-        time_info = f" на {time_text}" if time_text else " навсегда"
-        await message.edit(f"<b>✅ Пользователь {user.first_name} забанен{time_info}!</b>")
-        
+        time_info = f' for {time_text}' if time_text else ' permanently'
+        await message.edit(f'<b>✅ User {user.first_name} banned{time_info}!</b>')
     except Exception as e:
-        logger.error(f"Ошибка при бане: {e}")
-        await message.edit("<b>❌ Не удалось забанить пользователя!</b>")
+        logger.error(f'Ban error: {e}')
+        await message.edit('<b>❌ Could not ban the user.</b>')
 
-@Client.on_message(zel_command("unban", "ChatModule", os.path.basename(__file__), "[reply]") & zel_sudo())
+@Client.on_message(zel_command('unban', 'ChatModule', os.path.basename(__file__), '[reply]') & zel_sudo())
 async def unban_handler(client, message):
     message = await who_message(client, message)
     if message.chat.type == ChatType.PRIVATE:
-        return await message.edit("<b>❌ Эта команда работает только в группах и каналах!</b>")
-    
+        return await message.edit('<b>❌ This command works only in groups and channels.</b>')
     if not message.reply_to_message:
-        return await message.edit("<b>❌ Ответьте на сообщение пользователя для разбана!</b>")
-    
+        return await message.edit('<b>❌ Reply to a user message to unban that user.</b>')
     try:
         user = await client.get_users(message.reply_to_message.from_user.id)
         await client.unban_chat_member(message.chat.id, user.id)
-        await message.edit(f"<b>✅ Пользователь {user.first_name} разбанен!</b>")
-        
+        await message.edit(f'<b>✅ User {user.first_name} unbanned.</b>')
     except Exception as e:
-        logger.error(f"Ошибка при разбане: {e}")
-        await message.edit("<b>❌ Не удалось разбанить пользователя!</b>")
+        logger.error(f'Unban error: {e}')
+        await message.edit('<b>❌ Could not unban the user.</b>')
 
-@Client.on_message(zel_command("kick", "ChatModule", os.path.basename(__file__), "[reply]") & zel_sudo())
+@Client.on_message(zel_command('kick', 'ChatModule', os.path.basename(__file__), '[reply]') & zel_sudo())
 async def kick_handler(client, message):
     message = await who_message(client, message)
     if message.chat.type == ChatType.PRIVATE:
-        return await message.edit("<b>❌ Эта команда работает только в группах и каналах!</b>")
-    
+        return await message.edit('<b>❌ This command works only in groups and channels.</b>')
     if not message.reply_to_message:
-        return await message.edit("<b>❌ Ответьте на сообщение пользователя для кика!</b>")
-    
+        return await message.edit('<b>❌ Reply to a user message to remove that user.</b>')
     try:
         user = await client.get_users(message.reply_to_message.from_user.id)
         await client.ban_chat_member(message.chat.id, user.id)
         await asyncio.sleep(1)
         await client.unban_chat_member(message.chat.id, user.id)
-        await message.edit(f"<b>✅ Пользователь {user.first_name} кикнут!</b>")
-        
+        await message.edit(f'<b>✅ User {user.first_name} removed.</b>')
     except Exception as e:
-        logger.error(f"Ошибка при кике: {e}")
-        await message.edit("<b>❌ Не удалось кикнуть пользователя!</b>")
+        logger.error(f'Remove-user error: {e}')
+        await message.edit('<b>❌ Could not remove the user.</b>')
 
-@Client.on_message(zel_command("mute", "ChatModule", os.path.basename(__file__), "[reply] [duration]") & zel_sudo())
+@Client.on_message(zel_command('mute', 'ChatModule', os.path.basename(__file__), '[reply] [duration]') & zel_sudo())
 async def mute_handler(client, message):
     message = await who_message(client, message)
     if message.chat.type == ChatType.PRIVATE:
-        return await message.edit("<b>❌ Эта команда работает только в группах и каналах!</b>")
-    
+        return await message.edit('<b>❌ This command works only in groups and channels.</b>')
     if not message.reply_to_message:
-        return await message.edit("<b>❌ Ответьте на сообщение пользователя для мута!</b>")
-    
+        return await message.edit('<b>❌ Reply to a user message to mute that user.</b>')
     user_id = message.reply_to_message.from_user.id
     args = message.text.split()[1:] if len(message.command) > 1 else []
-    
-    # Определяем время мута
     mute_time = None
-    time_text = ""
-    
+    time_text = ''
     for arg in args:
         if arg.isdigit():
             mute_time = int(arg)
             if mute_time < 60:
-                time_text = f"{mute_time} секунд"
+                time_text = f'{mute_time} seconds'
             elif mute_time < 3600:
-                time_text = f"{mute_time // 60} минут"
+                time_text = f'{mute_time // 60} minutes'
             elif mute_time < 86400:
-                time_text = f"{mute_time // 3600} часов"
+                time_text = f'{mute_time // 3600} hours'
             else:
-                time_text = f"{mute_time // 86400} дней"
+                time_text = f'{mute_time // 86400} days'
             break
-    
     try:
         user = await client.get_users(user_id)
         permissions = ChatPermissions()
-        
         if mute_time:
             until_date = datetime.now() + timedelta(seconds=mute_time)
-            await client.restrict_chat_member(
-                message.chat.id,
-                user_id,
-                permissions=permissions,
-                until_date=until_date
-            )
+            await client.restrict_chat_member(message.chat.id, user_id, permissions=permissions, until_date=until_date)
         else:
-            await client.restrict_chat_member(
-                message.chat.id,
-                user_id,
-                permissions=permissions
-            )
-        
-        time_info = f" на {time_text}" if time_text else " навсегда"
-        await message.edit(f"<b>✅ Пользователь {user.first_name} замучен{time_info}!</b>")
-        
+            await client.restrict_chat_member(message.chat.id, user_id, permissions=permissions)
+        time_info = f' for {time_text}' if time_text else ' permanently'
+        await message.edit(f'<b>✅ User {user.first_name} muted{time_info}!</b>')
     except Exception as e:
-        logger.error(f"Ошибка при муте: {e}")
-        await message.edit("<b>❌ Не удалось замутить пользователя!</b>")
+        logger.error(f'Mute error: {e}')
+        await message.edit('<b>❌ Could not mute the user.</b>')
 
-@Client.on_message(zel_command("unmute", "ChatModule", os.path.basename(__file__), "[reply]") & zel_sudo())
+@Client.on_message(zel_command('unmute', 'ChatModule', os.path.basename(__file__), '[reply]') & zel_sudo())
 async def unmute_handler(client, message):
     message = await who_message(client, message)
     if message.chat.type == ChatType.PRIVATE:
-        return await message.edit("<b>❌ Эта команда работает только в группах и каналах!</b>")
-    
+        return await message.edit('<b>❌ This command works only in groups and channels.</b>')
     if not message.reply_to_message:
-        return await message.edit("<b>❌ Ответьте на сообщение пользователя для размута!</b>")
-    
+        return await message.edit('<b>❌ Reply to a user message to unmute that user.</b>')
     try:
         user = await client.get_users(message.reply_to_message.from_user.id)
-        permissions = ChatPermissions(
-            can_send_messages=True,
-            can_send_media_messages=True,
-            can_send_other_messages=True,
-            can_add_web_page_previews=True
-        )
-        await client.restrict_chat_member(
-            message.chat.id,
-            user.id,
-            permissions=permissions
-        )
-        await message.edit(f"<b>✅ Пользователь {user.first_name} размучен!</b>")
-        
+        permissions = ChatPermissions(can_send_messages=True, can_send_media_messages=True, can_send_other_messages=True, can_add_web_page_previews=True)
+        await client.restrict_chat_member(message.chat.id, user.id, permissions=permissions)
+        await message.edit(f'<b>✅ User {user.first_name} unmuted.</b>')
     except Exception as e:
-        logger.error(f"Ошибка при размуте: {e}")
-        await message.edit("<b>❌ Не удалось размутить пользователя!</b>")
+        logger.error(f'Unmute error: {e}')
+        await message.edit('<b>❌ Could not unmute the user.</b>')
 
-@Client.on_message(zel_command("rename", "ChatModule", os.path.basename(__file__), "[name]") & zel_sudo())
+@Client.on_message(zel_command('rename', 'ChatModule', os.path.basename(__file__), '[name]') & zel_sudo())
 async def rename_handler(client, message):
     message = await who_message(client, message)
     if message.chat.type == ChatType.PRIVATE:
-        return await message.edit("<b>❌ Эта команда работает только в группах и каналах!</b>")
-    
+        return await message.edit('<b>❌ This command works only in groups and channels.</b>')
     args = message.text.split()[1:] if len(message.command) > 1 else []
     if not args:
-        return await message.edit("<b>❌ Укажите новое название!</b>")
-    
-    new_title = " ".join(args)
-    
+        return await message.edit('<b>❌ Specify a new title.</b>')
+    new_title = ' '.join(args)
     try:
         await client.set_chat_title(message.chat.id, new_title)
-        chat_type = "группу" if message.chat.type == ChatType.SUPERGROUP else "канал"
-        await message.edit(f"<b>✅ {chat_type} переименована в {new_title}!</b>")
-        
+        chat_type = 'group' if message.chat.type == ChatType.SUPERGROUP else 'channel'
+        await message.edit(f'<b>✅ {chat_type} renamed to {new_title}!</b>')
     except Exception as e:
-        logger.error(f"Ошибка при переименовании: {e}")
-        await message.edit("<b>❌ Не удалось переименовать чат!</b>")
+        logger.error(f'Rename error: {e}')
+        await message.edit('<b>❌ Could not rename the chat.</b>')
 
-@Client.on_message(zel_command("create", "ChatModule", os.path.basename(__file__), "[-g|--group name] [-c|--channel name]") & zel_sudo())
+@Client.on_message(zel_command('create', 'ChatModule', os.path.basename(__file__), '[-g|--group name] [-c|--channel name]') & zel_sudo())
 async def create_handler(client, message):
     message = await who_message(client, message)
     args = message.text.split()[1:] if len(message.command) > 1 else []
-    
     if not args:
-        return await message.edit("<b>❌ Используйте:</b> <code>create -g название</code> или <code>create -c название</code>")
-    
+        return await message.edit('<b>❌ Usage:</b> <code>create -g name</code> or <code>create -c name</code>')
     group_name = None
     channel_name = None
-    
     i = 0
     while i < len(args):
         if args[i] in ['-g', '--group'] and i + 1 < len(args):
@@ -412,53 +319,44 @@ async def create_handler(client, message):
             i += 2
         else:
             i += 1
-    
     try:
         if channel_name:
-            chat = await client.create_channel(channel_name, "")
-            await message.edit(f"<b>✅ Канал {channel_name} создан!</b>\n<b>Ссылка:</b> {chat.invite_link}")
+            chat = await client.create_channel(channel_name, '')
+            await message.edit(f'<b>✅ Channel {channel_name} created.</b>\n<b>Link:</b> {chat.invite_link}')
         elif group_name:
-            chat = await client.create_group(group_name, "")
-            await message.edit(f"<b>✅ Группа {group_name} создана!</b>\n<b>Ссылка:</b> {chat.invite_link}")
+            chat = await client.create_group(group_name, '')
+            await message.edit(f'<b>✅ Group {group_name} created.</b>\n<b>Link:</b> {chat.invite_link}')
         else:
-            await message.edit("<b>❌ Неверные аргументы!</b>")
-            
+            await message.edit('<b>❌ Invalid arguments.</b>')
     except Exception as e:
-        logger.error(f"Ошибка при создании чата: {e}")
-        await message.edit("<b>❌ Не удалось создать чат!</b>")
+        logger.error(f'Chat creation error: {e}')
+        await message.edit('<b>❌ Could not create the chat.</b>')
 
-@Client.on_message(zel_command("geturl", "ChatModule", os.path.basename(__file__), "[reply]") & zel_sudo())
+@Client.on_message(zel_command('geturl', 'ChatModule', os.path.basename(__file__), '[reply]') & zel_sudo())
 async def geturl_handler(client, message):
     message = await who_message(client, message)
     if not message.reply_to_message:
-        return await message.edit("<b>❌ Ответьте на сообщение для получения ссылки!</b>")
-    
+        return await message.edit('<b>❌ Reply to a message to obtain its link.</b>')
     try:
         reply = message.reply_to_message
         chat = message.chat
-        
         if chat.type == ChatType.SUPERGROUP:
-            link = f"https://t.me/c/{str(chat.id)[4:]}/{reply.id}"
+            link = f'https://t.me/c/{str(chat.id)[4:]}/{reply.id}'
         else:
-            link = f"https://t.me/{chat.username}/{reply.id}" if chat.username else f"https://t.me/c/{chat.id}/{reply.id}"
-        
-        await message.edit(f"<b>🔗 Ссылка на сообщение:</b> {link}")
-        
+            link = f'https://t.me/{chat.username}/{reply.id}' if chat.username else f'https://t.me/c/{chat.id}/{reply.id}'
+        await message.edit(f'<b>🔗 Message link:</b> {link}')
     except Exception as e:
-        logger.error(f"Ошибка при получении ссылки: {e}")
-        await message.edit("<b>❌ Не удалось получить ссылку!</b>")
+        logger.error(f'Message-link error: {e}')
+        await message.edit('<b>❌ Could not retrieve the link.</b>')
 
-@Client.on_message(zel_command("addrole", "ChatModule", os.path.basename(__file__), "-n role_name -p число") & zel_sudo())
+@Client.on_message(zel_command('addrole', 'ChatModule', os.path.basename(__file__), '-n role_name -p permission_number') & zel_sudo())
 async def addrole_handler(client, message):
     message = await who_message(client, message)
     args = message.text.split()[1:] if len(message.command) > 1 else []
-    
     if len(args) < 4:
-        return await message.edit("<b>❌ Используйте:</b> <code>addrole -n role_name -p число</code>")
-    
+        return await message.edit('<b>❌ Usage:</b> <code>addrole -n role_name -p permission_number</code>')
     name = None
     perms = None
-    
     i = 0
     while i < len(args):
         if args[i] in ['-n', 'name'] and i + 1 < len(args):
@@ -472,26 +370,20 @@ async def addrole_handler(client, message):
                 i += 1
         else:
             i += 1
-    
     if not name or perms is None:
-        return await message.edit("<b>❌ Неверные аргументы!</b>")
-    
+        return await message.edit('<b>❌ Invalid arguments.</b>')
     roles = load_config()
     roles[name] = perms
     save_config(roles)
-    
-    await message.edit(f"<b>✅ Роль {name} создана с правами {perms}!</b>")
+    await message.edit(f'<b>✅ Role {name} created with permissions {perms}!</b>')
 
-@Client.on_message(zel_command("delrole", "ChatModule", os.path.basename(__file__), "-n role_name") & zel_sudo())
+@Client.on_message(zel_command('delrole', 'ChatModule', os.path.basename(__file__), '-n role_name') & zel_sudo())
 async def delrole_handler(client, message):
     message = await who_message(client, message)
     args = message.text.split()[1:] if len(message.command) > 1 else []
-    
     if len(args) < 2:
-        return await message.edit("<b>❌ Используйте:</b> <code>delrole -n role_name</code>")
-    
+        return await message.edit('<b>❌ Usage:</b> <code>delrole -n role_name</code>')
     name = None
-    
     i = 0
     while i < len(args):
         if args[i] in ['-n', 'name'] and i + 1 < len(args):
@@ -499,73 +391,47 @@ async def delrole_handler(client, message):
             i += 2
         else:
             i += 1
-    
     if not name:
-        return await message.edit("<b>❌ Укажите имя роли!</b>")
-    
+        return await message.edit('<b>❌ Specify a role name.</b>')
     roles = load_config()
     if name not in roles:
-        return await message.edit(f"<b>❌ Роль {name} не найдена!</b>")
-    
+        return await message.edit(f'<b>❌ Role {name} was not found.</b>')
     del roles[name]
     save_config(roles)
-    
-    await message.edit(f"<b>✅ Роль {name} удалена!</b>")
+    await message.edit(f'<b>✅ Role {name} deleted.</b>')
 
-@Client.on_message(zel_command("roles", "ChatModule", os.path.basename(__file__), "[-n role_name]") & zel_sudo())
+@Client.on_message(zel_command('roles', 'ChatModule', os.path.basename(__file__), '[-n role_name]') & zel_sudo())
 async def roles_handler(client, message):
     message = await who_message(client, message)
     args = message.text.split()[1:] if len(message.command) > 1 else []
-    
     roles = load_config()
     if not roles:
-        return await message.edit("<b>❌ Роли не найдены!</b>")
-    
+        return await message.edit('<b>❌ No roles were found.</b>')
     if not args:
-        role_list = "\n".join([f"➡️ <code>{role}</code>" for role in roles.keys()])
-        await message.edit(f"<b>Доступные роли:</b>\n{role_list}")
+        role_list = '\n'.join([f'➡️ <code>{role}</code>' for role in roles.keys()])
+        await message.edit(f'<b>Available roles:</b>\n{role_list}')
     else:
-        role_name = " ".join(args)
+        role_name = ' '.join(args)
         if role_name not in roles:
-            return await message.edit(f"<b>❌ Роль {role_name} не найдена!</b>")
-        
-        # Здесь можно добавить детальную информацию о правах роли
-        # Для простоты выводим только число прав
-        await message.edit(f"<b>Роль {role_name}:</b>\n<b>Права:</b> <code>{roles[role_name]}</code>")
+            return await message.edit(f'<b>❌ Role {role_name} was not found.</b>')
+        await message.edit(f'<b>Role {role_name}:</b>\n<b>Permissions:</b> <code>{roles[role_name]}</code>')
 
-@Client.on_message(zel_command("chatinfo", "ChatModule", os.path.basename(__file__)) & zel_sudo())
+@Client.on_message(zel_command('chatinfo', 'ChatModule', os.path.basename(__file__)) & zel_sudo())
 async def chatinfo_handler(client, message):
     message = await who_message(client, message)
     if message.chat.type == ChatType.PRIVATE:
-        return await message.edit("<b>❌ Эта команда работает только в группах и каналах!</b>")
-    
+        return await message.edit('<b>❌ This command works only in groups and channels.</b>')
     try:
         chat = await client.get_chat(message.chat.id)
-        
-        # Получаем количество участников
         members_count = 0
         online_count = 0
         async for _ in client.get_chat_members(chat.id):
             members_count += 1
-        
-        # Получаем администраторов
         admins_count = 0
         async for _ in client.get_chat_members(chat.id, filter=ChatMembersFilter.ADMINISTRATORS):
             admins_count += 1
-        
-        # Формируем информацию
-        info_text = f"""<b>📊 Информация о чате:</b>
-
-🆔 <b>ID:</b> <code>{chat.id}</code>
-📝 <b>Название:</b> {chat.title}
-👥 <b>Участников:</b> {members_count}
-👤 <b>Администраторов:</b> {admins_count}
-🌐 <b>Username:</b> @{chat.username} if chat.username else "Нет"
-🔗 <b>Ссылка:</b> {chat.invite_link if chat.invite_link else "Нет"}
-        """
-        
+        info_text = f"""<b>📊 Chat information:</b>\n\n🆔 <b>ID:</b> <code>{chat.id}</code>\n📝 <b>Title:</b> {chat.title}\n👥 <b>Members:</b> {members_count}\n👤 <b>Administrators:</b> {admins_count}\n🌐 <b>Username:</b> @{chat.username} if chat.username else "None"\n🔗 <b>Link:</b> {(chat.invite_link if chat.invite_link else 'None')}\n        """
         await message.edit(info_text)
-        
     except Exception as e:
-        logger.error(f"Ошибка при получении информации: {e}")
-        await message.edit("<b>❌ Ошибка при получении информации о чате!</b>")
+        logger.error(f'Information lookup error: {e}')
+        await message.edit('<b>❌ Could not retrieve chat information.</b>')

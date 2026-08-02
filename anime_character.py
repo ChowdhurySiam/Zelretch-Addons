@@ -22,23 +22,17 @@ from pyrogram.errors import WebpageCurlFailed
 from pyrogram import Client
 from command import zel_command, zel_sudo, who_message, get_text
 
-phrases = ["Kawaii!", "Daisuki!", "Sugoi!", "Hai!", "Arigato!", "Moe!", "Yoroshiku!", "Oishii!"]
+phrases = ["Cute!", "Excellent!", "Amazing!", "Enjoy!", "Wonderful!"]
 categories = ["maid", "waifu", "marin-kitagawa", "mori-calliope", "raiden-shogun", "oppai", "selfies", "uniform", "kamisato-ayaka", "neko"]
 list_categories = ", ".join([f"<code>{s}</code>" for s in categories])
 LANGUAGES = {
     "en": {
-        "no_image": "No image found.",
+        "no_image": "No image was found.",
+        "phrases": f"Available categories: {list_categories}",
         "categories": f"Available categories: {list_categories}",
-    },
-    "ru": {
-        "no_image": "Изображение не найдено.",
-        "phrases": f"Доступные категории: {list_categories}"
-    },
-    "ua": {
-        "no_image": "Зображення не знайдено.",
-         "categories": f"Доступні категорії: {list_categories}",
     }
 }
+
 
 async def get_image_url(api_url: str) -> str | None:
     print(api_url)

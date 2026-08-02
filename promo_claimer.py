@@ -26,28 +26,15 @@ logger = logging.getLogger(__name__)
 filename = os.path.basename(__file__)
 Module_Name = 'PromoClaimer'
 
-LANGUAGES = {
-    "en": {
-        "module_name": "PromoClaimer",
-        "claimed_promo": "[PromoClaimer] 👌 I successfully claimed promo {promo} for {amount} tokens!",
-        "error_watcher": "[PromoClaimer] ⛔️ An error occurred while watching for messages:\n{e}",
-        "invalid_promo": "[PromoClaimer] 😢 Promo code {promo} is invalid or has expired!",
-        "already_claimed": "[PromoClaimer] 😢 Promo code {promo} has already been claimed!",
-        "checking_tokens": "[PromoClaimer] Checking tokens balance...",
-        "watcher_started": "[PromoClaimer] Watcher started for StableWaifuBot promos",
-        "command_description": "| Check tokens balance"
-    },
-    "ru": {
-        "module_name": "PromoClaimer",
-        "claimed_promo": "[PromoClaimer] 👌 Я успешно активировал промокод {promo} на {amount} токен(-ов)!",
-        "error_watcher": "[PromoClaimer] ⛔️ Во время отслеживания сообщений произошла ошибка:\n{e}",
-        "invalid_promo": "[PromoClaimer] 😢 Промокод {promo} недействителен, либо уже истек!",
-        "already_claimed": "[PromoClaimer] 😢 Промокод {promo} уже активирован!",
-        "checking_tokens": "[PromoClaimer] Проверка баланса токенов...",
-        "watcher_started": "[PromoClaimer] Старт отслеживания промокодов StableWaifuBot",
-        "command_description": "| Посмотреть баланс токенов"
-    }
-}
+LANGUAGES = {'en': {'module_name': 'PromoClaimer',
+        'claimed_promo': '[PromoClaimer] 👌 I successfully claimed promo {promo} for {amount} '
+                         'tokens!',
+        'error_watcher': '[PromoClaimer] ⛔️ An error occurred while watching for messages:\n{e}',
+        'invalid_promo': '[PromoClaimer] 😢 Promo code {promo} is invalid or has expired!',
+        'already_claimed': '[PromoClaimer] 😢 Promo code {promo} has already been claimed!',
+        'checking_tokens': '[PromoClaimer] Checking tokens balance...',
+        'watcher_started': '[PromoClaimer] Watcher started for StableWaifuBot promos',
+        'command_description': '| Check tokens balance'}}
 
 
 
@@ -74,11 +61,11 @@ async def checktokens(client, message):
                 break
         
         if response and response.text:
-            # Проверяем, есть ли информация о токенах в ответе
-            if "не нашел" in response.text.lower() or "not found" in response.text.lower():
+            # Check whether the service returned a token balance
+            if "not found" in response.text.lower():
                 tokens = f"❌ {response.text}"
             else:
-                # Показываем весь ответ от бота
+                # Show the complete service response
                 tokens = response.text
         else:
             tokens = "❌ No response from bot"
@@ -121,9 +108,10 @@ async def watcher(client, message):
                 logger.error(f"No response for promo {promo}")
                 continue
             
-            if 'недействителен' in response.text or 'истёк' in response.text or 'неверный' in response.text:
+            response_text = response.text.casefold()
+            if any(term in response_text for term in ('invalid', 'expired', 'not found')):
                 logger.info(get_text("PromoClaimer", "invalid_promo", LANGUAGES=LANGUAGES, promo=promo))
-            elif 'уже активирован' in response.text:
+            elif any(term in response_text for term in ('already claimed', 'already activated')):
                 logger.info(get_text("PromoClaimer", "already_claimed", LANGUAGES=LANGUAGES, promo=promo))
             else:
                 try:

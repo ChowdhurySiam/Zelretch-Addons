@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "project": "Zelretch Addons",
-  "source": "https://github.com/SiamTestingProject/Addons",
+  "source": "https://github.com/ChowdhurySiam/Zelretch-Addons",
   "developer": {
     "name": "Siam Chowdhury",
     "github": "https://github.com/ChowdhurySiam",
@@ -290,7 +290,7 @@
         },
         {
           "command": "addrole",
-          "arguments": "-n role_name -p число",
+          "arguments": "-n role_name -p permission_number",
           "primary": true
         },
         {
@@ -597,7 +597,7 @@
       "title": "History Facts",
       "icon": "📚",
       "category": "Information",
-      "description": "Returns random historical, science, music, and general-interest facts.",
+      "description": "Returns concise English-language facts from built-in history collections.",
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
@@ -928,10 +928,10 @@
     },
     {
       "filename": "nekomod.py",
-      "title": "Neko Text Mode",
+      "title": "Cat Text Mode",
       "icon": "🐱",
       "category": "Fun",
-      "description": "Adds a configurable neko-style transformation to outgoing text.",
+      "description": "Adds a configurable English cat-style transformation to outgoing text.",
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
@@ -948,7 +948,7 @@
       "title": "Fictional Profile Generator",
       "icon": "🧾",
       "category": "Fun",
-      "description": "Creates a fictional profile card for entertainment and testing.",
+      "description": "Creates an English fictional profile card for entertainment and testing.",
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
@@ -965,7 +965,7 @@
       "title": "Patriot Text",
       "icon": "🎭",
       "category": "Creative",
-      "description": "Transforms text with a stylized character-substitution effect.",
+      "description": "Applies an English leetspeak style to replied or outgoing text.",
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
@@ -1262,19 +1262,14 @@
       "title": "Text to Speech",
       "icon": "🔊",
       "category": "Files & Media",
-      "description": "Converts supplied text into an audio message in supported languages.",
+      "description": "Converts supplied English text into an audio message.",
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
       "commands": [
         {
           "command": "voice",
-          "arguments": "[text]",
-          "primary": true
-        },
-        {
-          "command": "voice_ru",
-          "arguments": "[text]",
+          "arguments": "[English text]",
           "primary": true
         }
       ]
@@ -1284,7 +1279,7 @@
       "title": "Speed Test",
       "icon": "🚀",
       "category": "System",
-      "description": "Measures network download, upload, and latency information.",
+      "description": "Measures network upload speed, latency, server location, and provider information.",
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
@@ -1351,7 +1346,7 @@
       "title": "Text Switch",
       "icon": "🔄",
       "category": "Fun",
-      "description": "Applies a reversible visual transformation to replied or supplied text.",
+      "description": "Swaps uppercase and lowercase English letters in supplied or replied text.",
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
@@ -1701,18 +1696,21 @@
       "title": "Wikipedia Search",
       "icon": "📖",
       "category": "Information",
-      "description": "Searches Wikipedia in the selected language and returns a summary.",
+      "description": "Searches English Wikipedia and returns a concise summary.",
       "developer": "Siam Chowdhury",
       "github": "https://github.com/ChowdhurySiam",
       "telegram": "https://t.me/Ch0wdhury_Siam",
       "commands": [
         {
           "command": "wiki",
-          "arguments": "[RU/EN] [WORD]",
+          "arguments": "[query]",
           "primary": true
         }
       ]
     }
   ],
-  "requirements_file": "requirements.txt"
+  "requirements_file": "requirements.txt",
+  "main_project": "https://github.com/ChowdhurySiam/Zelretch",
+  "language": "English only",
+  "version": "3.1.0"
 }

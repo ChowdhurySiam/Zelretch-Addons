@@ -149,7 +149,7 @@ def get_unit_status_emoji(unit: str) -> str:
 
 @Client.on_message(zel_command("units", "Systemd", os.path.basename(__file__)) & zel_sudo())
 async def units_handler(client, message):
-    message = await who_message(client, message, message.reply_to_message)
+    message = await who_message(client, message)
     services = load_config()
     
     if not services:
@@ -166,7 +166,7 @@ async def units_handler(client, message):
 
 @Client.on_message(zel_command("addunit", "Systemd", os.path.basename(__file__), "[unit] [name]") & zel_sudo())
 async def addunit_handler(client, message):
-    message = await who_message(client, message, message.reply_to_message)
+    message = await who_message(client, message)
     args = message.text.split(maxsplit=1)
     if len(args) < 2:
         await message.edit("<emoji id=5312526098750252863>🚫</emoji> <b>No arguments specified</b>")
@@ -190,7 +190,7 @@ async def addunit_handler(client, message):
 
 @Client.on_message(zel_command("delunit", "Systemd", os.path.basename(__file__), "[unit]") & zel_sudo())
 async def delunit_handler(client, message):
-    message = await who_message(client, message, message.reply_to_message)
+    message = await who_message(client, message)
     args = message.text.split(maxsplit=1)
     if len(args) < 2:
         await message.edit("<emoji id=5312526098750252863>🚫</emoji> <b>No arguments specified</b>")
@@ -210,7 +210,7 @@ async def delunit_handler(client, message):
 
 @Client.on_message(zel_command("unit", "Systemd", os.path.basename(__file__), "[unit] [action]") & zel_sudo())
 async def unit_handler(client, message):
-    message = await who_message(client, message, message.reply_to_message)
+    message = await who_message(client, message)
     args = message.text.split(maxsplit=1)
     if len(args) < 2 or len(args[1].split()) < 2:
         await message.edit("<emoji id=5312526098750252863>🚫</emoji> <b>No arguments specified</b>")
@@ -270,7 +270,7 @@ async def unit_handler(client, message):
 
 @Client.on_message(zel_command("nameunit", "Systemd", os.path.basename(__file__), "[unit] [new_name]") & zel_sudo())
 async def nameunit_handler(client, message):
-    message = await who_message(client, message, message.reply_to_message)
+    message = await who_message(client, message)
     args = message.text.split(maxsplit=1)
     if len(args) < 2 or len(args[1].split()) < 2:
         await message.edit("<emoji id=5312526098750252863>🚫</emoji> <b>No arguments specified</b>")

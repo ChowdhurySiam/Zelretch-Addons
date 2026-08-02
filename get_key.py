@@ -26,35 +26,17 @@ headers = {
     "User-Agent": "Happ/3.9.1",
 }
 
-LANGUAGES = { 
-    "en": {
-        "need_link": "<b><emoji id='5210952531676504517'>❌</emoji> Give me a subscription link!</b>",
-        "searching": "<b><emoji id='5264727218734524899'>🔄</emoji> Searching subscription...</b>",
-        "decrypting": "<b><emoji id='5264727218734524899'>🔄</emoji> Decrypting happ:// link...</b>",
-        "empty_response": "<b><emoji id='5210952531676504517'>❌</emoji> Empty response from the link.</b>",
-        "decrypt_fail": "<b><emoji id='5210952531676504517'>❌</emoji> Failed to decrypt happ:// link.</b>",
-        "fetch_decode_fail": "<b><emoji id='5210952531676504517'>❌</emoji> Failed to fetch or decode subscription.</b>",
-        "caption": "<emoji id='5267392860122006833'>📝</emoji> | Zelretch",
-    },
-    "ru": {
-        "need_link": "<b><emoji id='5210952531676504517'>❌</emoji> Дай ссылку на подписку!</b>",
-        "searching": "<b><emoji id='5264727218734524899'>🔄</emoji> Ищу подписку...</b>",
-        "decrypting": "<b><emoji id='5264727218734524899'>🔄</emoji> Расшифровываю happ:// ссылку...</b>",
-        "empty_response": "<b><emoji id='5210952531676504517'>❌</emoji> Пустой ответ по ссылке.</b>",
-        "decrypt_fail": "<b><emoji id='5210952531676504517'>❌</emoji> Не удалось расшифровать happ:// ссылку.</b>",
-        "fetch_decode_fail": "<b><emoji id='5210952531676504517'>❌</emoji> Не удалось получить или декодировать подписку.</b>",
-        "caption": "<emoji id='5267392860122006833'>📝</emoji> Лови файл",
-    },
-    "ua": {
-        "need_link": "<b><emoji id='5210952531676504517'>❌</emoji> Дай посилання на підписку!</b>",
-        "searching": "<b><emoji id='5264727218734524899'>🔄</emoji> Шукаю підписку...</b>",
-        "decrypting": "<b><emoji id='5264727218734524899'>🔄</emoji> Розшифровую happ:// посилання...</b>",
-        "empty_response": "<b><emoji id='5210952531676504517'>❌</emoji> Порожня відповідь за посиланням.</b>",
-        "decrypt_fail": "<b><emoji id='5210952531676504517'>❌</emoji> Не вдалося розшифрувати happ:// посилання.</b>",
-        "fetch_decode_fail": "<b><emoji id='5210952531676504517'>❌</emoji> Не вдалося отримати або декодувати підписку.</b>",
-        "caption": "<emoji id='5267392860122006833'>📝</emoji> Лови файл",
-    }
-}
+LANGUAGES = {'en': {'need_link': "<b><emoji id='5210952531676504517'>❌</emoji> Give me a subscription "
+                     'link!</b>',
+        'searching': "<b><emoji id='5264727218734524899'>🔄</emoji> Searching subscription...</b>",
+        'decrypting': "<b><emoji id='5264727218734524899'>🔄</emoji> Decrypting happ:// link...</b>",
+        'empty_response': "<b><emoji id='5210952531676504517'>❌</emoji> Empty response from the "
+                          'link.</b>',
+        'decrypt_fail': "<b><emoji id='5210952531676504517'>❌</emoji> Failed to decrypt happ:// "
+                        'link.</b>',
+        'fetch_decode_fail': "<b><emoji id='5210952531676504517'>❌</emoji> Failed to fetch or "
+                             'decode subscription.</b>',
+        'caption': "<emoji id='5267392860122006833'>📝</emoji> | Zelretch"}}
 
 
 

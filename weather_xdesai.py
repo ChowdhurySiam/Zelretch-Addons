@@ -33,62 +33,25 @@ def save_config(api_key):
     with open("userdata/weather_setting", "w", encoding="utf-8") as f:
         f.write(api_key)
 
-LANGUAGES = {
-    "en": {
-        "weather_info": """<emoji id=5884330496619450755>☁️</emoji> <b>Weather in {city}, {country}:</b>
-<emoji id=5199707727475007907>🌡️</emoji> <b>Temperature: {temperature}°C (feels like {feels_like}°C)</b>
-<emoji id=6050944866580435869>💧</emoji> <b>Humidity: {humidity}%</b>
-<emoji id=5415843564280107382>🌀</emoji> <b>Wind speed: {wind_speed} m/s</b>
-<emoji id=5417937876232983047>⛅️</emoji> <b>Sky: {description}</b>""",
-        "error": "<b>Error:</b> <code>{e}</code>",
-        "api_error": "<b>City not found: {city}\nAPI response:</b> <code>{data}</code>",
-        "invalid_args": "<emoji id=5019523782004441717>❌</emoji> <b>Specify the city.</b>",
-        "config_saved": "✅ <b>API key saved:</b> <code>{api_key}</code>",
-        "current_config": "🔑 <b>Current API key:</b> <code>{api_key}</code>",
-        "help_text": """🌤️ <b>Weather Module</b>
-
-<code>weather [city]</code> - Check weather in specified city
-<code>weather_config [api_key]</code> - Set OpenWeatherMap API key
-
-API key can be obtained from: https://openweathermap.org/api"""
-    },
-    "ru": {
-        "weather_info": """<emoji id=5884330496619450755>☁️</emoji> <b>Погода в городе {city}, {country}:</b>
-<emoji id=5199707727475007907>🌡️</emoji> <b>Температура: {temperature}°C (ощущается как {feels_like}°C)</b>
-<emoji id=6050944866580435869>💧</emoji> <b>Влажность: {humidity}%</b>
-<emoji id=5415843564280107382>🌀</emoji> <b>Скорость ветра: {wind_speed} м/с</b>
-<emoji id=5417937876232983047>⛅️</emoji> <b>Небо: {description}</b>""",
-        "error": "<b>Ошибка:</b> <code>{e}</code>",
-        "api_error": "<b>Город не найден: {city}\nОтвет API:</b> <code>{data}</code>",
-        "invalid_args": "<emoji id=5019523782004441717>❌</emoji> <b>Укажите город.</b>",
-        "config_saved": "✅ <b>API ключ сохранен:</b> <code>{api_key}</code>",
-        "current_config": "🔑 <b>Текущий API ключ:</b> <code>{api_key}</code>",
-        "help_text": """🌤️ <b>Модуль погоды</b>
-
-<code>weather [city]</code> - Проверить погоду в указанном городе
-<code>weather_config [api_key]</code> - Установить API ключ OpenWeatherMap
-
-API ключ можно получить здесь: https://openweathermap.org/api"""
-    },
-    "ua": {
-        "weather_info": """<emoji id=5884330496619450755>☁️</emoji> <b>Погода у місті {city}, {country}:</b>
-<emoji id=5199707727475007907>🌡️</emoji> <b>Температура: {temperature}°C (відчувається як {feels_like}°C)</b>
-<emoji id=6050944866580435869>💧</emoji> <b>Вологість: {humidity}%</b>
-<emoji id=5415843564280107382>🌀</emoji> <b>Швидкість вітру: {wind_speed} м/с</b>
-<emoji id=5417937876232983047>⛅️</emoji> <b>Небо: {description}</b>""",
-        "error": "<b>Помилка:</b> <code>{e}</code>",
-        "api_error": "<b>Місто не знайдено: {city}\nВідповідь API:</b> <code>{data}</code>",
-        "invalid_args": "<emoji id=5019523782004441717>❌</emoji> <b>Вкажіть місто.</b>",
-        "config_saved": "✅ <b>API ключ збережено:</b> <code>{api_key}</code>",
-        "current_config": "🔑 <b>Поточний API ключ:</b> <code>{api_key}</code>",
-        "help_text": """🌤️ <b>Модуль погоди</b>
-
-<code>weather [city]</code> - Перевірити погоду в указаному місті
-<code>weather_config [api_key]</code> - Встановити API ключ OpenWeatherMap
-
-API ключ можна отримати тут: https://openweathermap.org/api"""
-    }
-}
+LANGUAGES = {'en': {'weather_info': '<emoji id=5884330496619450755>☁️</emoji> <b>Weather in {city}, '
+                        '{country}:</b>\n'
+                        '<emoji id=5199707727475007907>🌡️</emoji> <b>Temperature: {temperature}°C '
+                        '(feels like {feels_like}°C)</b>\n'
+                        '<emoji id=6050944866580435869>💧</emoji> <b>Humidity: {humidity}%</b>\n'
+                        '<emoji id=5415843564280107382>🌀</emoji> <b>Wind speed: {wind_speed} '
+                        'm/s</b>\n'
+                        '<emoji id=5417937876232983047>⛅️</emoji> <b>Sky: {description}</b>',
+        'error': '<b>Error:</b> <code>{e}</code>',
+        'api_error': '<b>City not found: {city}\nAPI response:</b> <code>{data}</code>',
+        'invalid_args': '<emoji id=5019523782004441717>❌</emoji> <b>Specify the city.</b>',
+        'config_saved': '✅ <b>API key saved:</b> <code>{api_key}</code>',
+        'current_config': '🔑 <b>Current API key:</b> <code>{api_key}</code>',
+        'help_text': '🌤️ <b>Weather Module</b>\n'
+                     '\n'
+                     '<code>weather [city]</code> - Check weather in specified city\n'
+                     '<code>weather_config [api_key]</code> - Set OpenWeatherMap API key\n'
+                     '\n'
+                     'API key can be obtained from: https://openweathermap.org/api'}}
 
 filename = os.path.basename(__file__)
 Module_Name = "Weather"

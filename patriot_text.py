@@ -1,57 +1,36 @@
 """Zelretch Addon: Patriot Text
 
-Transforms text with a stylized character-substitution effect.
-
-Category: Creative
-Maintainer: Siam Chowdhury
-GitHub: https://github.com/ChowdhurySiam
-Telegram: @Ch0wdhury_Siam
+Applies an English leetspeak style to supplied or outgoing text.
 """
 
-ZELRETCH_MODULE_INFO = {'title': 'Patriot Text', 'icon': '🎭', 'category': 'Creative', 'description': 'Transforms text with a stylized character-substitution effect.', 'developer': 'Siam Chowdhury', 'github': 'https://github.com/ChowdhurySiam', 'telegram': 'https://t.me/Ch0wdhury_Siam'}
+ZELRETCH_MODULE_INFO = {"title": "Patriot Text", "icon": "🦅", "category": "Creative", "description": "Applies an English leetspeak style to replied or outgoing text.", "developer": "Siam Chowdhury", "github": "https://github.com/ChowdhurySiam", "telegram": "https://t.me/Ch0wdhury_Siam"}
 
-import asyncio
+import os
 from pyrogram import Client, filters
 from command import zel_command, zel_sudo, who_message
-import os
 
-translate_map = {
-    ord("з"): "Z",
-    ord("З"): "Z",
-    ord("z"): "Z",
-    ord("о"): "O",
-    ord("o"): "О",
-    ord("в"): "V",
-    ord("В"): "V",
-    ord("v"): "V"
-}
-
+translate_map = str.maketrans({"a": "4", "e": "3", "i": "1", "o": "0", "s": "5", "t": "7", "A": "4", "E": "3", "I": "1", "O": "0", "S": "5", "T": "7"})
 patriot_enabled = False
 
-@Client.on_message(zel_command("patriot", "Патриот", os.path.basename(__file__)) & zel_sudo())
+@Client.on_message(zel_command("patriot", "Patriot Text", os.path.basename(__file__)) & zel_sudo())
 async def patriotcmd(client, message):
     message = await who_message(client, message)
     global patriot_enabled
     patriot_enabled = not patriot_enabled
-    
-    if patriot_enabled:
-        return await message.edit("<b>🇷🇺 Патриот успешно включен. Страна может спать спокойно</b>")
-    else:
-        return await message.edit("❌ <b>Патриот выключен</b>")
+    state = "enabled" if patriot_enabled else "disabled"
+    await message.edit(f"🦅 <b>Patriot Text is {state}.</b>")
 
-@Client.on_message(zel_command("pat", "Патриот", os.path.basename(__file__), "[reply]") & zel_sudo())
+@Client.on_message(zel_command("pat", "Patriot Text", os.path.basename(__file__), "[reply]") & zel_sudo())
 async def patcmd(client, message):
     message = await who_message(client, message)
     reply = message.reply_to_message
-    if not reply:
-        return await message.edit("<b>Ответьте на сообщение с помощью </b><code>pat</code>")
-    
-    translated_text = reply.text.translate(translate_map)
-    await message.edit(f"🇷🇺 <b>Патриот отредактировал сообщение</b>:\n\n{translated_text}")
+    if not reply or not reply.text:
+        return await message.edit("<b>Reply to a text message and use </b><code>pat</code>.")
+    await message.edit(f"🦅 <b>Styled text</b>:\n\n{reply.text.translate(translate_map)}")
 
-@Client.on_message(filters.outgoing & zel_sudo())
+@Client.on_message(filters.outgoing & filters.text & zel_sudo())
 async def watcher(client, message):
-    if patriot_enabled:
-        translated_text = message.text.translate(translate_map)
-        if message.text != translated_text:
-            await message.edit(translated_text)
+    if patriot_enabled and message.text:
+        translated = message.text.translate(translate_map)
+        if message.text != translated:
+            await message.edit(translated)

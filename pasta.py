@@ -23,24 +23,24 @@ from faker import Faker
 @Client.on_message(zel_command("doxx", "Doxx", os.path.basename(__file__)) & zel_sudo())
 async def hack(client, message):
     message = await who_message(client, message)
-    fake = Faker('ru_RU')
-    await message.edit('Доксим тя пидор')
+    fake = Faker('en_US')
+    await message.edit('Generating a fictional profile...')
     if randint(0, 1) == 0:
-        name = 'Артур Ламаев'
+        name = 'Alex Morgan'
     else:
         name = fake.name()
     pasta = f'''
-Докс на тя:
-- - - - - - 
-ФИО : {name}
-Адрес электронной почты : {fake.email()}
-Телефон : {fake.phone_number()}
-Адрес регистрации : {fake.street_address()}
-Пароль к почте : {fake.password()}
-Карта : {fake.credit_card_full()}
-Паспорт: {fake.passport_number()}
+Fictional profile:
 - - - - - -
-Жди докс бошеее
+Full name: {name}
+Email address: {fake.email()}
+Phone: {fake.phone_number()}
+Registered address: {fake.street_address()}
+Generated password: {fake.password()}
+Payment card: {fake.credit_card_full()}
+Passport number: {fake.passport_number()}
+- - - - - -
+Generated for entertainment and testing only.
 '''
     sleep(2)
     await message.edit(pasta)
